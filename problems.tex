@@ -19,9 +19,9 @@
 \newcommand{\ib}{\ensuremath{\mathfrak{b}}}
 \newcommand{\Spec}{\ensuremath{\text{Spec}}}
 
-\newcommand{\sf}{\ensuremath{\mathcal{F}}}
-\newcommand{\sg}{\ensuremath{\mathcal{G}}}
-\newcommand{\sa}{\ensuremath{\mathcal{A}}}
+\newcommand{\sF}{\ensuremath{\mathcal{F}}}
+\newcommand{\sG}{\ensuremath{\mathcal{G}}}
+\newcommand{\sA}{\ensuremath{\mathcal{A}}}
 \newcommand*\closure[1]{\overline{#1}}
 
 \newtheorem{ex}{Exercise}[section]
@@ -33,14 +33,25 @@
 
 \begin{document}
 
-\title{Exercises Hartshorne Sheaves}
+\title{Exercises Hartshorne}
 \author{Oriol Velasco Falguera}
 \maketitle
 
+\section{Sheaves}
 
 \begin{ex}
-	Let $A$ be an abelian group, and define the constant presheaf associated to $A$ on the topological space $X$ to be the presheaf $U \mapsto A$ for all $U \neq \varnothing$, with restriction maps the identity. Show that the constant sheaf $\sa$ defined in the text is the sheaf associated to this presheaf.
+	Let $A$ be an abelian group, and define the constant presheaf associated to $A$ on the topological space $X$ to be the presheaf $U \mapsto A$ for all $U \neq \varnothing$, with restriction maps the identity. Show that the constant sheaf $\sA$ defined in the text is the sheaf associated to this presheaf.
 \end{ex}
+
+\begin{sol}
+	Let $sF$ denote the constant presheaf. Let's first see that each stalk $\sF_P$ is a copy of $A$. Indeed, the elements of $\sF_P$ are represented by pairs $\langle U, s \rangle$, with $U$ open neighbourhood of $P$ and $s \in A$. As the restriction maps are the identity, two pairs $\langle U,s \rangle$ and $\langle V, t \rangle$ represent the same element if and only if $s = t$, so $\sF_P = A$.
+
+	Let $s$ be an application from $U$ to $\bigcup_{P \in U} \sF_P$ satisfying properties (1) and (2) from the definition of associated sheaf. By (1), $s(P) \in \sF_P$ is an element of $A$, and therefore $s$ can be regarded as an application from $U$ to $A$ (that we will denote $s'$). In addition, let $B \subseteq A$. For each $P \in s'^{-1}(B), \, \exists V_{P}$ neighbourhood of $P$ such that $s'(V_P) = t \in B$. Then $s'^{-1}(B) = \bigcup_{P \in s'^{-1}(B)} V_P$ which is open. We have proved that the antiimage of every subset is open and therefore $s'$ is continuos with $A$ being given the discrete topology.
+
+	Reciprocally, any countinuous application $s'$ from $U$ to $A$ can be regarded as an application $s$ from $U$ to $\bigcup_{P \in U} \sF_P$, defining $s(P) = s'(P) \in \sF_P$. This assignation guarantees that $s$ satisfies (1). In addition, for each $P \in U$, the set $V = s'^{-1}(s'(P))$ is an open neighbourhood of $P$ (by continuity of s'), and every $Q \in V$ has the same image $s'(P)$, which proves that $s$ satisfies (2).
+
+	In conclusion, $\sF^{+}(U)$ is the group of continuous maps from $U$ into $A$, and therefore $\sF^{+}$ is indeed the sheaf $\sA$ defined in the text.
+\end{sol}
 
 
 
