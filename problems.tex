@@ -98,10 +98,22 @@
 
 \begin{sol}
 	\begin{enumerate}[label=\alph*)]
-		\item From problem 1.2, $\varphi$ is surjective $\iff$ the induced morphism on every stalk is. Suppose $\varphi_P$ is surjective, then given $U \subseteq X$ open set, $s \in \sG(U)$, $\forall P \in U \exists V$ neighbourhood of $P$ and $t \in \sF(V)$ such that $\overline{(U,s)} = \overline{(V,\varphi(t))} \imp \exists W_P \subseteq U \cap V$ such that $\varphi(t|_{W_P}) = s|_{W_P}$, and so $\{W_P\}$ is the covering that satisfies the desired property. Reciprocally, let $\overline{(U,s)} \in \sG_P$. Then $\forall P \in U \exists i$ such that $P \in U_i \imp \overline{(U,s)} = \overline{(U_i, \varphi(U_i)(t_i))} = \varphi_P(\overline{(U_i, t_i)})$.
+		\item From problem 1.2, $\varphi$ is surjective $\iff$ the induced morphism on every stalk is. Suppose $\varphi_P$ is surjective, then given $U \subseteq X$ open set, $s \in \sG(U)$, $\forall P \in U \exists V$ neighbourhood of $P$ and $t \in \sF(V)$ such that $\overline{(U,s)} = \overline{(V,\varphi(t))} \imp \exists W_P \subseteq U \cap V$ such that $\varphi(t|_{W_P}) = s|_{W_P}$, and so $\{W_P\}$ is the covering that satisfies the desired property. Reciprocally, let $\overline{(U,s)} \in \sG_P$. Then $\forall P \in U \exists i$ such that $P \in U_i \imp \overline{(U,s)} = \overline{(U_i, \varphi(U_i)(t_i))} = \varphi_P(\overline{(U_i, t_i)}) \imp \varphi_P$ is surjective.
 
 		\item
 	\end{enumerate}
+\end{sol}
+
+\begin{ex}
+	\begin{enumerate}[label=\alph*)]
+		\item Using 1.2 b) and the fact that $\sF^{+}_P = \sF_P$, the map $\varphi^{+}$ is injective $\iff$ the maps $\varphi_P: \sF_P \to \sG_P$ on the stalks are injective. Let $\overline{(U,s)} \in \sF_P$ such that $\varphi_P(\overline{(U,s)}) = 0 \imp \exists W \subset U$ such that $\varphi(U)(s)|_W = 0 \imp \varphi(W)(s|_W) = 0$. But as $\varphi(U)$ is injective $\forall U$, then $s|_W = 0$ and therefore $\overline{(U,s)} = \overline{(W,s|_W)} = 0$ and thus $\varphi_P$ is injective $\imp \varphi^{+}$ is injective.
+
+		\item 
+	\end{enumerate}
+\end{ex}
+
+\begin{sol}
+	
 \end{sol}
 
 \end{document}
