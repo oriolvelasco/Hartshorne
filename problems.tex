@@ -89,9 +89,19 @@
 \end{sol}
 
 \begin{ex}
-	
+	\begin{enumerate}[label=\alph*)]
+		\item Let $\varphi: \sF \to \sG$ be a morphism of sheaves on $X$. Show that $\varphi$ is surjective if and only if the following condition holds: for every open set $U \subseteq X$, and for every $s \in \sG(U)$, there is a covering $\{U_i\}$ of $U$, and there are elements $t_i \in \sF(U_i)$, such that $\varphi(t_i) = s|_{U_i}$, for all i.
+
+		\item Give an example of a surjective morphism of sheaves $\varphi: \sF \to \sG$ and an open set $U$ such that $\varphi(U): \sF(U) \to \sG(U)$ is not injective.
+	\end{enumerate}
 \end{ex}
 
+\begin{sol}
+	\begin{enumerate}[label=\alph*)]
+		\item From problem 1.2, $\varphi$ is surjective $\iff$ the induced morphism on every stalk is. Suppose $\varphi_P$ is surjective, then given $U \subseteq X$ open set, $s \in \sG(U)$, $\forall P \in U \exists V$ neighbourhood of $P$ and $t \in \sF(V)$ such that $\overline{(U,s)} = \overline{(V,\varphi(t))} \imp \exists W_P \subseteq U \cap V$ such that $\varphi(t|_{W_P}) = s|_{W_P}$, and so $\{W_P\}$ is the covering that satisfies the desired property. Reciprocally, let $\overline{(U,s)} \in \sG_P$. Then $\forall P \in U \exists i$ such that $P \in U_i \imp \overline{(U,s)} = \overline{(U_i, \varphi(U_i)(t_i))} = \varphi_P(\overline{(U_i, t_i)})$.
 
+		\item
+	\end{enumerate}
+\end{sol}
 
 \end{document}
