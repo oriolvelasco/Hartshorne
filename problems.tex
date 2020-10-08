@@ -18,16 +18,27 @@
 \newcommand{\ia}{\ensuremath{\mathfrak{a}}}
 \newcommand{\ib}{\ensuremath{\mathfrak{b}}}
 \newcommand{\Spec}{\ensuremath{\text{Spec}}}
+\newcommand{\ima}{\ensuremath{\text{im}}}
 
-\newcommand{\sF}{\ensuremath{\mathcal{F}}}
-\newcommand{\sG}{\ensuremath{\mathcal{G}}}
-\newcommand{\sA}{\ensuremath{\mathcal{A}}}
+
 \newcommand*\closure[1]{\overline{#1}}
 
 \newtheorem{ex}{Exercise}[section]
 \theoremstyle{definition}
 \newtheorem*{sol}{Solution}
 
+\DeclareFontFamily{U}{BOONDOX-calo}{\skewchar\font=45 }
+\DeclareFontShape{U}{BOONDOX-calo}{m}{n}{
+  <-> s*[1.00] BOONDOX-r-calo}{}
+\DeclareFontShape{U}{BOONDOX-calo}{b}{n}{
+  <-> s*[1.00] BOONDOX-b-calo}{}
+\DeclareMathAlphabet{\mathcalboondox}{U}{BOONDOX-calo}{m}{n}
+\SetMathAlphabet{\mathcalboondox}{bold}{U}{BOONDOX-calo}{b}{n}
+\DeclareMathAlphabet{\mathbcalboondox}{U}{BOONDOX-calo}{b}{n}
+
+\newcommand{\sF}{\ensuremath{\mathcalboondox{F}}}
+\newcommand{\sG}{\ensuremath{\mathcalboondox{G}}}
+\newcommand{\sA}{\ensuremath{\mathcalboondox{A}}}
 
 
 
@@ -52,6 +63,34 @@
 
 	In conclusion, $\sF^{+}(U)$ is the group of continuous maps from $U$ into $A$, and therefore $\sF^{+}$ is indeed the sheaf $\sA$ defined in the text.
 \end{sol}
+
+\begin{ex}
+	\begin{enumerate}[label=\alph*)]
+		\item For any morphism of sheaves $\varphi: \sF \to \sG$ show that for each point $P$, $(\ker \varphi)_P = \ker(\varphi_P)$ and $(\ima \varphi)_P = \ima (\varphi_P)$.
+		\item Show that $\varphi$ is injective (respectively surjective) if and only if the induced map on the stalks $\varphi_P$ is injective (respectilevy surjective) for all $P$.
+		\item Show that a sequence $\dots \xrightarrow[]{} \sF^{i-1} \xrightarrow[]{\varphi^{i-1}} \sF^{i} \xrightarrow[]{\varphi^{i}} \sF^{i+1} \xrightarrow[]{} \dots$ of sheaves and morphisms is exact if and only if for each $P \in X$ the corresponding sequence of stalks is exact as a sequence of abelian groups.
+	\end{enumerate}
+\end{ex}
+
+\begin{sol}
+	\begin{enumerate}[label=\alph*)]
+		\item $(\ker \varphi)_P = \{(U,s), \, s \in \ker(\varphi(U))\}$, modulo the usual germ equivalence relationship. Thus it can be regarded as a subset of $\sF_P$ as $\ker(\varphi(U)) \subseteq \sF(U)$. On the other side $\ker(\varphi_P)$ is a subset of $\sF_P$. To see that the two sets are equal it's enough to check the double inclusion. Let $\overline{(U,s)} \in (\ker \varphi)_P$. Then, $\varphi_P(\overline{(U,s)}) = \overline{(U, (\varphi(U))(s))} = \overline{(U,0)} = 0 \imp \overline{(U,s)} \in \ker(\varphi_P)$. Reciprocally, given $\overline{(U,s)} \in \ker(\varphi_P) \imp \exists V \subset U$ such that $\varphi(U)(s)|_V = 0$. As restrictions commute with morphisms of sheaves, $ \varphi(V)(s|_V) = \varphi(U)(s)|_V = 0$. Then, $\overline{(U,s)} = \overline{(V,s|_V)} \in (\ker\varphi)_P$. In conclusion, $(\ker \varphi)_P = \ker(\varphi_P)$.
+
+		As $\sF_P = \sF^{+}_P$, $(\ima \varphi)_P$ is equal to the stack of the presheaf image at point P. $\ima (\varphi_P) = \{\overline{(U,s)} \in \sG_P \text{ such that } \exists \overline{(V,t)} \in \sF_P | \varphi_P(\overline{(V,t)} = \overline{(U,s)}\}$. But as $\varphi_P(\overline{(V,t)}) = \overline{(V, \varphi(V)(t))}$ then $\overline{(U,s)} \in \ima (\varphi_P) \iff \exists W$ neighbourhood of $P$, $W \subseteq V \cap U$ such that $\varphi(V)(t)|_W = s_W \iff \varphi(W)(t|_W) = s|_W \iff \overline{(U,s)} = \overline(W,\varphi(W)(t|_W)) \iff \overline{(U,s)} \in (\ima \varphi)_P$.
+
+		\item $\varphi$ injective $\imp \ker \varphi = 0 \imp (\ker \phi)_P = 0 \, \forall P$. Using part a) of the problem, $\ker \varphi_P = (\ker \varphi)_P = 0 \imp \varphi_P$ is injective $\forall P$. Reciprocally, let $x \in \ker \varphi(U)$. $\forall P \in U, (\ker \phi)_P = 0$ so the image of $x$ in the stalk $(\ker \phi)_P$ is zero, which means that $\exists W_P \subseteq U$ neighbourhood of $P$ such that $x|_{W_P} = 0$. But open sets $W_P$ cover $U$ and therefore, by property (3) of the definition of shieves, $x = 0$. In conclusion, $\ker \varphi(U) = 0 \, \, \forall U \imp \ker \varphi = 0 \imp \varphi$ injective.
+
+		We proceed similarly with the surjectivity. $\ima \varphi = \sG \imp (\ima \varphi)_P = \sG_P \imp \ima (\varphi_P) = \sG_P \imp \varphi_P$ surjective. To prove the other implication, First we will prove a fact that is stated but not proved in the text: $\sF^{+} \cong \sF$ if $\sF$ is already a sheaf. Given an open set $U$, let $V_P$ be the neighbourhood of $P$ contained in $U$ such that $\exists t \in \sF(V_P)$ such that $t_Q = s(Q) \, \forall Q \in V_P$. The sets $V_P$ cover $U$, and given two of these sets, $V,V'$ and the respective elements $t,t'$ we have that $\overline{(V',t')} = \overline{(V,t)}$ in every stalk $\sF_Q \imp \exists W_Q$ such that $t'|_{W_Q} = t|_{W_Q} \forall Q \in V \cap V'$. Then these $W_Q$ cover $V \cap V'$, and by property (3) applied to $t'|_{V\cap V'}-t_{V\cap V'}$, we have that $t_{V\cap V'} = t'_{V \cap V'}$. Then, by property (4) applied to the sets $V_P$, $\exists t \in \sF(U)$ such that $t_Q = s(Q) \, \, \forall Q \in U$, which means that each application $s$ is uniquely determined by $t \in \sF(U)$, and then $\sF^{+}(U) \cong \sF(U)$. Now it's easy to check that $\varphi$ is surjective. We have that $(\ima \varphi)_P = \ima (\varphi_P) = \sG_P$ and so we have that $\im \varphi (U)$ is the set of functions $s$ from $U$ to $\bigcup_{P \in U} \sG_P$, which means that $\ima \varphi$ is in fact $\sG^{+} \cong \sG$ as $\sG$ is already a sheaf.
+
+		\item Given a sequence of sheaves and morphisms $\dots \xrightarrow[]{} \sF^{i-1} \xrightarrow[]{\varphi^{i-1}} \sF^{i} \xrightarrow[]{\varphi^{i}} \sF^{i+1} \xrightarrow[]{} \dots$, it is exact $\iff \ker \varphi^{i} = \ima \varphi^{i-1}$. If the sequence is exact, taking direct limits at both sides and using section a) we have that $\ker (\varphi^{i}_P) = (\ker \varphi^{i})_P = (\ima \varphi^{i-1})_P = \ima (\varphi^{i-1}_P) $, and so the sequence of stalks at each point $P$ is exact.
+
+		The other implicaton is consequence of a more general result that we will prove now: Two subsheaves are equal $\iff$ the corresponding stalks at each point are equal. Let $\sF_1, \sF_2$ be two subsheaves of $\sF$, such that $(\sF_1)_P = (\sF_2)_P$. Let $t \in \sF_1(U)$. For every $P \in U \exists V_P$ neighbourhood of $P$ and $s \in \sF_2(V)$ such that $s_P = t_P$. The sets $V_P \cap U$ cover $U$, and given two of these sets, $V,V'$ and the respective elements $s,s'$ we have that $\overline{(V',s')} = \overline{(V,s)} = \overline{(U,t)}$ in every stalk $\sF_Q \imp \exists W_Q$ such that $s'|_{W_Q} = s|_{W_Q} \forall Q \in V \cap V'$. Then these $W_Q$ cover $V \cap V'$, and by property (3) applied to $s'|_{V\cap V'}-s|_{V\cap V'}$, we have that $s|_{V\cap V'} = s'|_{V \cap V'}$. Then, by property (4) applied to the sets $V_P \cap U$, $\exists r \in \sF_2(U)$ such that $t_P = r_P \forall P$. By property (3) applied to $r-t$ we get $s = t$ and so $t \in \sF_2(U)$. So $\sF_1(U) \subseteq \sF_2(U)$ and by symmetry $\sF_1(U) = \sF_2(U)$.
+	\end{enumerate}
+\end{sol}
+
+\begin{ex}
+	
+\end{ex}
 
 
 
