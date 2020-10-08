@@ -106,14 +106,37 @@
 
 \begin{ex}
 	\begin{enumerate}[label=\alph*)]
-		\item Using 1.2 b) and the fact that $\sF^{+}_P = \sF_P$, the map $\varphi^{+}$ is injective $\iff$ the maps $\varphi_P: \sF_P \to \sG_P$ on the stalks are injective. Let $\overline{(U,s)} \in \sF_P$ such that $\varphi_P(\overline{(U,s)}) = 0 \imp \exists W \subset U$ such that $\varphi(U)(s)|_W = 0 \imp \varphi(W)(s|_W) = 0$. But as $\varphi(U)$ is injective $\forall U$, then $s|_W = 0$ and therefore $\overline{(U,s)} = \overline{(W,s|_W)} = 0$ and thus $\varphi_P$ is injective $\imp \varphi^{+}$ is injective.
+		\item Let $\varphi: \sF \to \sG$ be a morphism of presheaves such that $\varphi(U): \sF(U) \to \sG(U)$ is injective foreach $U$. Show that the induced map $\varphi^{+}: \sF^{+} \to \sG^{+}$ of associated sheaves is injective.
 
-		\item 
+		\item Use part (a) to show that if $\varphi: \sF \to \sG$ is a morphism of sheaves, then $\ima \varphi$ can be naturally identified with a subsheaf of $\sG$, as mentioned in the text.
 	\end{enumerate}
 \end{ex}
 
 \begin{sol}
-	
+	\begin{enumerate}[label=\alph*)]
+		\item Using 1.2 b) and the fact that $\sF^{+}_P = \sF_P$, the map $\varphi^{+}$ is injective $\iff$ the maps $\varphi_P: \sF_P \to \sG_P$ on the stalks are injective. Let $\overline{(U,s)} \in \sF_P$ such that $\varphi_P(\overline{(U,s)}) = 0 \imp \exists W \subset U$ such that $\varphi(U)(s)|_W = 0 \imp \varphi(W)(s|_W) = 0$. But as $\varphi(U)$ is injective $\forall U$, then $s|_W = 0$ and therefore $\overline{(U,s)} = \overline{(W,s|_W)} = 0$ and thus $\varphi_P$ is injective $\imp \varphi^{+}$ is injective.
+
+		\item Let's consider the presheaf image of a morphism of sheaves $\varphi: \sF \to \sG$, $U \mapsto \ima (\varphi(U))$. Then for each $U$, $\ima (\varphi(U)) \subseteq \sG(U)$, and so the inclusion $i(U): \ima (\varphi(U)) \to \sG(U)$ is an injective morphism of abelian groups $\forall U$. Then, by section a), the induced map $i^{+}: \ima \varphi \to \sG^{+} = \sG$ is injective. 
+	\end{enumerate}
 \end{sol}
+
+\begin{ex}
+	Show that a morphism of sheaves is an isomphism if and only if it is both injective and surjective.
+\end{ex}
+
+\begin{sol}
+
+\end{sol}
+
+\begin{ex}
+	\begin{enumerate}[label=\alph*)]
+		\item Let $\sF'$ be a subsheaf of a sheaf $\sF$. Show that the natural map of $\sF$ to the quotient sheaf $\sF / \sF'$ is surjective, and has kernel $\sF'$. Thus there is an exact sequence
+		\[
+			0 \to \sF' \to \sF \to \sF / \sF' \to 0
+		\]
+
+		\item Conversely, if $0 \to \sF' \to \sF \to \sF / \sF' \to 0$ is an exact sequence, show that $\sF'$ is isomorphic to a subsheaf of $\sF$ and that $\sF''$ is isomorphic to the quotient of $\sF$ by this subsheaf.
+	\end{enumerate}
+\end{ex}
 
 \end{document}
