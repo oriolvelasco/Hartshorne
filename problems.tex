@@ -18,7 +18,7 @@
 \newcommand{\ia}{\ensuremath{\mathfrak{a}}}
 \newcommand{\ib}{\ensuremath{\mathfrak{b}}}
 \newcommand{\Spec}{\ensuremath{\text{Spec}}}
-\newcommand{\ima}{\ensuremath{\text{im}}}
+\newcommand{\ima}{\ensuremath{\mathrm{im}}}
 
 
 \newcommand*\closure[1]{\overline{#1}}
@@ -146,7 +146,7 @@
 
 		\item Let's name the applications of the sequence $\varphi, \psi$: $0 \xrightarrow[]{} \sF' \xrightarrow[]{\varphi} \sF \xrightarrow[]{\psi} \sF'' \xrightarrow[]{} 0$. The morphisms of abelian groups $\phi(U): \sF'(U) \xrightarrow[]{\varphi} \ima\varphi(U)$ define a morphism of presheaves. As $\phi(U)$ is surjective $\forall U$, using the observation above we have that $\sF' \to \ima \varphi$ is a surjective morphism of sheaves. Moreover, as $\varphi$ is injective, $\varphi(U): \sF'(U) \to \sF(U)$ is injective $\forall U \imp \phi(U): \sF'(U) \xrightarrow[]{\varphi} \ima \varphi(U)$ is injective $\forall U$, and by Exercise 1.4 a) $\sF' \to \ima \varphi$ is an injective morphism of sheaves. So $\sF' \to \ima \varphi$ is surjective and injective $\imp$ is an isomorphism, and, in conclusion, $\ima \varphi$ is the subsheaf of $\sF$ isomorphic to $\sF'$.
 
-		The surjective morphism of sheaves $\psi: \sF \to \sF''$ induces surjective morphisms of abelian groups on stacks $\psi_P: \sF_P \to \sF''_P$, which induce isomorphisms $\overline{\psi_P}: \sF_P/\ker(\psi_P) \cong \sF''_P \, \, \forall P$ sending the class of an element $s_P$ to its image $\psi_P(s_P)$(*). 
+		The surjective morphism of sheaves $\psi: \sF \to \sF''$ induces surjective morphisms of abelian groups on stacks $\psi_P: \sF_P \to \sF''_P$, which induce isomorphisms $\overline{\psi_P}: \sF_P/\ker(\psi_P) \cong \sF''_P \, \, \forall P$ sending the class of an element $s_P$ to its image $\psi_P(s_P)$. 
 
 		In addition, the morphisms of abelian groups $\psi(U): \sF(U) \to \sF''(U)$ also induce the morphism of presheaves $\psi(U): \sF(U)/\ker \psi(U) \to \sF''(U)$. To show that the map os associated sheaves $\sF/\ker \psi \to \sF''$ is an isomorphism, it is enoush to show that the corresponding morphisms on stalks $(\sF/\ker \psi)_P \to \sF''_P$ are isomorphisms. But, taking into account that $(\sF/\ker \psi)_P = \sF_P / (\ker \psi)_P = \sF_P / \ker(\psi_P)$, the corresponding morphisms on stalks are in fact the $\overline{\psi_P}$ and we already know that these are isomorphisms, so in conclusion $\sF/\ker \psi \cong \sF''$. Finally as the sequence $0 \xrightarrow[]{} \sF' \xrightarrow[]{\varphi} \sF \xrightarrow[]{\psi} \sF'' \xrightarrow[]{} 0$ is exact, $\ima \phi = \ker \psi$ and we are done.
 	\end{enumerate}
@@ -162,11 +162,23 @@
 
 \begin{sol}
 	\begin{enumerate}[label=\alph*)]
-		\item Given $\varphi: \sF \to \sG$ the observation on Exercise 1.6 shows that $\sF to \ima \varphi$ is surjective. Therefore we have an exact sequence $0 \to \ker \varphi \to \sF \to \ima \varphi \to 0$ and by Exercise 1.6 b) $\ima \varphi \cong \sF / \ker \varphi$.
+		\item Given $\varphi: \sF \to \sG$ the observation on Exercise 1.6 shows that $\sF \to \ima \varphi$ is surjective. Therefore we have an exact sequence $0 \to \ker \varphi \to \sF \to \ima \varphi \to 0$ and by Exercise 1.6 b) $\ima \varphi \cong \sF / \ker \varphi$.
 
 		\item The identity map $\text{coker} \varphi (U) \to \sG(U)/ \ima \varphi(U)$ is surjective and injective (it is in fact the definition of the cokernel), and it defines a morphism of presheaves. Then, by Exercise 1.4a) and Observation on 1.6 the induced map of associated sheaves $\text{coker} \varphi \to \sG/ \ima \varphi$ is surjective and injective, $\imp \text{coker} \varphi \cong \sG/ \ima \varphi$.
 	\end{enumerate}
 \end{sol}
+
+\begin{ex}
+	For any open subset $U \subseteq X$ show that the functor $\Gamma(U,·)$ from sheaves on $X$ to abelian groups is a left exact functor, i.e. if $0 \to \sF' \to \sF \to \sF''$ is an exact sequence of sheaves, then $0 \to \Gamma(U,\sF') \to \Gamma(U, \sF) \to \Gamma(U, \sF'')$ is an exact sequence of groups. The functor $\Gamma(U,·)$ need not be exact; see (Ex. 1.21) below.
+\end{ex}
+
+\begin{sol}
+	Let's note $\varphi: \sF' \to \sF$ and $\psi: \sF \to \sF''$. To show that the sequence $0 \to \Gamma(U,\sF') \to \Gamma(U, \sF) \to \Gamma(U, \sF'')$ is exact we need to prove: a) That $\varphi(U): \sF'(U) \to \sF(U)$ is injective and b) That $\ker \psi(U) = \ima \varphi(U)$. a) is a consequence of the fact that a morphism of sheaves is injective $\iff$ the induced morphism on every section is injective. Let's proceed to prove b) showing both inclusions. First note that by Exercise 1.2 c) the induced sequence $0 \to \sF'_P \to \sF_P \to \sF''_P$ on stalks is exact, and therefore $\ima (\varphi_P) = \ker (\varphi_P) \, \, \forall P$. 
+
+	Let $y \in \ima \varphi(U) \imp y = \varphi(U)(x)$. Then its image on the stalk $\overline{(U,y)} = \overline{(U, \varphi(U)(x))} = \varphi_P(\overline{(U,x)}) \in \ima (\varphi_P) = \ker (\varphi_P)$. That means that $\exists W_P \subseteq U$ neighbourhood of $P$ such that $\psi(W_P)(y|_{W_P}) = \psi(U)(y)|_{W_P} = 0 \imp y|_{W_P} \in \ker \psi(W_P)$. The sets $\{W_P\}$ are an open covering of $U$, and $(y|_{W_P})|_{W_P \cap W_Q} = (y|_{W_P \cap W_Q}) = (y|_{W_Q})|_{W_P \cap W_Q}$. So as $\ker \psi$ is a sheaf, $\exists y' \in \ker \psi(U)$ such that $y'|_{W_P} = y|_{W_P}$. As $\sF$ is a sheaf, applying property (3) to $y-y'$ we get that $y = y'$ and therefore $y \in \ker \psi(U)$. This proves $\ima \varphi(U) \subseteq \ker \psi(U)$. Reciprocally, let $y \in \ker \psi(U)$. The same argument on the stalks we did before proves that $\overline{(U,y)} \in \ima (\varphi_P) \imp \exists W_P \subseteq U$ and $x_{W_P} \in \sF'(W_P)$ such that $y|_{W_P} = \varphi(W)(x_{W_P})$. As $\varphi(W_P \cap W_Q)$ is injective, and sends $x_{W_P}|_{W_P \cap W_Q}$ and $x_{W_P}|_{W_P \cap W_Q}$ to the same element $y|_{W_P \cap W_Q}$, they must be equal, and therefore $\exists x \in \sF'(U)$ such that $x|_{W_P} = x_{W_P} \, \, \forall P$. By property (3) of sheaf $\sF$ applied to $\varphi(x)-y$ we get that $y = \varphi(x)$ and therefore $\ima \varphi(U) \supseteq \ker \psi(U)$.
+\end{sol}
+
+
 
 
 \end{document}
