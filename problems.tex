@@ -125,7 +125,7 @@
 \end{ex}
 
 \begin{sol}
-
+	We know from Proposition $1.1$ that a morphism of sheaves $\varphi$ is an isomorphism $\iff$ the induced morphism on every stalk $\varphi_P$ is an isomorphism. But the induced morphisms on stalks are morphisms of abelian groups, so they're isomorphisms if and only if they're surjective and injective. Now using Exercise 1.2 b) this is equivalent to $\varphi$ being surjective and injective.
 \end{sol}
 
 \begin{ex}
@@ -138,5 +138,35 @@
 		\item Conversely, if $0 \to \sF' \to \sF \to \sF / \sF' \to 0$ is an exact sequence, show that $\sF'$ is isomorphic to a subsheaf of $\sF$ and that $\sF''$ is isomorphic to the quotient of $\sF$ by this subsheaf.
 	\end{enumerate}
 \end{ex}
+
+\begin{sol}
+	\textbf{Observation:} First we will prove the equivalent of Exercise 1.4 a) for surjectivity. Let $\varphi: \sF \to \sG$ be a morphism of presheaves such that $\varphi(U): \sF(U) \to \sG(U)$ is surjective for each $U$. Then the induced morphisms on stalks are also surjective: Given $\overline{(U,s)} \in \sG_P \exists t \in \sF(U)$ such that $\varphi(U)(t) = s \imp \overline{(U,s)} = \overline{(U, \varphi(U)(t))} = \varphi_P(\overline{(U,t)})$. By Exercise 1.2 b) and the fact that the stalks of the associated shief are equal to the stalks of the preshief ($\sF_P = \sF^{+}_P$), the induced morphism of shieves $\varphi^{+}: \sF^{+} \to \sG^{+}$ is surjective.
+	\begin{enumerate}[label=\alph*)]
+		\item The morphisms of abelian groups $\sF(U) \to \sF(U)/\sF'(U)$ are surjective $\forall U$. So by the observation above, the morphism of sheaves $\varphi: \sF \to \sF/\sF'$ is surjective. The fact that $\ker \varphi = \sF'$ is a consequence of the result proved in Exercise 1.2c. Indeed, $(\ker \varphi)_P = \ker (\varphi_P)$. As $\varphi_P: \sF_P \to (\sF/\sF')_P = \sF_P/\sF'_P$ are morphisms of abelian groups, their kernel is $\sF'_P$. So $\ker \varphi$ and $\sF'$ are 2 subssheaves of $\sF$ and their stalks at each point $P$ are equal so $\ker \varphi = \sF'$. In conclusion there is an exact sequence $0 \to \sF' \to \sF \to \sF / \sF' \to 0$.
+
+		\item Let's name the applications of the sequence $\varphi, \psi$: $0 \xrightarrow[]{} \sF' \xrightarrow[]{\varphi} \sF \xrightarrow[]{\psi} \sF'' \xrightarrow[]{} 0$. The morphisms of abelian groups $\phi(U): \sF'(U) \xrightarrow[]{\varphi} \ima\varphi(U)$ define a morphism of presheaves. As $\phi(U)$ is surjective $\forall U$, using the observation above we have that $\sF' \to \ima \varphi$ is a surjective morphism of sheaves. Moreover, as $\varphi$ is injective, $\varphi(U): \sF'(U) \to \sF(U)$ is injective $\forall U \imp \phi(U): \sF'(U) \xrightarrow[]{\varphi} \ima \varphi(U)$ is injective $\forall U$, and by Exercise 1.4 a) $\sF' \to \ima \varphi$ is an injective morphism of sheaves. So $\sF' \to \ima \varphi$ is surjective and injective $\imp$ is an isomorphism, and, in conclusion, $\ima \varphi$ is the subsheaf of $\sF$ isomorphic to $\sF'$.
+
+		The surjective morphism of sheaves $\psi: \sF \to \sF''$ induces surjective morphisms of abelian groups on stacks $\psi_P: \sF_P \to \sF''_P$, which induce isomorphisms $\overline{\psi_P}: \sF_P/\ker(\psi_P) \cong \sF''_P \, \, \forall P$ sending the class of an element $s_P$ to its image $\psi_P(s_P)$(*). 
+
+		In addition, the morphisms of abelian groups $\psi(U): \sF(U) \to \sF''(U)$ also induce the morphism of presheaves $\psi(U): \sF(U)/\ker \psi(U) \to \sF''(U)$. To show that the map os associated sheaves $\sF/\ker \psi \to \sF''$ is an isomorphism, it is enoush to show that the corresponding morphisms on stalks $(\sF/\ker \psi)_P \to \sF''_P$ are isomorphisms. But, taking into account that $(\sF/\ker \psi)_P = \sF_P / (\ker \psi)_P = \sF_P / \ker(\psi_P)$, the corresponding morphisms on stalks are in fact the $\overline{\psi_P}$ and we already know that these are isomorphisms, so in conclusion $\sF/\ker \psi \cong \sF''$. Finally as the sequence $0 \xrightarrow[]{} \sF' \xrightarrow[]{\varphi} \sF \xrightarrow[]{\psi} \sF'' \xrightarrow[]{} 0$ is exact, $\ima \phi = \ker \psi$ and we are done.
+	\end{enumerate}
+\end{sol}
+
+\begin{ex}
+	Let $\varphi: \sF \to \sG$ be a morphism of sheaves.
+	\begin{enumerate}[label=\alph*)]
+		\item Show that $\ima \varphi \cong \sF/\ker \varphi$.
+		\item Show that $\text{coker} \varphi \cong \sG /\ima \varphi$.
+	\end{enumerate}
+\end{ex}
+
+\begin{sol}
+	\begin{enumerate}[label=\alph*)]
+		\item Given $\varphi: \sF \to \sG$ the observation on Exercise 1.6 shows that $\sF to \ima \varphi$ is surjective. Therefore we have an exact sequence $0 \to \ker \varphi \to \sF \to \ima \varphi \to 0$ and by Exercise 1.6 b) $\ima \varphi \cong \sF / \ker \varphi$.
+
+		\item The identity map $\text{coker} \varphi (U) \to \sG(U)/ \ima \varphi(U)$ is surjective and injective (it is in fact the definition of the cokernel), and it defines a morphism of presheaves. Then, by Exercise 1.4a) and Observation on 1.6 the induced map of associated sheaves $\text{coker} \varphi \to \sG/ \ima \varphi$ is surjective and injective, $\imp \text{coker} \varphi \cong \sG/ \ima \varphi$.
+	\end{enumerate}
+\end{sol}
+
 
 \end{document}
