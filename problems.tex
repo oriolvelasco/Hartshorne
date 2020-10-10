@@ -5,6 +5,7 @@
 \usepackage{amssymb}
 \usepackage{enumitem}
 \usepackage{empheq}
+\usepackage{tikz-cd}
 
 \newcommand{\N}{\ensuremath{\mathbb{N}}}
 \newcommand{\Z}{\ensuremath{\mathbb{Z}}}
@@ -177,6 +178,77 @@
 
 	Let $y \in \ima \varphi(U) \imp y = \varphi(U)(x)$. Then its image on the stalk $\overline{(U,y)} = \overline{(U, \varphi(U)(x))} = \varphi_P(\overline{(U,x)}) \in \ima (\varphi_P) = \ker (\varphi_P)$. That means that $\exists W_P \subseteq U$ neighbourhood of $P$ such that $\psi(W_P)(y|_{W_P}) = \psi(U)(y)|_{W_P} = 0 \imp y|_{W_P} \in \ker \psi(W_P)$. The sets $\{W_P\}$ are an open covering of $U$, and $(y|_{W_P})|_{W_P \cap W_Q} = (y|_{W_P \cap W_Q}) = (y|_{W_Q})|_{W_P \cap W_Q}$. So as $\ker \psi$ is a sheaf, $\exists y' \in \ker \psi(U)$ such that $y'|_{W_P} = y|_{W_P}$. As $\sF$ is a sheaf, applying property (3) to $y-y'$ we get that $y = y'$ and therefore $y \in \ker \psi(U)$. This proves $\ima \varphi(U) \subseteq \ker \psi(U)$. Reciprocally, let $y \in \ker \psi(U)$. The same argument on the stalks we did before proves that $\overline{(U,y)} \in \ima (\varphi_P) \imp \exists W_P \subseteq U$ and $x_{W_P} \in \sF'(W_P)$ such that $y|_{W_P} = \varphi(W)(x_{W_P})$. As $\varphi(W_P \cap W_Q)$ is injective, and sends $x_{W_P}|_{W_P \cap W_Q}$ and $x_{W_P}|_{W_P \cap W_Q}$ to the same element $y|_{W_P \cap W_Q}$, they must be equal, and therefore $\exists x \in \sF'(U)$ such that $x|_{W_P} = x_{W_P} \, \, \forall P$. By property (3) of sheaf $\sF$ applied to $\varphi(x)-y$ we get that $y = \varphi(x)$ and therefore $\ima \varphi(U) \supseteq \ker \psi(U)$.
 \end{sol}
+
+\begin{ex}
+	Direct Sum. Let $\sF$ and $\sG$ be sheaves on $X$. Show that the presheaf $U \mapsto \sF(U) \oplus \sG(U)$ is a sheaf. It is called the direct sum of $\sF$ and $\sG$ and is denoted by $\sF \oplus \sG$. Show that it plays the role of direct sum and of direct product in the category of sheaves of abelian groups on X.
+\end{ex}
+
+\begin{sol}
+	We have defined an abelian group for each open set $U$, but the problem doesn't specify the restriction morphisms. However, they're induced naturally by the restriction morphisms of $\sF$ and $\sG$: $\rho_{UV}^{\sF \oplus \sG} = \rho_{UV}^{\sF} \oplus \rho_{UV}^{\sG}$ that maps $(x,y) \in \sF(U) \oplus \sG(U) \mapsto (\rho_{UV}^{\sF}(x), \rho_{UV}^{\sG}(y))$. Now we can check that this presheaf satisfies (3) and (4) and therefore it is actually a sheaf.
+	\begin{itemize}
+		\item (3) Let $U$ be an open set, and $\{V_i\}$ be an open covering of $U$. Let $(x,y) \in \sF(U) \oplus \sG(U)$ such that $(0,0) = 0 = (x,y)|_{V_i} = (x|_{V_i}, y_{V_i}) \forall V_i$. This implies that $x|_{V_i} = 0$ and $y|_{V_i} = 0$ and therefore by sheaf property (3) of $\sF$ and $\sG$ we have $x = 0$ and $y = 0 \imp (x,y) = (0,0) = 0$.
+
+		\item (4) Let $U$ be an open set, and $\{V_i\}$ be an open covering of $U$. Let $(x_i, y_i) = s_i \in \sF(V_i) \oplus \sG(V_i)$ such that $s_i|_{V_i \cap V_j} = s_j|_{V_i \cap V_j}$, which means that $(x_i|_{V_i \cap V_j}, y_i|_{V_i \cap V_j}) = (x_i,y_i)|_{V_i \cap V_j} = s_i|_{V_i \cap V_j} = s_j|_{V_i \cap V_j} = (x_j,y_j)|_{V_i \cap V_j} = (x_j|_{V_i \cap V_j}, y_j|_{V_i \cap V_j})$. Then, by property (4) of shieves $\sF$ and $\sG$, $\exists x \in \sF(U), y \in \sG(U)$ such that $x|_{V_i} = x_i$ and $y|_{V_i} = y_i$. Then, $(x,y) = s \in \sF(U) \oplus \sG(U)$ satisfies $s|_{V_i} = s_i$.
+	\end{itemize}
+
+	Then the presheaf $U \mapsto \sF(U) \oplus \sG(U)$ is indeed a sheaf. Now let's check that it plays the role of direct sum and direct product in category theory. We will use the notation $\sF_1, \sF_2$ instead of $\sF, \sG$ to simplify.
+
+	\textbf{Direct product:} The object $\sF_1 \oplus \sF_2$ along with two morphisms $\pi_i: \sF_1 \oplus \sF_2 \to \sF_i$ is the direct product if it satisfies that $\forall$ sheaf $\sG$ and sheaf morphisms $f_i: \sG \to \sF_i \exists ! f: \sG \to \sF_1 \oplus \sF_2$ such that $\pi_i \circ f = f_i$. Indeed, let the morphisms $\pi_i$ be given by $\pi_i(U): \sF_1(U) \oplus \sF_2(U) \to \sF_i(U)$ such that $\pi_i(U)((x_1,x_2)) \mapsto x_i$. Then, the morphism $\sG(U) \to \sF_1(U) \oplus \sF_2(U)$ that maps $x \mapsto (f_1(x), f_2(x))$ satisfies the desired property, as $(\pi_i \circ f)(x) = \pi_i(f_1(x), f_2(x)) = f_i(x)$. In addition, suppose that $\exists f'$ morphism satisfying thsi property. Then $f'(U)(x) = (s_1,s_2) \in \sF_1(U) \oplus \sF_2(U)$, and as $\pi_i(U)(s_1,s_2) = f_i(x) \imp f'(U)(x) = (f_1(x),f_2(x)) \imp f' = f$.
+
+	\textbf{Direct sum:} The element $\sF_1 \oplus \sF_2$ is the categorical direct sum of $\sF_1$ and $\sF_2$ if there exist morphisms $i_j: \sF_j \sF_1 \oplus \sF_2$ such that $\forall$ shief $\sG$ and morphisms $f_i \sF_i \to \sG$, $\exists ! f: \sF_1 \oplus \sF_2 \to \sG$ such that $f \circ i_j = f_j$. Indeed, let's define $i_1(U)(x) = (x,0)$ and $i_2(U)(x) = (0,x)$. Then, we define $f(U): \sF_1(U) \oplus \sF_2(U) \to \sG$ such that $f(U)(x,y) = f_1(x) + f_2(y)$. It's clear that $f \circ i_j = f_j$. In addition, suppose that $\exists f'$ satisfying this property. Then, $f'(U)(x,0) = f_1(U)(x)$, $f'(U)(0,y) = f_2(U)(x)$ and therefore $f'(U)(x,y) = f'(U)(x,0) + f'(U)(0,y) = f_1(U)(x) + f_2(U)(y)$, which proves the uniqueness of $f$.
+\end{sol}
+
+\begin{ex}
+	Direct Limit. Let $\{\sF_i\}$ be a direct system of sheaves and morphisms on $X$. We define the direct limit of the system $\{\sF_i\}$, denoted $\varinjlim \sF_i$ to be the sheaf associated to the presheaf $U \mapsto \varinjlim \sF_i(U)$. Show that this is a direct limit in the category of sheaves on $X$, i.e., that it has the following universal property: given a sheaf $\sG$ and a collection of morphisms $\sF_i \to \sG$ compatible with the maps of the direct syst, there exists a unique map $\varinjlim \sF_i \to \sG$ such that for each i, the original map $\sF_i \to \sG$ is obtained by composing the maps $\sF_i \to \varinjlim \sF_i \sG$.
+\end{ex}
+
+\begin{sol}
+	Again we have the definition of a presheaf without specifying the restriction morphisms, so we need to figure out which is the natural way to define them. Let $f_{ij}$ denote the morphisms of the direct system, and $\rho^i_{UV}$ the restriction morphisms of each $\sF_i$. Then, by definition of morphisms of sheaves we have the following commutative diagram
+	\begin{tikzcd}
+		\sF_i(U) \arrow[r, "f_{ij}(U)"] \arrow[d, "\rho^i_{UV}"]
+		& \sF_j(U)\arrow[d, "\rho^j_{UV}"] \\
+		\sF_i(V)\arrow[r, "f_{ij}(V)"]
+		& \sF_j(V)
+	\end{tikzcd}
+
+	Every element in $\varinjlim \sF_i(U)$ can be expressed as the equivalence class of an element $s \in \sF_i(U)$ for a certain i. So it seems natural to define $\rho_{UV}: \varinjlim \sF_i(U) \to \varinjlim \sF_i(V)$ mapping $\overline{s} \mapsto \overline{\rho^i_{UV}(s)}$. We only have to check that this application is well defined, i.e., that it doesn't depend on the chosen representative. Let $t \in \sF_i(U), s \in \sF_j(U)$ such that $\overline{t} = \overline{s}$. Then $\exists k$ such that $k \geq i, k \geq j$ and $f_{ik}(U)(t) = f_{jk}(U)(s)$ Then, $f_{ik}(V)(\rho_{UV}^i(t)) = \rho^k_{UV}(f_{ik}(U)(t)) = \rho_{UV}^k(f_{jk}(U)(s)) = f_{ik}(V)(\rho^j_{UV}(s))$, and therefore $\overline{\rho^i_{UV}(t)} = \overline{\rho^j_{UV}(s)}$ and the restriction morphisms (as we defined them) are well defined.
+
+	Let $\varphi_i: \sF_i \to \sG$ morphisms of sheaves compatible with the maps of the direct system. Then, we define the morphism of presheaves $\varphi$ by $\varphi(U): \varinjlim \sF_i(U) \to \sG$ that sends the class of an element $s \in \sF_i$, $\overline{s} \in \varinjlim \sF_i(U) \mapsto \varphi_i(U)(s) \in \sG(U)$. This application is well defined as the morphisms of sheaves $\varphi_i$ are compatible with the morphisms of the direct system. It is clearly unique satisfying the required property (it must send the class of an element s to its image by the initial morphism $\varphi_i$). Then, by proposition 1.2 the induced map $\varphi^{+}: \varinjlim \sF \to \sG$ in unique and satisfies the requirements of the problem.
+\end{sol}
+
+\begin{ex}
+	Let $\{\sF_i\}$ be a direct system of sheaves on a noetherian topological space $X$. In this case show that the presheaf $U \mapsto \varinjlim \sF_i(U)$ is already a sheaf. In particuar $\Gamma(X, \varinjlim \sF_i) = \varinjlim \Gamma(X,\sF_i)$.
+\end{ex}
+
+\begin{sol}
+	If $X$ is a Noetherian topological space, then every subspace of $X$ is quasi compact, and, in particular, every open subset is quasi-compact, i.e.,for every $\{V_i\}$ open covering of $U$ we can extract a finite subcovering (Atiyah-Macdonald Exercise 6.6). Then, it is enough to check that properties (3) and (4) that define a sheaf are satisfied for finite coverings $\{V_i\}_{i = 1}^n$ of $U$. We will use the same notation of last problem.
+	\begin{itemize}
+		\item (3) Let $\overline{s} \in \varinjlim \sF_i(U)$, with $s \in \sF_i(U)$. Suppose that $0 = \overline{s}|_{V_j} = \overline{\rho^i_{UV_j}(s)}$ That means that $\exists k_j \geq i$ such that $f_{i k_j}(V_j)(\rho^i_{UV_j}(s)) = 0$. As restrictions commute with morphisms of the direct system $\rho^{k_j}_{UV_j}(f_{ik_j}(U)(s)) = f_{i k_j}(V_j)(\rho^i_{UV_j}(s)) = 0$. As the covering is finite, we can define $m := \max_j\{k_j\}$ and we have that 
+		\[
+			\rho^m_{UV_j}(f_{im}(U)(s)) = f_{im}(V_j)(\rho^i_{UV_j}(s)) = f_{k_j m}(V_j)(f_{i k_j}(V_j)(\rho^i_{UV_j}(s)) = 0
+		\]
+		Now, by shief property (3) applied to $\sF_m$, we have that $f_{im}(U)(s) = 0 \imp \overline{s} = 0$.
+
+		\item (4) Suppose that we have a covering $\{V_i\}$ of a open set $U$, and $\overline{s_i} \in \varinjlim \sF_j(V_i)$, with $s_i \in \sF_{k_i}(V_i)$ such that $\overline{s_i}|_{V_i \cap V_j} = \overline{s_j}|_{V_i \cap V_j}$. Using the definition of restriction morphisms written in Exercise 10, that is equivalent to $\overline{\rho^{k_i}_{V_i V_i \cap V_j}(s_i)} = \overline{\rho^{k_j}_{V_j V_i \cap V_j}(s_j)}$. That implies $\exists l$ such that $l \geq k_i, l \geq k_j$ and $f_{k_i l}(V_i \cap V_j)(\rho^{k_i}_{V_i V_i \cap V_j} (s_i)) =  f_{k_j l}(V_i \cap V_j)(\rho^{k_j}_{V_j V_i \cap V_j} (s_j))$. As morphisms of the direct system and restrictions commute, we have $\rho^l_{V_i V_i \cap V_j}(f_{K_i l}(V_i)(s_i)) = \rho^l_{V_j V_i \cap V_j}(f_{k_j l}(V_j)(s_j))$, which can be rewritten as $f_{k_i l}(V_i)(s_i)|_{V_i \cap V_j} = f_{k_j l}(V_j)(s_j)|_{V_i \cap V_j}$. Then by property (3) of shieves applied to $\sF_l$ $\exists t \in \sF_l(U)$ such that $t|_{V_i} = f_{k_i l}(V_i)(s_i)$. Then, this last equality implies that $\overline{t} \in \varinjlim \sF_j (U)$ satisfies $\overline{t}|_{V_i} = \overline{t|_{V_i}} = \overline{s_i}$.
+	\end{itemize}
+	Then, as this is already a sheaf $\varinjlim \Gamma(U, \sF_i) = \varinjlim \sF_i(U) = \Gamma(U, \varinjlim \sF_i)$, and the equality is true in particular when we take $U = X$.
+\end{sol}
+
+\begin{ex}
+	Inverse limit. Let $\{\sF_i\}$ be a direct system of sheaves on $X$. Show that the presheaf $U \mapsto \varprojlim \sF_i (U)$ is a sheaf. It is called the inverse limit of the system $\{\sF_i\}$, and it is denoted by $\varprojlim \sF_i$. Show that it has the universal property of an inverse limit in the category of sheaves.
+\end{ex}
+
+\begin{sol}
+	$\varprojlim \sF_i (U)$ is the group of coherent sequences over the abelian groups $\sF_i(U)$, that is sequences $(a_n)$ with $a_n \in \sF_n(U)$ and satisfying $\theta_{n+1}(U)(a_{n+1}) = a_n$, where $\theta_i$ are the morphisms of sheaves of the inverse system. (Atiyah-MacDonald, chapter 10). The restriction morphisms of $\varprojlim \sF_i$ are naturally $\rho_{UV}((a_n)) = (\rho^n_{UV}(a_n))$, which are well defined (it is indeed an element of $\varprojlim \sF(V)$) because restrictions commute with morphisms $\theta_i$. As usual, we will check the 2 properties of the sheaf definition.
+	\begin{itemize}
+		\item (3) Let $(a_n)$ be a coherent sequence. Suppose that $(a_n)|_{V_i} = 0 \, \, \forall i \imp \rho_{UV_i}((a_n)) = 0 \imp \rho^n_{UV_i}(a_n) = 0 \, \, \forall n$ and $\forall i$. Then, by property (3) on each $\sF_n$ it implies that $a_n = 0 \, \, \forall n$ and in conclusion $((a_n)) = 0$.
+
+		\item (4) Let $(a^i_n) \in \varprojlim_j \sF_j(V_i)$ such that $((a^i_n))|_{V_i \cap V_j} =((a^j_n))|_{V_i \cap V_j} \imp \rho^n_{V_i V_i \cap V_j}(a^i_n) = \rho^n_{V_j V_i \cap V_j}(a^j_n) \, \, \forall n$. Now applying property (4) at each $\sF_n$ we have that $\exists a_n \in \sF_n(U)$ such that $a_n|_{V_i} = a^i_n \, \, \forall n \, \, \forall i$. Now the sequence $(a_n)$ is coherent as $\theta_{n+1}(U)(a_{n+1})|_{V_i} = \theta_{n+1}(V_i)(a^i_{n+1}) = a_n^i$ by the coherence of each sequence $(a_n^i)$. Then applying property (3) of $\sF_n$ to the element $\theta_{n+1}(U)(a_{n+1})-a_n$ we get that $\theta_{n+1}(U)(a_{n+1}) = a_n$ and the sequence is therefore coherent. In consequence, we have $\exists (a_n) \in \varprojlim \sF_i (U)$ such that $(a_n)|_{V_i} = (a_n^i)$.
+	\end{itemize}
+
+	Now let's check that this sheaf satisfies the universal property of categorical inverse limits. An object $X$ is the categorical inverse limit of objects $X_i$ if there exist morphisms $\varphi_i: X \to X_i$ such that $\forall$ object $Y$ and morphisms $\psi_i: Y \to X_i$ compatible with morphisms of the inverse system $\exists !$ morphism $\psi: Y \to X$ such that $\psi_i = \varphi_i \circ \psi$. In our situation, let's define $\varphi_i: \varprojlim \sF_i \to \sF_i$ such that $\varphi_i(U)((a_n)) = a_i$. Given a sheaf $Y$ and morphisms compatible with the inverse system (that is, $\psi_i: Y \to \sF_i)$ such that $\psi_i = \theta_{i+1} \circ \psi_{i+1}$) we define the morphism of sheaves $\psi$ by $\psi(U): Y \to \varprojlim \sF_i(U)$, $x \mapsto (\psi_i(U)(x))_i$. The morphism is well defined, because the resulting sequence is coherent as the morphisms $\psi_i$ are compatible with the inverse system. It clearly satisfies $\psi_i = \varphi_i \circ \psi$. Moreover, the morphism $\psi$ is unique: Indeed, suppose $\exists \psi'$ satisfying the same properties. Given $x \in Y(U)$, let $(b_n) = \psi'(x)$. Then as $\psi_i = \varphi_i \circ \psi$ we have $b_i = \psi_i(x) \imp \psi' = \psi$. 
+\end{sol}
+
 
 
 
