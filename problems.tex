@@ -249,6 +249,30 @@
 	Now let's check that this sheaf satisfies the universal property of categorical inverse limits. An object $X$ is the categorical inverse limit of objects $X_i$ if there exist morphisms $\varphi_i: X \to X_i$ such that $\forall$ object $Y$ and morphisms $\psi_i: Y \to X_i$ compatible with morphisms of the inverse system $\exists !$ morphism $\psi: Y \to X$ such that $\psi_i = \varphi_i \circ \psi$. In our situation, let's define $\varphi_i: \varprojlim \sF_i \to \sF_i$ such that $\varphi_i(U)((a_n)) = a_i$. Given a sheaf $Y$ and morphisms compatible with the inverse system (that is, $\psi_i: Y \to \sF_i)$ such that $\psi_i = \theta_{i+1} \circ \psi_{i+1}$) we define the morphism of sheaves $\psi$ by $\psi(U): Y \to \varprojlim \sF_i(U)$, $x \mapsto (\psi_i(U)(x))_i$. The morphism is well defined, because the resulting sequence is coherent as the morphisms $\psi_i$ are compatible with the inverse system. It clearly satisfies $\psi_i = \varphi_i \circ \psi$. Moreover, the morphism $\psi$ is unique: Indeed, suppose $\exists \psi'$ satisfying the same properties. Given $x \in Y(U)$, let $(b_n) = \psi'(x)$. Then as $\psi_i = \varphi_i \circ \psi$ we have $b_i = \psi_i(x) \imp \psi' = \psi$. 
 \end{sol}
 
+\begin{ex}
+
+\end{ex}
+
+\begin{sol}
+
+\end{sol}
+
+\begin{ex}
+	Support. Let $\sF$ be a sheaf on $X$, and let $s \in \sF(U)$ be a section over an open set $U$. The support of $s$, denoted $\mathrm{Supp} s$ is defined to be $\{P \in U |s_P \neq 0\}$, where $s_P$ denotes the germ of $s$ in the stalk $\sF_P$. Show that $\mathrm{Supp} s$ is a closed subset of $U$. We define the support of $\sF$, $\mathrm{Supp} \sF$ to be $\{P \in X | \sF_P \neq 0\}$. It need not be a closed subset.
+\end{ex}
+
+\begin{sol}
+	Let $P \in \overline{\mathrm{Supp} s}$, that is, $\forall V \subseteq U$ such that $P \in V$ we have $\mathrm{Supp} s \cap V \neq \varnothing$. Suppose that $P \notin \mathrm{Supp} s$. Then, $\exists V \subseteq U$ such that $s|_V = 0$. Now let $Q \in V \cap \mathrm{Supp} s$. Then $V$ is also a neighbourhood of $Q$ and $s|_V = 0$, which implies that $Q \notin \mathrm{Supp} s$, a contradiction. So we must have $P \in \mathrm{Supp} s$, which means that $\overline{\mathrm{Supp} s} = \mathrm{Supp} s$, and so it is a closed subset. 
+\end{sol}
+
+\begin{ex}
+	Sheaf Hom. Let $\sF, \sG$ be sheaves of abelian groups on $X$. For any open set $U \subseteq X$, show that the set $\mathrm{Hom}(\sF|_U, \sG|_U)$ of morphisms of the restricted sheaves has a natural structure of abelian group. Show that the presheaf $U \mapsto \mathrm{Hom}(\sF|_U, \sG|_U)$ is a sheaf. It is called the sheaf of local morphisms of $\sF$ into $\sG$, "sheaf hom" for short, and it is denoted $Hom(\sF, \sG)$.
+\end{ex}
+
+\begin{sol}
+	First let's make some observations about $\sF|_U$. Open sets of the subspace $U$ are just open sets $V \subseteq U$, as $U$ is open. So, in that case the limit $\varinjlim_{W \supseteq V} \sF(W) = \sF(V)$ so in that case the restriction presheaf is $V \mapsto \sF(V)$ and therefore it is already a sheaf, and its restriction morphisms are the same as the ones of $\sF$, but only on open sets $V \subseteq U$. Then, morphisms of sheaves $\varphi: \sF|_U \to \sG|_U$ are just morphisms of abelian groups $\varphi(V): \sF(V) \to \sG(V) \, \, \forall V \subseteq U$, that commute with restriction morphisms. We can define the sum of two morphisms $\varphi + \psi$ such that $(\varphi + \psi)(V)(x) = \varphi(V)(x) + \psi(V)(y)$. The sum is commutative and associative, as $\sG(V)$ are abelian groups. The morphism that sends each element to zero is the neutral element and every morphism has an inverse $-\varphi$ such that $(-\varphi)(V)(x) = -\varphi(V)(x) \, \, \forall V, \forall x$. Moreover, we can define the restrictions of the sheaf Hom naturally as $\rho_{UV}: \mathrm{Hom}(\sF|_U, \sG|_U) \to \mathrm{Hom}(\sF|_V, \sG|_V)$ as $\forall W \subseteq V \subseteq U, \varphi|_V (W) = \varphi(W)$.
+\end{sol}
+
 
 
 
