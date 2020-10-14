@@ -40,6 +40,7 @@
 \newcommand{\sF}{\ensuremath{\mathcalboondox{F}}}
 \newcommand{\sG}{\ensuremath{\mathcalboondox{G}}}
 \newcommand{\sA}{\ensuremath{\mathcalboondox{A}}}
+\newcommand{\sH}{\ensuremath{\mathcalboondox{H}}}
 
 
 
@@ -277,6 +278,101 @@
 		\item (4) Let's suppose that we have $\varphi_i \in \mathrm{Hom}(\sF|_{V_i}, \sG_{V_i})$ such that $\varphi_i|_{V_i \cap V_j} = \varphi_j|_{V_i \cap V_j}$, that is $\phi_i(V)(x) = \phi_j(V)(x), \, \, \forall W \subseteq V_i \cap V_j$. Now, let $W \subseteq U$, and $x \in \sF(W)$. Then, let $V_i' = W \cap V_i$, and $x_i = x|_{V_i'}$. $\{V_i'\}$ is an open covering of $W$ and we have $\varphi_i(V_i')(x_i) = y_i$, and $y_i|_{V_i'\cap V_j'} = y_j|_{V_i' \cap V_j'}$ so we have by property (4) of $\sG$ that $\exists y \in \sG(W)$ such that $y|_{V_i'} = y_i$. Then we define $\varphi(W)(x) = y$. In this way, we have defined an image for every element of $W$, that is, an application $\sF(W) \to \sG(W)$. Now we have to check that this application is a morphism of abelian groups and commutes with restrictions, and we'll be done. It's clear that $\varphi(W)(0) = 0$, by property (3) of $\sG$. Moreover, given $x_1, x_2 \in \sF(W)$ we have $\varphi(W')(x_1|_{V_i'} + x_2|_{V_i'}) = y_{i1} + y_{i2}$. Then, applying property (3) of $\sG$ on $\varphi(W)(x_1+x_2)-y_1-y_2$ we have indeed that $\varphi(W)(x_1+x_2) = y_1 + y_2$. On the other hand, let $W \subseteq V \subseteq U$, and given $x \in \sF(V)$. Let's name $y_{iW} := \varphi_i(V_i \cap W)(x|_{V_i \cap W}), y_{iV} := \varphi_i(V_i \cap V)(x|_{V_i \cap V})$, which induce images $\varphi(W)(x|_W) =: y_W, \varphi(V)(x) =: y_V$ by the construction we have done. As $\varphi_i$ are morphisms of sheaves, $y_V|_{V_i \cap W} = y_{iW}$, and therefore applying once more property (3) on $\sG$ we get $y_V|_{W} = y_W$, so $\varphi(W)(x|_W) = \varphi(V)(x)|_W$. So we have defined morphisms of abelian groups on each open subset of $U$, that commute with restrictions. This defines a morphism of sheaves $\varphi \in \mathrm{Hom}(\sF|_{U}, \sG_{U})$ whose restriction on $V_i$ is $\varphi_i$ and we are done.
 	\end{itemize}
 \end{sol}
+
+\begin{ex}
+	Flasque sheaves. A sheaf $\sF$ on a topological space $X$ is flasque if for every inclusion $V \subseteq U$ of open sets, the restriction map $\sF(U) \to \sF(V)$ is surjective.
+	\begin{enumerate}[label=\alph*)]
+		\item Show that a constant sheaf on an irreducible topological space is flasque.
+		\item If $0 \to \sF' \to \sF \to \sF'' \to 0$ is an exact sequence of sheaves, and if $\sF'$ is flasque, then for any open set $U$ the sequence $0 \to \sF'(U) \to \sF(U) \to \sF''(U) \to 0$ of abelian groups is also exact.
+		\item If $0 \to \sF' \to \sF \to \sF'' \to 0$ is an exact sequence of sheaves, and if $\sF'$ and $\sF$ are flasque, then $\sF''$ is flasque.
+		\item If $f: X \to Y$ is a continuous map, and if $\sF$ is a flasque sheaf on $X$, then $f_{*}\sF$ is a flasque sheaf on $Y$.
+		\item Let $\sF$ be any sheaf on $Y$. We define a new sheaf $\sG$, called the sheaf of discontinuous sections of $\sF$ as follows. For each open set $U \subseteq X, \sG(U)$ is the set of maps $s: U \to \bigcup_{P \in U} \sF_P$ such that for each $P \in U, s(P) \in \sF_P$. Show that $\sG$ is a flasque sheaf, and that there is a natural injective morphism of $\sF$ to $\sG$.
+	\end{enumerate}
+\end{ex}
+
+\begin{sol}
+	\begin{enumerate}[label=\alph*)]
+		\item If $X$ is an irreducible topological space, every nonempty set is dense and therefore every nonempty open set is connected $\imp \sF(U) \cong A, \, \, \forall U$. In consequence, $\forall V \subseteq U$ the restriction map $\rho_{UV}$ is the identity map $A \to A$ which is in particular surjective.
+
+		\item Let's name the morphisms of the exact sequence $0 \xrightarrow[]{} \sF' \xrightarrow[]{\psi} \sF \xrightarrow[]{\varphi} \sF'' \xrightarrow[]{} 0$. By Exercise 1.8 we only need to check that $\varphi(U)$ is a surjective morphism of abelian groups $\forall U$. Let's fix $U$. By Exercise 1.3, $\varphi$ surjective $\imp \exists \{U_i\}$ open covering of $U$, and $t_i \in \sF(U_i)$ such that $\varphi(U_i)(t_i) = s|_{U_i}$.
+		%Falta la solució d'aquest problema!!!!
+
+		\item If $\sF'$ is flasque, then by section b) of this problem the sequence $0 \to \sF'(U) \to \sF(U) \to \sF''(U) \xrightarrow[]{\varphi(U)} 0$ is exact, and in particular, $\varphi(U)$ is surjective $\forall U$. Then given $V \subseteq U$ and $s \in \sF''(V) \imp \exists t \in \sF(V)$ such that $\varphi(V)(t) = s$. As $\sF$ is flasque, $\exists t' \in \sF(U)$ with $t'|_V = t$. Then, $s':= \varphi(U)(t')$ satisfies $s'|_{V} = \varphi(U)(t')|_V = \varphi(V)(t) = s$. In consequence, the restriction $\sF(U) \to \sF(V)$ is surjective, and that means $\sF''$ is flasque.
+
+		\item Let $V \subseteq U$ be open sets of $Y$. Then $f^{-1}(V) \subseteq f^{-1}(U)$ are open subsets of $X$, and as $\sF$ is flasque, given $y \in (f_{*}\sF)(V) = \sF(f^{-1}(V)) \exists x \in \sF(f^{-1}(U)) = (f_{*}\sF)(U)$ such that $x|_V = y$, and therefore $f_{*}\sF$ is also flasque.
+
+		\item First let's note that the sections $\sG(U)$ defined are indeed abelian groups: The sum of two applications $s,t$ is defined as the application $P \mapsto s(P) + t(P)$. The neutral element is the application that sends each $P$ to the class of 0 in $\sF_P$. The restriction morphisms are well defined, as every applictaion acting on a set $U$ naturally restricts to an application acting on $V \subseteq U$. Let's see that it is a sheaf. We have to check that properties (3) and (4) are satisfied. (3): If Given $s \in \sG(U)$, and $\{U_i\}$ is an open covering of $U$, then$s|_{U_i}(P) = s(P) = 0$ for each $P \in U_i \imp s(P) = 0 \forall P \in U \imp s = 0$. (4): Given $s_i \in \sG(U_i), and s_i|_{U_i \cap U_j} = s_j|_{U_i \cap U_j} $ we can define $s(P) = s_i(P)$ if $P \in U_i$. It is clearly well defined and satisfies $s|_{U_i} = s_i$.
+		Moreover that $\sG$ is a flasque sheaf is also easy to check, as given $U \supseteq V$ we can extend any $s \in \sG(V)$ to an $s' \in \sG(U)$, for example defining $s'(P) = 0 \in \sF_P$ for each $P \notin V$ and $s'(P) = s(P)$ if $P \in V$.
+
+		We have a natural morphism from $\sF$ to $\sG$ that sends $\sF(U) \ni x \to s_x \in \sG(U)$ such that $s_x(P) = \overline{x} \in \sF_P$. It is indeed injective, because if we have $x,y \in \sF(U)$ such that $\overline{x} = \overline{y} \in \sF_P$, $\imp \exists W_P \subseteq U | x_{W_P} = y_{W_P}$ and as $W_P$ is an open covering of $U$ so we must have $x = y$.
+	\end{enumerate}
+\end{sol}
+
+\begin{ex}
+	Skyscrapper sheaves. Let $X$ be a topological space, let $P$ be a point and let $A$ be an abelian group. Define a sheaf $i_P(A)$ on X as follows: $I_P(A)(U) = A$ if $P \in U, 0$ otherwise. Verify that the stalk of $i_P(A)$ is $A$ at every point $Q \in \overline{\{P\}}$, and 0 elsewhere, where $\overline{\{P\}}$ denotes the closure of the set consisting of the point $P$. Hence the name "skyscrapper sheaf". Show that this sheaf could also be described as $i_{*}(A)$, where $A$ denotes the constant sheaf $A$ on the closed subspace $\overline{\{P\}}$, and $i: \overline{\{P\}} \to X$ is the inclusion.
+\end{ex}
+
+\begin{sol}
+	First, let's check that $i_P(A)$ is a sheaf. Given $V \subseteq U$, if $P \in \notin V$ the restriction morphism is zero, and if $P \in V$ the restriction morphism if the identity on the group $A$. It's clear that property (3) and (4) are satisfied if $P \notin U$. So let $U$ be an open set such that $P \in U$ and $\{V_i\}$ be an open covering of $U$. Let $s \in i_P(A)(U) = A$ Then, $P \in V_i$ for a certain $i$ as $\{V_i\}$ is a covering. Then, $i_P(A)(V_i) = A$ and $0 = s|_{V_i} = s$. Now let $s_i \in i_P(A)(V_i)$ such that $s_i|_{V_i \cap V_j} = s_j|_{V_i \cap V_j}$. Then, $\forall P \in V_i, V_j$ we have that $s_i = s_j \in A$. So then there is a unique element $s \in A$ such that $s = s_i \forall i$ such that $P \in V_i$. If $P \notin V_i, s_i = 0 = s|_{V_i}$. In conclusion, $s \in i_P(A)(U)$ satisfies $s|_{V_i} = s_i \forall i$.
+
+	Let $Q \in \overline{\{P\}}$. Then $P \in U \, \, \forall U$ neighbourhood of $Q$, and therefore $i_P(A)(U) = A$. Then given $\overline{(U,s)}, \overline{V,t} \in (i_P(A))_P$, we have that $\forall W$ neighbourhood of $Q$, $W \subseteq U \cap V$, $W$ is also a neighbourhood of $P$, and so $s|_W = s$, $t|_W = t$. In consequence, $\overline{(U,s)} = \overline{V,t} \iff t = s$, so $(i_P(A))_P = A$.	On the other hand, if $Q \notin \overline{\{P\}}$, then $\exists U$ neighbourhood of $Q$ such that $P \notin U$. Then, $\forall \overline{(V,t)} \in (i_P(A))_P$, $i_P(A)(V \cap U) = 0$ and then $t|_{U \cap V} = 0 \imp \overline{(V,t)} = 0$, so $(i_P(A))_P = 0$.
+
+	Now let's check that $i_{*}(A)$ is an equivalent definition of this sheaf. First, let's note that every open set of $\overline{\{P\}}$ contains $P$, and therefore every open set is dense and so $\overline{\{P\}}$ is an irreducible space, so by the proof of Exercise 1.16a) the constant sheaf $A$ is in fact the sheaf $U \mapsto A$, $\forall U$. Then, given any $U$ open set of $X$, we have two options.
+	\begin{itemize}
+		\item $P \in U$. In that case, $P \in \overline{\{P\}} \cap U = i^{-1}(U)$ and therefore $i_{*}(A)(U) = \sA(i^{-1}(U)) = \sA(\overline{\{P\}} \cap U) = A$
+
+		\item $P \notin U$. In that case $i^{-1}(U) = \overline{\{P\}} \cap U = \varnothing$, and so we have $i_{*}(A)(U) = \sA(i^{-1}(U)) = \sA(\overline{\{P\}} \cap U) = \sA(\varnothing) = 0$.
+	\end{itemize}
+	In conclusion, for each open set the sections of $i_{*}(A)$ and  $i_P(A)$ are the same, as well as the restriction morphisms ($\rho_{UV} = Id_A$ if $P \in V$ and $\rho_{UV} = 0$ if $P \notin V$. Indeed, both definitions are equal $i_{*}(A) = i_P(A)$.
+\end{sol}
+
+\begin{ex}
+	Adjoint property of $f^{-1}$. Let $f: X \to Y$ be a continuous map of topological spaces. Show that for any sheaf $\sF$ on $X$ there is a natural map $f^{-1}f_{*}\sF \to \sF$ and for any sheaf $\sG$ on $Y$ there is a natural map $\sG \to f_{*}f^{-1}\sG$. Use these maps to show that there is a natural bijection of sets, for any sheaves $\sF$ on $X$ and $\sG$ on $Y$
+	\[
+		\mathrm{Hom}_X(f^{-1}\sG, \sF) = \mathrm{Hom}_Y(\sG, f_{*}\sF)
+	\]
+	Hence we say that $f^{-1}$ is a left adjoint of $f_{*}$ and that $f_{*}$ is a right adjoint of $f^{-1}$.
+\end{ex}
+
+\begin{sol}
+	Given $f:X \to Y$ continuous and $\sF$ sheaf on $X$, the sheaf $f^{-1}f_{*}\sF$ is the sheaf associated to the presheaf $U \mapsto \varinjlim_{V \supseteq f(U)} \sF(f^{-1}(V))$. The elements of this abelian group are equivalence classes of pairs $(V,x)$ such that $\overline{(V,x)} = \overline{(V',x')} \iff \exists W, \, f(U) \subseteq W \subseteq V \cap V'$ such that $x|_{f^{-1}(W)} = x'|_{f^{-1}(W)}$. Let's observe that $V \supseteq f(U) \imp f^{-1}(V) \supseteq f^{-1}(f(U)) \supseteq U$. Hence we have the natural map $\varinjlim_{V \supseteq f(U)} \sF(f^{-1}(V)) \ni \overline{(V,x)} \mapsto x|_U$. By the observation we have just made, it is well defined, as we can restrict first to $f^{-1}(W)$ and then to $U$ as $f^{-1}(W) \supseteq U$. Then this defines a map $\varphi(U): \varinjlim_{V \supseteq f(U)} \sF(f^{-1}(V)) \to \sF(U)$ for every open set $U$, and this induces then a morphism of presheaves $\varphi$. By Proposition 1.2 we have then a unique morphism of sheaves $\varphi^{+}: f^{-1}f_{*}\sF \to \sF$.
+
+	On the other hand, let $\sG$ be a sheaf on $Y$. Then, $f^{-1}\sG$ is the sheaf associated to the presheaf $\varinjlim_{V \supseteq f(U)} \sG(V)$. As $\varinjlim_{P \in U} \varinjlim_{V \supseteq f(U)} \sG(V) = \sG_{f(P)}$, the sections of the sheaf $f^{-1}\sG$ are groups of applications $s: U \to \bigcup_P \in U \sG_{f(P)}$ satisfying that $\forall P \in U s(P) \in \sG_{f(P)}$ and $\forall P \in U \exists U' \subseteq U$ such that $\forall Q \in U', t_f(Q) = s(Q)$. Then, the section $f_{*}f^{-1}\sG(V)$  of the open set $V$ are the group of applications $f^{-1}(V) \to \bigcup_{P \in f^{-1}(V)} \sG_{f(P)}$ satisfying that $\forall P \in f^{-1}V, s(P) \in \sG_{f(P)}$ and $\forall P \in f^{-1}(V) \exists V' \subseteq V$ such that $\forall Q \in f^{-1}(V'), t_f(Q) = s(Q)$. Then, there is a natural map from $\sG(V) \to f_{*}f^{-1}\sG(V)$ that assigns each element $s \in \sG(V)$ the application $s: f^{-1}(V) \to \bigcup_{P \in f^{-1}(V)} \sG_{f(P)}$ such that $s(P) = t_{f(P)}$. We will name $\psi$ this morphism of sheaves.
+
+	Given a morphism of sheaves $\phi: f^{-1}\sG \to \sF$ it induces a morphism $\phi_{*}: f_{*}f^{-1}\sG \to f_{*}\sF$. Then, $\phi_{*} \circ \psi: \sG \to f_{*}\sF$. Similarly, given $\phi: \sG \to f_{*}\sF$ it induces a morphism $\phi': f^{-1}\sG \to f^{-1}f_{*}\sF$. Then, $\varphi^{+} \circ \phi': f^{-1}\sG \to \sF$. We have to check that this correspondence is bijective. 
+\end{sol}
+
+\begin{ex}
+	Extending a sheaf by Zero. Let $X$ be a topological space, let $Z$ be a closed subset, let $i: Z \to X$ be the inclusion, let $U = X-Z$ be the complementary open subset, and let $j: U \to X$ be its inclusion.
+
+	\begin{enumerate}[label=\alph*)]
+		\item Let $\sF$ be a sheaf on $Z$. Show that the stalk $(i_{*} \sF)_P$ of the direct image sheaf on $X$ is $\sF_P$ if $P \in Z$, 0 if $P \notin Z$. Hence we call $i_{*} \sF$ the sheaf obtained by extending $\sF$ by zero outside $Z$. By abuse of notation we will sometimes write $\sF$ instead of $i_{*}\sF$ and say "consider $\sF$ as a sheaf on $X$" when we mean "consider $i_{*} \sF$."
+
+		\item Now let \sF be a sheaf on $U$. Let $j_{!}(\sF)$ be the sheaf on $X$ associated to the presheaf $V \mapsto \sF(V)$ if $V \subseteq U$, $V \mapsto 0$ otherwise. Show that the stalk $(j_{!}(\sF))_P$ is equal to $\sF_P$ if $P \in U$, 0 if $P \notin U$, and show that $j_{!}\sF$ is the only sheaf on $X$ which has this property, and whose restriction to $U$ is $\sF$. We call $j_{!}\sF$ the sheaf obtained by extending $\sF$ by zero outside $U$.
+
+		\item Now let $\sF$ be a sheaf on $X$. Show that there is an exact sequence of sheaves on $X$,
+		\[
+			0 \to j_{!}(\sF|_{U}) \to \sF \to i_{*}(\sF|_{Z}) \to 0
+		\]
+	\end{enumerate}
+\end{ex}
+
+\begin{sol}
+
+\end{sol}
+
+\begin{ex}
+	Subsheaf with supports. Let $Z$ be a closed subset of $X$, and let $\sF$ be a sheaf on $X$. We define $\Gamma_Z(X, \sF)$ to be the subgroup of $\Gamma(X,\sF)$ consisting of all sections whose support (Ex. 1.14) is contained in $Z$.
+	\begin{enumerate}[label=\alph*)]
+		\item Show that the presheaf $V \mapsto \Gamma_{Z \cap V}(V, \sF|_V)$ is a sheaf. It is called the subsheaf of $\sF$ with supports in $Z$ and it is denoted by $\sH^{0}_Z(\sF)$.
+
+		\item Let $U = X-Z$ and let $j: U \to X$ be the inclusion. Show that there is an exact sequence of sheaves on $X$
+		\[
+		 0 \to \sH^{0}_Z(\sF) \to \sF \to j_{*}(\sF|_U)
+		\]
+		Furthermore, if $\sF$ is flasque, then the map $\sF \to j_{*}(\sF|_U)$ is surjective.
+	\end{enumerate}
+\end{ex}
 
 
 
