@@ -358,6 +358,24 @@
 \end{ex}
 
 \begin{sol}
+	\begin{enumerate}[label=\alph*)]
+		\item $(i_{*}\sF)_P = \varinjlim_{P \in U} \sF(i^{-1}(U)) = \varinjlim_{P \in U} \sF(U \cap Z)$. If $P \in Z$, $U \cap Z \neq \varnothing, \, \, \forall U$ neighbourhood of $P$. Then, $U \cap Z$ are nonempty open neighbourhoods of $P$ in $Z$, and every neighbourhood of $P$ in $Z$ is of that form, so 
+		\[
+			(i_{*}\sF)_P = \varinjlim_{P \in U} \sF(U \cap Z) = \varinjlim_{P \in U', \text{ $U'$ open set of $Z$}} U' = \sF_P
+		\]
+
+		On the other hand, if $P \notin U$, as $Z$ is closed $\exists V$ neighbourhood of $P$ such that $V \cap Z = \varnothing \imp \sF(i^{-1}(V)) = 0$. Then, $\forall \overline{(U,x)} \in (i_{*}\sF)_P$, we have $\overline{(U,x)} = \overline{(U \cap V, x|_{U\cap V})} = 0$.
+
+		\item If $P \notin U$ then any neighbourhood $V$ of $P$ satisfies $V \not\subseteq U$ so $\sF(V) = 0$ and $\varinjlim_{P \in V} \sF(V) = 0$. If $P \in U$, the elements of $(j_{!}(\sF))_P$ are equivalence classes $\overline{(V,x)}$. If $V \not\subseteq U$, then $\overline{(V,x)} = \overline{(U \cap V, x|_{U\cap V}}$, so every equivalence class of $(j_{!}(\sF))_P$ has a representative $\overline{(V,x)}$ with $V \subseteq U$, so it is the same set as $\sF_P$, and in consequence, $(j_{!}\sF)_P = \sF_P$.
+
+		Suppose that we have another sheaf $\sG$ on $X$ with this property, and whose restriction to $U$ is $\sF$. We will name $\sH$ the presheaf that defines $j_{!}(\sF)$. Then, let's see that we have an isomorphism between $\sG(V)$ and $j_{!}(\sF)(V)$. Given an element $s \in \sG(V)$, it induces an element of $j_{!}(\sF)(V)$, that is, an application $s: V \to \bigcap_{P \in V} \sG_P = \bigcap_{P \in V} \sH_P$, that maps $P \mapsto s_P$. It clearly satisfies $s(P) \in \sH_P$ (Property 1). If $P \in U$, then $\exists t = s|_{V \cap U} \in \sG(U \cap V) = \sF(U \cap V) = \sH(U \cap V)$ such that $\forall Q \in U \cap V, \, t_Q = s_Q = s(Q)$. If $P \notin U$, $s_P = 0$ so $\exists W_P \subseteq V$ such that $s|_{W_P} = 0$. Then, $\exists t = 0 \in \sH(W_P) = 0$ such that $t_Q = s(Q) = 0, \, \, \forall Q \in W_P$. This proves that the application $s$ we have defined also satisfies Property 2, and therefore it is an element of $j_{!}(\sF)(V)$. Reciprocally, let $s \in j_{!}(\sF)(V)$. Remember that while we are working in $U \cap V$ we can use the properties of a sheaf, as $j_{!}(\sF)|_U = \sF$ is a sheaf.  Then, if $P \in U \cap V$ we have that $\exists W_P$ neighbourhood of $P$ such that $\forall Q \in W_P \exists t \in \sH(W_P) = \sF(W_P)$ such that $t_Q = s(Q)$. Suppose that we have two points $P, P' \in U \cap V$ and $Q \in W_P \cap W_{P'}$, $t_1$ and $t_2$ the respective elements. Then, $(t_1)_Q = (t_2)_Q$ so $\exists V_{Q} \subseteq W_P \cap W_{P'}$ where $t_1|_{V_Q} = t_2|_{V_Q}$. Then the sets $\{V_Q\}$ are an open covering of $W_P \cap W_Q$ and therefore by property (3) $t_1|_{W_{P'}} = t_2|_{W_P}$. Now the sets $W_P$ are an open covering of $U \cap V$ and they have $t_P \in \sF(W_P)$ that agree in the intersections. So by property (4) there exists an element $t \in \sF(U \cap V) = \sG(U \cap V)$ such that $s(P) = t_P \, \, \forall P \in U \cap V$. We want to see this property but in $V$ instead of in $U \cap V$. We will define an open neighbourhood for each $P \in V, P \notin U$ in the following way. If it exists an open neighbourhood of $P$ that doesn't meet $U \cap V$, we choose this one. Otherwise, we know that $t_P = 0$ so it must exist $W_P \subseteq U$ (take an arbitrary $W_P$ and intersect it with $U$, the intersection will be non-empty) neighbourhood of $P$ such that $t|_{W_P} = 0$. Then we choose this $W_P$ as an open neighbourhood of $P$. Then, the sets $\{\{W_P\}, U \cap V\}$ are an open cover of $V$, and let $t_P = 0 \in \sG(W_P)$ and $t_{U \cap V} = t$. These elements agree on the intersections by the way we have defined the open cover. So therefore, as $\sG$ is a sheaf there must exist an element $t' \in \sG(V)$ such that $t'|_{W_P} = 0$ and $t'|_{U \cap V} = t$. In conclusion, $t'$ satisfies that $s(P) = t'_{P}$ for every $P \in V$. In conclusion, we have finally proven that $j_{!}(\sF)(V) \cong \sG(V) \, \, \forall V$ so the sheaf $j_{!}(\sF)$ is unique (up to isomorphism).
+
+		\item A sequence is exact $\iff$ it is exact on the stalks. Then we will define the sequence $0 \to j_{!}(\sF|_{U}) \to \sF \to i_{*}(\sF|_{Z}) \to 0$ in the natural way.
+
+
+		Then we can have two cases. If $P \in Z$ (that is $\iff P \notin U$), then $(j_{!}(\sF|_U))_P = 0$, and $(i_{*}(\sF|_Z))_P = \sF_P$ and therefore the sequence becomes $0 \to \0 \to \sF_P \to \sF_P \to 0$ which is cleary exact. On the other hand, if $P \in U$ (that is $\iff P \notin Z$), then $(j_{!}(\sF|_U))_P = \sF_P$, and $(i_{*}(\sF|_Z))_P = 0$ and then the exact sequence becomes $0 \to \sF_P \to \sF_P \to 0 \to 0$, which is also exact.
+
+	\end{enumerate}
 
 \end{sol}
 
