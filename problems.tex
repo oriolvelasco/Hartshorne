@@ -20,6 +20,7 @@
 \newcommand{\ib}{\ensuremath{\mathfrak{b}}}
 \newcommand{\Spec}{\ensuremath{\text{Spec}}}
 \newcommand{\ima}{\ensuremath{\mathrm{im}}}
+\newcommand{\locO}{\ensuremath{\mathcal{O}}}
 
 
 \newcommand*\closure[1]{\overline{#1}}
@@ -41,6 +42,15 @@
 \newcommand{\sG}{\ensuremath{\mathcalboondox{G}}}
 \newcommand{\sA}{\ensuremath{\mathcalboondox{A}}}
 \newcommand{\sH}{\ensuremath{\mathcalboondox{H}}}
+\newcommand{\sI}{\ensuremath{\mathcalboondox{I}}}
+
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
 
 
 
@@ -102,7 +112,7 @@
 	\begin{enumerate}[label=\alph*)]
 		\item From problem 1.2, $\varphi$ is surjective $\iff$ the induced morphism on every stalk is. Suppose $\varphi_P$ is surjective, then given $U \subseteq X$ open set, $s \in \sG(U)$, $\forall P \in U \exists V$ neighbourhood of $P$ and $t \in \sF(V)$ such that $\overline{(U,s)} = \overline{(V,\varphi(t))} \imp \exists W_P \subseteq U \cap V$ such that $\varphi(t|_{W_P}) = s|_{W_P}$, and so $\{W_P\}$ is the covering that satisfies the desired property. Reciprocally, let $\overline{(U,s)} \in \sG_P$. Then $\forall P \in U \exists i$ such that $P \in U_i \imp \overline{(U,s)} = \overline{(U_i, \varphi(U_i)(t_i))} = \varphi_P(\overline{(U_i, t_i)}) \imp \varphi_P$ is surjective.
 
-		\item
+		\item An example of this situation is given on Exercise 1.21c) works here. Where there is a surjective morphism $\locO_X \to i_*\locO_P \oplus i_* \locO_Q$, but the map on global sections is not surjective.
 	\end{enumerate}
 \end{sol}
 
@@ -255,7 +265,8 @@
 \end{ex}
 
 \begin{sol}
-
+	%With the topology defined on $Spé(\sF)$, the sets $\{t_Q\}_{Q \in V}$ (where $V$ is an open set of $X$) are open, as given a map $\overline{s}: U \to Spé(\sF)$, $\overline{s}^{-1}(\{t_Q\}_{Q \in V}) = U \cap V$ if $s = t$
+	%Let $s$ be a continuous section of $\pi$, that is $\pi \circ s = id_U$. That implies that $s(P) \in \sF(P)$, so $s$ satisfies condition (1) of the definition of associated sheaf. 
 \end{sol}
 
 \begin{ex}
@@ -335,11 +346,20 @@
 \end{ex}
 
 \begin{sol}
-	Given $f:X \to Y$ continuous and $\sF$ sheaf on $X$, the sheaf $f^{-1}f_{*}\sF$ is the sheaf associated to the presheaf $U \mapsto \varinjlim_{V \supseteq f(U)} \sF(f^{-1}(V))$. The elements of this abelian group are equivalence classes of pairs $(V,x)$ such that $\overline{(V,x)} = \overline{(V',x')} \iff \exists W, \, f(U) \subseteq W \subseteq V \cap V'$ such that $x|_{f^{-1}(W)} = x'|_{f^{-1}(W)}$. Let's observe that $V \supseteq f(U) \imp f^{-1}(V) \supseteq f^{-1}(f(U)) \supseteq U$. Hence we have the natural map $\varinjlim_{V \supseteq f(U)} \sF(f^{-1}(V)) \ni \overline{(V,x)} \mapsto x|_U$. By the observation we have just made, it is well defined, as we can restrict first to $f^{-1}(W)$ and then to $U$ as $f^{-1}(W) \supseteq U$. Then this defines a map $\varphi(U): \varinjlim_{V \supseteq f(U)} \sF(f^{-1}(V)) \to \sF(U)$ for every open set $U$, and this induces then a morphism of presheaves $\varphi$. By Proposition 1.2 we have then a unique morphism of sheaves $\varphi^{+}: f^{-1}f_{*}\sF \to \sF$.
+	Given $f:X \to Y$ continuous and $\sF$ sheaf on $X$, the sheaf $f^{-1}f_{*}\sF$ is the sheaf associated to the presheaf $U \mapsto \varinjlim_{V \supseteq f(U)} \sF(f^{-1}(V))$. The elements of this abelian group are equivalence classes of pairs $(V,x)$ such that $\overline{(V,x)} = \overline{(V',x')} \iff \exists W, \, f(U) \subseteq W \subseteq V \cap V'$ such that $x|_{f^{-1}(W)} = x'|_{f^{-1}(W)}$. Let's observe that $V \supseteq f(U) \imp f^{-1}(V) \supseteq f^{-1}(f(U)) \supseteq U$. Hence we have the natural map $\varinjlim_{V \supseteq f(U)} \sF(f^{-1}(V)) \ni \overline{(V,x)} \mapsto x|_U$. By the observation we have just made, it is well defined, as we can restrict first to $f^{-1}(W)$ and then to $U$ as $f^{-1}(W) \supseteq U$. Then this defines a map $\varphi(U): \varinjlim_{V \supseteq f(U)} \sF(f^{-1}(V)) \to \sF(U)$ for every open set $U$, and this induces then a morphism of presheaves $\epsilon'$. By Proposition 1.2 we have then a unique morphism of sheaves $\epsilon: f^{-1}f_{*}\sF \to \sF$.
 
-	On the other hand, let $\sG$ be a sheaf on $Y$. Then, $f^{-1}\sG$ is the sheaf associated to the presheaf $\varinjlim_{V \supseteq f(U)} \sG(V)$. As $\varinjlim_{P \in U} \varinjlim_{V \supseteq f(U)} \sG(V) = \sG_{f(P)}$, the sections of the sheaf $f^{-1}\sG$ are groups of applications $s: U \to \bigcup_P \in U \sG_{f(P)}$ satisfying that $\forall P \in U s(P) \in \sG_{f(P)}$ and $\forall P \in U \exists U' \subseteq U$ such that $\forall Q \in U', t_f(Q) = s(Q)$. Then, the section $f_{*}f^{-1}\sG(V)$  of the open set $V$ are the group of applications $f^{-1}(V) \to \bigcup_{P \in f^{-1}(V)} \sG_{f(P)}$ satisfying that $\forall P \in f^{-1}V, s(P) \in \sG_{f(P)}$ and $\forall P \in f^{-1}(V) \exists V' \subseteq V$ such that $\forall Q \in f^{-1}(V'), t_f(Q) = s(Q)$. Then, there is a natural map from $\sG(V) \to f_{*}f^{-1}\sG(V)$ that assigns each element $s \in \sG(V)$ the application $s: f^{-1}(V) \to \bigcup_{P \in f^{-1}(V)} \sG_{f(P)}$ such that $s(P) = t_{f(P)}$. We will name $\psi$ this morphism of sheaves.
+	On the other hand, let $\sG$ be a sheaf on $Y$. Then, $f^{-1}\sG$ is the sheaf associated to the presheaf $\varinjlim_{V \supseteq f(U)} \sG(V)$ (let $(f^{-1}\sG)_{pre}$ denote this presheaf). As $\varinjlim_{P \in U} \varinjlim_{V \supseteq f(U)} \sG(V) = \sG_{f(P)}$, the sections of the sheaf $f^{-1}\sG$ are applications $s: U \to \bigcup_{P \in U} \sG_{f(P)}$ satisfying that $\forall P \in U, s(P) \in \sG_{f(P)}$ and $\forall P \in U \exists U' \subseteq U$ and $t \in \varinjlim_{V \supseteq f(U)} \sG(V)$ such that $\forall Q \in U', t_{f(Q)} = s(Q)$. Then, the sections $f_{*}f^{-1}\sG(V)$ are the group of applications $s: f^{-1}(V) \to \bigcup_{P \in f^{-1}(V)} \sG_{f(P)}$ satisfying that $s(P) \in \sG_{f(P)}$ and $\forall P \in f^{-1}(V) \exists U' \subseteq f^{-1}(V)$ and $t \in \varinjlim_{W \supseteq f(f^{-1}(V))} \sG(W)$ such that $\forall Q \in U', t_{f(Q)} = s(Q)$. Then, as $V \supseteq f(f^{-1}(V))$, there is a natural map from $\sG(V) \to f_{*}f^{-1}\sG(V)$ that assigns each element $s \in \sG(V)$ the application $s: f^{-1}(V) \to \bigcup_{P \in f^{-1}(V)} \sG_{f(P)}$ such that $s(P) = \overline{(V,s)}_{f(P)}$. We will name $\nu$ this morphism of sheaves.
 
-	Given a morphism of sheaves $\phi: f^{-1}\sG \to \sF$ it induces a morphism $\phi_{*}: f_{*}f^{-1}\sG \to f_{*}\sF$. Then, $\phi_{*} \circ \psi: \sG \to f_{*}\sF$. Similarly, given $\phi: \sG \to f_{*}\sF$ it induces a morphism $\phi': f^{-1}\sG \to f^{-1}f_{*}\sF$. Then, $\varphi^{+} \circ \phi': f^{-1}\sG \to \sF$. We have to check that this correspondence is bijective. 
+	Let $\varphi: f^{-1}\sG \to \sF$ be a morphism of sheaves, such that $\varphi(U)$ maps aplications $s: U \to \bigcup_{P \in U} \sG_{f(P)}$ satisfying properties (1), (2) to elements $\varphi(U)(s) \in \sF(U)$. Let $\varphi' = \varphi \circ \theta$, where $\theta$ is the morphism $f^{-1}\sG_{pre} \to f^{-1}\sG$. $\varphi$ induces a morphism $\varphi_*: f_*f^{-1}\sG \to f_{*}\sF$ that maps applications $s: f^{-1}(V) \to \bigcup_{P \in f^{-1}(V)} \sG_{f(P)}$ satisfying (1) and (2) to elements $\varphi(f^{-1}(V))(s) \in \sF(f^{-1}(V)) = f_* \sF(V)$. Now let $\psi := \varphi_* \circ \nu : \sG \to f_* \sF$, that sends an element $s \in \sG(V)$ to the image of the aplication $s(P) = \overline{(V,s)}|_{f(P)}$. By abuse of notation we will name $s$ both the application in $f_*f^{-1}\sG(V)$ ang the element $s \in \sG(V)$ that induces it. Then we can write $\psi(V)(s) = \varphi(f^{-1}(V))(s)$. Now $\psi$ induces an application $\psi_{-1}: f^{-1}\sG_{pre} \to f^{-1}f_*\sF$, that sends $\overline{(V,t)} \in \varinjlim_{W \supseteq f(U)} \sG(W)$ to the class of the element $(V,\psi(V)(t) = (V, \varphi(f^{-1}(V))(t))$ in $\varinjlim_{W \supseteq f(U)} \sF(f^{-1}(V))$. Finally, $\epsilon \circ \psi_{-1}: f^{-1}\sG_{pre} \to \sF$ sends the class of an element $(V,t)$ to $\varphi(f^{-1}(V))(t)$, and therefore it is an aplication which is equal to $\varphi'$. In conclusion, the application induced by $\epsilon \circ \psi_{-1}$ that maps from $f^{-1}\sG$ to $\sF$ is indeed the application $\varphi$.
+
+	Similarly, cal veure que si agafem una aplication $\psi$ li correspon una única $\varphi$. Així, tindrem en definitiva que la correspondència és bijectiva. 
+
+
+
+	%  Given an element $\overline{(V,t)} \in \varinjlim_{V \supseteq f(U)} \sG(V)$ we denote its image $\varphi(U)(\overline{V,t})$. $\varphi'$ induces then an application $\varphi'_*: f_*f^{-1}\sG \to f_* \sF$ that maps each $\overline{(V,t)} \in \varinjlim_{W \supseteq f(f^{-1}(V))} \sG(W)$ to $\varphi(f^{-1}(V))$
+
+
+	%it induces a morphism $\phi_{*}: f_{*}f^{-1}\sG \to f_{*}\sF$. Then, $\phi_{*} \circ \psi: \sG \to f_{*}\sF$. Similarly, given $\phi: \sG \to f_{*}\sF$ it induces a morphism $\phi': f^{-1}\sG \to f^{-1}f_{*}\sF$. Then, $\varphi^{+} \circ \phi': f^{-1}\sG \to \sF$. We have to check that this correspondence is bijective. We will prove that if we make one proceding and then the other one, we obtain the initial morphism. It is enough to check that this happens when we consider morphisms of presheaves. 
 \end{sol}
 
 \begin{ex}
@@ -370,10 +390,9 @@
 
 		Suppose that we have another sheaf $\sG$ on $X$ with this property, and whose restriction to $U$ is $\sF$. We will name $\sH$ the presheaf that defines $j_{!}(\sF)$. Then, let's see that we have an isomorphism between $\sG(V)$ and $j_{!}(\sF)(V)$. Given an element $s \in \sG(V)$, it induces an element of $j_{!}(\sF)(V)$, that is, an application $s: V \to \bigcap_{P \in V} \sG_P = \bigcap_{P \in V} \sH_P$, that maps $P \mapsto s_P$. It clearly satisfies $s(P) \in \sH_P$ (Property 1). If $P \in U$, then $\exists t = s|_{V \cap U} \in \sG(U \cap V) = \sF(U \cap V) = \sH(U \cap V)$ such that $\forall Q \in U \cap V, \, t_Q = s_Q = s(Q)$. If $P \notin U$, $s_P = 0$ so $\exists W_P \subseteq V$ such that $s|_{W_P} = 0$. Then, $\exists t = 0 \in \sH(W_P) = 0$ such that $t_Q = s(Q) = 0, \, \, \forall Q \in W_P$. This proves that the application $s$ we have defined also satisfies Property 2, and therefore it is an element of $j_{!}(\sF)(V)$. Reciprocally, let $s \in j_{!}(\sF)(V)$. Remember that while we are working in $U \cap V$ we can use the properties of a sheaf, as $j_{!}(\sF)|_U = \sF$ is a sheaf.  Then, if $P \in U \cap V$ we have that $\exists W_P$ neighbourhood of $P$ such that $\forall Q \in W_P \exists t \in \sH(W_P) = \sF(W_P)$ such that $t_Q = s(Q)$. Suppose that we have two points $P, P' \in U \cap V$ and $Q \in W_P \cap W_{P'}$, $t_1$ and $t_2$ the respective elements. Then, $(t_1)_Q = (t_2)_Q$ so $\exists V_{Q} \subseteq W_P \cap W_{P'}$ where $t_1|_{V_Q} = t_2|_{V_Q}$. Then the sets $\{V_Q\}$ are an open covering of $W_P \cap W_Q$ and therefore by property (3) $t_1|_{W_{P'}} = t_2|_{W_P}$. Now the sets $W_P$ are an open covering of $U \cap V$ and they have $t_P \in \sF(W_P)$ that agree in the intersections. So by property (4) there exists an element $t \in \sF(U \cap V) = \sG(U \cap V)$ such that $s(P) = t_P \, \, \forall P \in U \cap V$. We want to see this property but in $V$ instead of in $U \cap V$. We will define an open neighbourhood for each $P \in V, P \notin U$ in the following way. If it exists an open neighbourhood of $P$ that doesn't meet $U \cap V$, we choose this one. Otherwise, we know that $t_P = 0$ so it must exist $W_P \subseteq U$ (take an arbitrary $W_P$ and intersect it with $U$, the intersection will be non-empty) neighbourhood of $P$ such that $t|_{W_P} = 0$. Then we choose this $W_P$ as an open neighbourhood of $P$. Then, the sets $\{\{W_P\}, U \cap V\}$ are an open cover of $V$, and let $t_P = 0 \in \sG(W_P)$ and $t_{U \cap V} = t$. These elements agree on the intersections by the way we have defined the open cover. So therefore, as $\sG$ is a sheaf there must exist an element $t' \in \sG(V)$ such that $t'|_{W_P} = 0$ and $t'|_{U \cap V} = t$. In conclusion, $t'$ satisfies that $s(P) = t'_{P}$ for every $P \in V$. In conclusion, we have finally proven that $j_{!}(\sF)(V) \cong \sG(V) \, \, \forall V$ so the sheaf $j_{!}(\sF)$ is unique (up to isomorphism).
 
-		\item A sequence is exact $\iff$ it is exact on the stalks. Then we will define the sequence $0 \to j_{!}(\sF|_{U}) \to \sF \to i_{*}(\sF|_{Z}) \to 0$ in the natural way.
+		\item Let's define an application from the presheaf that defines $j_{!}(\sF|_{U}) \to \sF$ as the inclusion. On the other hand, let's define an application from $\sF(U) \to \sF|_Z (U \cap Z)$ that maps a section $s$ to its image in $\overline{(V,s)} \in \varinjlim_{V \supseteq V \cap Z} \sF(V)$.  Thses aplications induce a sequence on the associated sheaves $0 \to j_{!}(\sF|_{U}) \to \sF \to i_{*}(\sF|_{Z}) \to 0$. We know that a sequence is exact $\iff$ it is exact on the stalks. 
 
-
-		Then we can have two cases. If $P \in Z$ (that is $\iff P \notin U$), then $(j_{!}(\sF|_U))_P = 0$, and $(i_{*}(\sF|_Z))_P = \sF_P$ and therefore the sequence becomes $0 \to \0 \to \sF_P \to \sF_P \to 0$ which is cleary exact. On the other hand, if $P \in U$ (that is $\iff P \notin Z$), then $(j_{!}(\sF|_U))_P = \sF_P$, and $(i_{*}(\sF|_Z))_P = 0$ and then the exact sequence becomes $0 \to \sF_P \to \sF_P \to 0 \to 0$, which is also exact.
+		Then we can have two cases. If $P \in Z$ (that is $\iff P \notin U$), then $(j_{!}(\sF|_U))_P = 0$, and $(i_{*}(\sF|_Z))_P = \sF_P$ and therefore the sequence becomes $0 \to 0 \to \sF_P \to \sF_P \to 0$ which is cleary exact. On the other hand, if $P \in U$ (that is $\iff P \notin Z$), then $(j_{!}(\sF|_U))_P = \sF_P$, and $(i_{*}(\sF|_Z))_P = 0$ and then the exact sequence becomes $0 \to \sF_P \to \sF_P \to 0 \to 0$, which is also exact.
 
 	\end{enumerate}
 
@@ -392,7 +411,74 @@
 	\end{enumerate}
 \end{ex}
 
+\begin{sol}
+	\begin{enumerate}[label=\alph*)]
+		\item $\Gamma_{Z \cap V} (V,\sF|_V) = \{s \in \sF(V) \text{ such that } s_P = 0 \, \, \forall P \in V, P \notin Z \cap V\}$, and it is a subgroup of $\sF(V)$. The restrictions of this presehaf are naturally the same morphisms of the sheaf $\sF$. We'll see that they're well defined, as given $W \subset V$, and $s \in \Gamma_{Z \cap V} (V,\sF|_V)$ then we have $s|_W \in \sF(W)$ and given $P \in W, P \notin Z \cap W \imp P \in V, P \notin Z \cap V$ so $s_P = 0$ and therefore $(s|_W)_P = 0$, so we have also $s|_W \in \Gamma_{Z \cap W} (W,\sF|_W)$, and so the restriction morphisms are well defined. 
 
+		As usual, to see that the presehaf $V \mapsto \Gamma_{Z \cap V} (V,\sF|_V)$ we have to check the two properties of the definition. Let $\{V_i\}$ be an open cover of $V$. Property (3) is clear, as given $s \in \Gamma_{Z \cap V} (V,\sF|_V) \imp s \in \sF(V)$, so if $s|_{V_i} = 0$ by property (3) of $\sF$ $s = 0$. Now let $s_i \in \Gamma_{Z \cap V_i} (V_i,\sF|_{V_i})$ such that $s_i|_{V_i \cap V_j} = s_j|_{V_i \cap V_j}$. Then $\exists s \in \sF(V)$ such that $s|_{V_i} = s_i$ by property (4) of $\sF$. We only have to check that this $s \in \Gamma_{Z \cap V} (V,\sF|_V)$. Let $P \in V, P \notin Z \cap V$. As the $V_i$ are a covering of $V$, there must exist $i$ such that $P \in V_i$. Then, $s_P = \overline{(V,s)} = \overline(V_i, s_i) = (s_i)_P = 0$, and so $s \in \Gamma_{Z \cap V}(V,\sF|_V)$.
+
+		\item Let's define a sequence $0 \xrightarrow[]{} \sH_Z^0(\sF) \xrightarrow[]{\varphi} \sF \xrightarrow[]{\psi} j_*(\sF|_U) \xrightarrow[]{} 0$ where the applications $\varphi(V): \sH_Z^0(\sF)(V) \to \sF(V)$ are the inclusion (as $\sH_Z^0(\sF)(V)$ is a subgroup of $\sF(V)$), and $\sF(V) \to j_*(\sF|_U)(V)$ is the restriction, as $j_*(\sF|_U)(V) = \sF(U \cap V)$. Let's see that the sequence is exact as a sequence of abelian groups foreach open set $V$ (that implies exactness on the stalks and therefore exactness of the sequence of morphisms of sheaves). It is clear that $\varphi(V)$ is injective, as it is the inclusion. Now given $s \in \ker \psi(V)$, that is $s \in \sF(V)$ such that $s|_{U \cap V} = 0$, we have that $\forall P \in U \cap V$, $U \cap V$ is a neighbourhood of $P$ and therefore $s|_{U \cap V} = 0 \imp s_P = 0$ for every $P \in U \cap V$, that is, the support of $s$ is contained in $Z \cap V$ and therefore $s \in \sH^0_{Z}(\sF)(V) = \ima \varphi(V)$. Reciprocally, if $s \in \sF(V)$ such that $s_P = 0, \, \, \forall P \in U \cap V$, $\exists W_P$ neighbourhood of $P$ such that $s|_{W_P} = 0$. Then $\{W_P\}_{P \in U \cap V}$ are an pen covering of $U \cap V$, and therefore $s|_{U \cap V} = 0$. In conclusion, $\ker \psi(V) = \ima \varphi(V)$ and the sequence is exact. Moreover, if $\sF$ is flasque, every restriction morphism is surjective, and in particular $\psi$ is surjective.
+	\end{enumerate}
+\end{sol}
+
+\begin{ex}
+	Some Examples of Sheaves on Varieties. Let $X$ be a variety over an algebraically closed field $k$, as in Ch. I. Let $\locO_X$ be the sheaf of regular functions on $X$.
+	\begin{enumerate}[label = \alph*)]
+		\item Let $Y$ be a closed subset of $X$. For each open set $U \subseteq X$, let $\sI_Y(U)$ be the ideal in the ring $\locO_X(U)$ consisting of those regular functions which vanish at all points of $Y \cap U$. Show that the presheaf $U \mapsto \sI_Y(U)$ is a sheaf. It is caled the sheaf of ideals $\sI_Y$ of $Y$, and it is a subsheaf of the sheaf of rings $\locO_X$.
+
+		\item If $Y$ is a subvariety, then the quotient sheaf $\locO_X / \sI_Y$ is isomorphic to $i_*(\locO_Y)$, where $i: Y \to X$ is the inclusion, and $\locO_Y$ is the sheaf of regular functions on $Y$.
+
+		\item Now let $X = \mathbb{P}$ and let $Y$ be the union of two dictinct points $P, Q \in X$. Then there is an exact sequence of sheaves on $X$, where $\sF = i_* \locO_P \oplus i_* \locO_Q$,
+		\[
+			0 \to \sI \to \locO_X \to \sF \to 0
+		\]
+
+		Show however that the induced map on global sections $\Gamma(X, \locO_X) \to \Gamma(X, \sF)$ is not surjective. This shows that the global section functor $\Gamma(X,·)$ is not exact.
+
+		\item Let again $X = \mathbb{P}$ and let $\locO$ be the sheaf of regular functions. Let $\mathcalboondox{K}$ be the constant sheaf on $X$ associated to the function field $K$ of $X$. Show that there is a natural injection $\locO \to \mathcalboondox{K}$. Show that the quotient sheaf $\mathcalboondox{K}/\locO$ is isomorphic to the direct sum of sheaves $\sum_{P \in X}i_P(I_P)$, where $I_P$ is the group $K/\locO_P$ and $i_P(I_P)$ denotes the skyscraper sheaf given by $I_P$ at point $P$.
+
+		\item Finally show that in the case of (d) the sequence 
+		\[
+			0 \to \Gamma(X, \locO) \to \Gamma(X, \mathcalboondox{K}) \to \Gamma(X, \mathcalboondox{K}/\locO) \to 0
+		\]
+		is exact.
+	\end{enumerate}
+\end{ex}
+
+\begin{sol}
+	\begin{enumerate}[label = \alph*)]
+		\item The restriction morphisms of this presheaf are naturally the same morphisms as in the sheaf of regular functions, that is $\forall V \subseteq U$, and $f \in \sI_Y(U)$, we define the restriction $f|_V$ as the restriction of the domain to the open set $V$: As $f(x) = 0 \, \, \forall x \in Y \cap U$, in particular $f(x) = 0 \, \, \forall x \in V \cap Y$, which means that $f|_V \in \sI_Y(V)$. Now let's check that the presheaf defined is indeed a sheaf. Let $U$ be an open set of $X$ and $\{V_i\}$ be an open covering of $U$. Let $f \in \locO_X(U)$ such that $f|_{V_i} = 0$, which means that $f(x) = 0 \, \, \forall x \in V_i$. But as $\{V_i\}$ cover $U$, then we have $f(x) = 0 \, \, \forall x \in U \imp f = 0$, and property (3) is satisfied. On the other hand, given $f_i \in \sI_Y(V_i)$, such that $f_i|_{V_i \cap V_j} = f_j|_{U_i \cap U_j}$, let's define $f: U \to k$, as $f(x) = f_i(x)$ if $x \in V_i$. This is then a function from $U$ to $k$, and it is well defined, as the image of the points of $V_i \cap V_j$ by $f_i$ is the same of the image by $f_j$. It is a regular function (as regularity is a local property). Moreover, given $x \in U \cap Y$, $x \in U \cap V_i$ for a certain $V_i$, and therefore $f(x) = f_i(x) = 0$. In conclusion, $f \in \sI_Y(U)$ and clearly $f|_{V_i} = f_i$. This proves property (4) and therefore $\sI_Y$ is a sheaf.
+
+		\item If $i: Y \to X$ is the inclusion, then $i_*(\locO_Y)(U) = \locO_Y(U \cap Y)$ is the ring of regular functions from $U \cap Y$ to $k$. Let's define a sequence $0 \to \sI_Y \to \locO_X \to i_*(\locO_Y) \to 0$ by defining a sequence of abelian groups for each open set $U$:
+		\[
+			0 \xrightarrow{} \sI_Y(U) \xrightarrow{\varphi(U)} \locO_X(U) \xrightarrow{\psi(U)} i_*(\locO_Y)(U) \xrightarrow{} 0
+		\] 
+
+		We define $\varphi(U)$ to be the inclusion (remember that $\sI_Y(U)$ is a subgroup of $\locO_X(U)$), so then $\varphi(U)$ is injective. We define $\psi(U)$ to be the domain restriction to $U \cap Y$. Note that if we restrict the domain of a regular function it is still a regular function, and therefore $\psi(U)$ is well defined. It's also clear that $\ker \psi(U) = \ima \varphi(U)$ as both are exactly the elements of $\locO_X$ that vanish at all points of $Y \cap U$.
+
+		Now let's prove that the morphism of sheaves $\psi$ is surjective. Indeed, given any point of $U$, we have either that $P \in Y \cap U$ or $\exists$ an open neighbourhood $W_P' \subseteq U$ such that $W_P' \cap Y = \varnothing$, because $Y$ is closed. Then, given $f$ a regular function on $U \cap Y$, we have that $\forall P \in U \cap Y$ there exists a neighbourhood of $P$, $W_P$ where $f_P = g_P/h_P$, with $g_P,h_P$ polynomials and $h(x) \neq 0, \, \, \forall x \in W_P$. Then $W_P = Y \cap V_P$ for a certain $V_P$ open set of $X$. Then the function $g_P/h_P$ is regular on $V_P$ and $\psi(V_P)(f/g) = f/g \in \locO_Y(Y \cap V_P) = \locO_Y(W_P)$. For the points $P \notin Y \cap U$ we define $f = 0$ on $W_P'$. Then the sets $\{W_P'\} \cup \{V_P\}$ are an open cover of $U$ and so $\psi$ is surjective as it satisfies the characterization of Exercise 1.3a).
+
+		\item First let's observe that here $\locO_P$ denotes $\locO_{P,Y}$, that is, the germs of regular functions of $Y$ near $P$. As $Y = \{P,Q\}$, and the singletons are closed sets of the Zariski topology (if $P = (x_1,y_1)$, then $P = Z(x_1Y-y_1X)$), then in that case (as the number of points of $Y$ is finite) the singletons are also open sets, and therefore two regular functions are equal in $\locO_P$ if and only if their value in $P$ is the same. In consequence, $\locO_P = k$, $\locO_Q = k$. Then, $i_*\locO_P(U) = \locO_P(U \cap Y) = k$ if $P \in U$ or 0 otherwise. Then, let's define a sequence $0 \xrightarrow{}[] \sI_Y \xrightarrow{}[\varphi] \locO_X \xrightarrow{}[\psi] \sF \xrightarrow{}[] 0$ in the following way.
+		Let $\varphi(U)$ be the inclusion for each $U$. It is well defined and injective as we know that $\sI_Y(U)$ is a subgroup of $\locO_X(U)$. $\psi(U)$ maps a regular function $f$ to the pair of values $(f(P),f(Q))$ in case both $P$ and $Q$ belong to $U$. If the point $P$ or $Q$ is not in $U$ it maps the corresponding coordinate to zero. It is clear that $\ker \psi(U) = \ima \varphi(U)$ because both sets are the regular functions on $U$ that vanish both at $P$ and $Q$. We can define $\sI_Y(U) = \locO_X(U)$ when $Y \cap U = \varnothing$ and that way we still have $\ker \psi(U) = \ima \varphi(U)$ when both $P,Q \notin U$. Finally, let's see that $\psi$ is surjective. Given any open set $U$, there is an open covering $U_1 = U \ \{P\}$, $U_2 = U \ \{Q\}$, such that $\forall s = (s_1, s_2) \in \sF(U)$, with $s_i \in k$, we can take $s_i \in \locO_X(U_i)$ and we have $\psi(U_i)(s_i) = s|_{U_i}$, as $\psi(U_1)(t_1) = (t_1,0) = s|_{U_1}$ and $\psi(U_2)(t_2) = (0,t_2) = s|_{U_2}$. Then $\psi$ satisfies the charectarization of Exercise 1.3a) and therefore it is surjective.
+
+		However, the map on global sections is not surjective. It is easy to see this if we use the result of Theorem 3.4 of Chapter I, that states that $\locO_X(X) = k$. Therefore, $\ima \psi(X)$ is the set of pairs $\{(t,t)\}, \, t \in k$ which is not equal to the direct sum $k \oplus k$.
+
+		\item For each open set $U$, let $\varphi(U): \locO(U) \to K$ mapping $f \mapsto \overline{(U,f)}$. This application is injective by remark 3.1.1 of Chapter I (if two regular functions are equal in an open set $V \subseteq U$ then they're equal in $U$). Then, by Exercise 1.4a) the induced morphism of sheaves $\varphi: \locO \to \mathcalboondox{K}$ is injective. Now let's define an application $\psi(U): K \to \sum_{P \in X} i_P(I_P)(U)$. We will index each coordinate of $\sum_{P \in X} i_P(I_P)(U)$ with the corresponding point $P$. Then, we define the coordinate of point $P$ to be 0 if $P \notin U$ or $\overline{f} \in K/\locO_P$ if $P \in U$. Then, it's clear that $\ker \psi(U) = \{f \in K \text{ such that } f \in \locO_P \forall P \in U\} = \locO_X(U)= \ima \varphi(U)$. Now we have to check that $\psi$ is surjective. Let $s \in \sum_{P \in X} i_P(I_P) (U)$. Then, the coordinates of all points must be zero except for a finite number of them, let $P_1, \dots, P_n$ be the indices of these coordinates. As points are closed sets in the Zariski topology, then $W_i = X \ \{P_1, \dots, P_{i-1}, P_{i+1}, \dots, P_n \}$ are open sets. Then, $s|_{W_i \cap U}$ is zero in all coordinates except in $P_i$. Now, as the application $K \to K/\locO_{P_i}$ is surjective $\exists f_i \in K$ such that $\psi(W_i \cap U)(f_i) = s|_{U \cap W_i}$. Now $W_i \cap U$ are an open cover of $U$ and therefore the application on the stalks is surjective and in consequence $\psi: \mathcalboondox{K} \to \sum_{P \in X} i_P(I_P)$ is surjective. Finally, we have proven that we have an exact sequence 
+		\[
+			0 \to \locO \to \mathcalboondox{K} \to \sum{P \in X}i_P(I_P) \to 0
+		\]
+		And using now exercise 1.6 we have an isomorphism $\mathcalboondox{K}/\locO \cong \sum_{P \in X}i_P(I_P)$.
+
+	\end{enumerate}
+\end{sol}
+
+\begin{ex}
+	Glueing sheaves. Let $X$ be a topological space, let $\mathfrak{U} = \{U_i\}$ be an open cover of $X$, and suppose we are given for each $i$ a sheaf $\sF_i$ on $U_i$ and for each $i,j$ an isomorphism $\varphi_{ij}: \sF_i|_{U_i \cap U_j} \to \sF_j|_{U_i \cap U_j}$ such that (1) for each $i$, $\varphi_{ii} = id$ and (2) for each $i,j,k$, $\varphi_{ik} = \varphi_{jk} \circ \varphi_{ij}$ on $U_i \cap U_j \cap U_k$. Then there exists a unique sheaf $\sF$ on $X$ togheather with isomorphisms $\psi_i: \sF|_{U_i} \to \sF_i$ such that for each $i,j, \, \psi_j = \varphi_{ij} \circ \psi_i$ on $U_i \cap U_j$. We say loosely that $\sF$ is obtained by glueing the sheaves $\sF_i$ via the isomorphism $\varphi_{ij}$.
+\end{ex}
+
+\begin{sol}
+
+\end{sol}
 
 
 
