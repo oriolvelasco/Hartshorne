@@ -21,6 +21,7 @@
 \newcommand{\Spec}{\ensuremath{\text{Spec}}}
 \newcommand{\ima}{\ensuremath{\mathrm{im}}}
 \newcommand{\locO}{\ensuremath{\mathcal{O}}}
+\newcommand{\spe}{\ensuremath{\mathrm{Sp\acute{e}}}}
 
 
 \newcommand*\closure[1]{\overline{#1}}
@@ -62,6 +63,7 @@
 
 \section{Sheaves}
 
+%1%
 \begin{ex}
 	Let $A$ be an abelian group, and define the constant presheaf associated to $A$ on the topological space $X$ to be the presheaf $U \mapsto A$ for all $U \neq \varnothing$, with restriction maps the identity. Show that the constant sheaf $\sA$ defined in the text is the sheaf associated to this presheaf.
 \end{ex}
@@ -76,6 +78,7 @@
 	In conclusion, $\sF^{+}(U)$ is the group of continuous maps from $U$ into $A$, and therefore $\sF^{+}$ is indeed the sheaf $\sA$ defined in the text.
 \end{sol}
 
+%2
 \begin{ex}
 	\begin{enumerate}[label=\alph*)]
 		\item For any morphism of sheaves $\varphi: \sF \to \sG$ show that for each point $P$, $(\ker \varphi)_P = \ker(\varphi_P)$ and $(\ima \varphi)_P = \ima (\varphi_P)$.
@@ -100,6 +103,7 @@
 	\end{enumerate}
 \end{sol}
 
+%3
 \begin{ex}
 	\begin{enumerate}[label=\alph*)]
 		\item Let $\varphi: \sF \to \sG$ be a morphism of sheaves on $X$. Show that $\varphi$ is surjective if and only if the following condition holds: for every open set $U \subseteq X$, and for every $s \in \sG(U)$, there is a covering $\{U_i\}$ of $U$, and there are elements $t_i \in \sF(U_i)$, such that $\varphi(t_i) = s|_{U_i}$, for all i.
@@ -116,6 +120,7 @@
 	\end{enumerate}
 \end{sol}
 
+%4
 \begin{ex}
 	\begin{enumerate}[label=\alph*)]
 		\item Let $\varphi: \sF \to \sG$ be a morphism of presheaves such that $\varphi(U): \sF(U) \to \sG(U)$ is injective foreach $U$. Show that the induced map $\varphi^{+}: \sF^{+} \to \sG^{+}$ of associated sheaves is injective.
@@ -132,6 +137,7 @@
 	\end{enumerate}
 \end{sol}
 
+%5
 \begin{ex}
 	Show that a morphism of sheaves is an isomphism if and only if it is both injective and surjective.
 \end{ex}
@@ -140,6 +146,7 @@
 	We know from Proposition $1.1$ that a morphism of sheaves $\varphi$ is an isomorphism $\iff$ the induced morphism on every stalk $\varphi_P$ is an isomorphism. But the induced morphisms on stalks are morphisms of abelian groups, so they're isomorphisms if and only if they're surjective and injective. Now using Exercise 1.2 b) this is equivalent to $\varphi$ being surjective and injective.
 \end{sol}
 
+%6
 \begin{ex}
 	\begin{enumerate}[label=\alph*)]
 		\item Let $\sF'$ be a subsheaf of a sheaf $\sF$. Show that the natural map of $\sF$ to the quotient sheaf $\sF / \sF'$ is surjective, and has kernel $\sF'$. Thus there is an exact sequence
@@ -164,6 +171,7 @@
 	\end{enumerate}
 \end{sol}
 
+%7
 \begin{ex}
 	Let $\varphi: \sF \to \sG$ be a morphism of sheaves.
 	\begin{enumerate}[label=\alph*)]
@@ -180,6 +188,7 @@
 	\end{enumerate}
 \end{sol}
 
+%8
 \begin{ex}
 	For any open subset $U \subseteq X$ show that the functor $\Gamma(U,·)$ from sheaves on $X$ to abelian groups is a left exact functor, i.e. if $0 \to \sF' \to \sF \to \sF''$ is an exact sequence of sheaves, then $0 \to \Gamma(U,\sF') \to \Gamma(U, \sF) \to \Gamma(U, \sF'')$ is an exact sequence of groups. The functor $\Gamma(U,·)$ need not be exact; see (Ex. 1.21) below.
 \end{ex}
@@ -190,6 +199,7 @@
 	Let $y \in \ima \varphi(U) \imp y = \varphi(U)(x)$. Then its image on the stalk $\overline{(U,y)} = \overline{(U, \varphi(U)(x))} = \varphi_P(\overline{(U,x)}) \in \ima (\varphi_P) = \ker (\varphi_P)$. That means that $\exists W_P \subseteq U$ neighbourhood of $P$ such that $\psi(W_P)(y|_{W_P}) = \psi(U)(y)|_{W_P} = 0 \imp y|_{W_P} \in \ker \psi(W_P)$. The sets $\{W_P\}$ are an open covering of $U$, and $(y|_{W_P})|_{W_P \cap W_Q} = (y|_{W_P \cap W_Q}) = (y|_{W_Q})|_{W_P \cap W_Q}$. So as $\ker \psi$ is a sheaf, $\exists y' \in \ker \psi(U)$ such that $y'|_{W_P} = y|_{W_P}$. As $\sF$ is a sheaf, applying property (3) to $y-y'$ we get that $y = y'$ and therefore $y \in \ker \psi(U)$. This proves $\ima \varphi(U) \subseteq \ker \psi(U)$. Reciprocally, let $y \in \ker \psi(U)$. The same argument on the stalks we did before proves that $\overline{(U,y)} \in \ima (\varphi_P) \imp \exists W_P \subseteq U$ and $x_{W_P} \in \sF'(W_P)$ such that $y|_{W_P} = \varphi(W)(x_{W_P})$. As $\varphi(W_P \cap W_Q)$ is injective, and sends $x_{W_P}|_{W_P \cap W_Q}$ and $x_{W_P}|_{W_P \cap W_Q}$ to the same element $y|_{W_P \cap W_Q}$, they must be equal, and therefore $\exists x \in \sF'(U)$ such that $x|_{W_P} = x_{W_P} \, \, \forall P$. By property (3) of sheaf $\sF$ applied to $\varphi(x)-y$ we get that $y = \varphi(x)$ and therefore $\ima \varphi(U) \supseteq \ker \psi(U)$.
 \end{sol}
 
+%9
 \begin{ex}
 	Direct Sum. Let $\sF$ and $\sG$ be sheaves on $X$. Show that the presheaf $U \mapsto \sF(U) \oplus \sG(U)$ is a sheaf. It is called the direct sum of $\sF$ and $\sG$ and is denoted by $\sF \oplus \sG$. Show that it plays the role of direct sum and of direct product in the category of sheaves of abelian groups on X.
 \end{ex}
@@ -209,6 +219,7 @@
 	\textbf{Direct sum:} The element $\sF_1 \oplus \sF_2$ is the categorical direct sum of $\sF_1$ and $\sF_2$ if there exist morphisms $i_j: \sF_j \sF_1 \oplus \sF_2$ such that $\forall$ shief $\sG$ and morphisms $f_i \sF_i \to \sG$, $\exists ! f: \sF_1 \oplus \sF_2 \to \sG$ such that $f \circ i_j = f_j$. Indeed, let's define $i_1(U)(x) = (x,0)$ and $i_2(U)(x) = (0,x)$. Then, we define $f(U): \sF_1(U) \oplus \sF_2(U) \to \sG$ such that $f(U)(x,y) = f_1(x) + f_2(y)$. It's clear that $f \circ i_j = f_j$. In addition, suppose that $\exists f'$ satisfying this property. Then, $f'(U)(x,0) = f_1(U)(x)$, $f'(U)(0,y) = f_2(U)(x)$ and therefore $f'(U)(x,y) = f'(U)(x,0) + f'(U)(0,y) = f_1(U)(x) + f_2(U)(y)$, which proves the uniqueness of $f$.
 \end{sol}
 
+%10
 \begin{ex}
 	Direct Limit. Let $\{\sF_i\}$ be a direct system of sheaves and morphisms on $X$. We define the direct limit of the system $\{\sF_i\}$, denoted $\varinjlim \sF_i$ to be the sheaf associated to the presheaf $U \mapsto \varinjlim \sF_i(U)$. Show that this is a direct limit in the category of sheaves on $X$, i.e., that it has the following universal property: given a sheaf $\sG$ and a collection of morphisms $\sF_i \to \sG$ compatible with the maps of the direct syst, there exists a unique map $\varinjlim \sF_i \to \sG$ such that for each i, the original map $\sF_i \to \sG$ is obtained by composing the maps $\sF_i \to \varinjlim \sF_i \sG$.
 \end{ex}
@@ -227,6 +238,7 @@
 	Let $\varphi_i: \sF_i \to \sG$ morphisms of sheaves compatible with the maps of the direct system. Then, we define the morphism of presheaves $\varphi$ by $\varphi(U): \varinjlim \sF_i(U) \to \sG$ that sends the class of an element $s \in \sF_i$, $\overline{s} \in \varinjlim \sF_i(U) \mapsto \varphi_i(U)(s) \in \sG(U)$. This application is well defined as the morphisms of sheaves $\varphi_i$ are compatible with the morphisms of the direct system. It is clearly unique satisfying the required property (it must send the class of an element s to its image by the initial morphism $\varphi_i$). Then, by proposition 1.2 the induced map $\varphi^{+}: \varinjlim \sF \to \sG$ in unique and satisfies the requirements of the problem.
 \end{sol}
 
+%11
 \begin{ex}
 	Let $\{\sF_i\}$ be a direct system of sheaves on a noetherian topological space $X$. In this case show that the presheaf $U \mapsto \varinjlim \sF_i(U)$ is already a sheaf. In particuar $\Gamma(X, \varinjlim \sF_i) = \varinjlim \Gamma(X,\sF_i)$.
 \end{ex}
@@ -245,6 +257,7 @@
 	Then, as this is already a sheaf $\varinjlim \Gamma(U, \sF_i) = \varinjlim \sF_i(U) = \Gamma(U, \varinjlim \sF_i)$, and the equality is true in particular when we take $U = X$.
 \end{sol}
 
+%12
 \begin{ex}
 	Inverse limit. Let $\{\sF_i\}$ be a direct system of sheaves on $X$. Show that the presheaf $U \mapsto \varprojlim \sF_i (U)$ is a sheaf. It is called the inverse limit of the system $\{\sF_i\}$, and it is denoted by $\varprojlim \sF_i$. Show that it has the universal property of an inverse limit in the category of sheaves.
 \end{ex}
@@ -261,12 +274,19 @@
 \end{sol}
 
 \begin{ex}
-
+	Espace Étalé of a Presheaf. Given a presheaf $\sF$ on $X$, we define a topological space $\text{Spé}(\sF)$, called the espace étalé of $\sF$ as follows. As a set, $\spe(\sF) = \bigcup_{P \in X} \sF_P$. We define a projection map $\pi: \spe(\sF) \to X$ by sending $s \in \sF_P$ to $P$. For each open set $U \subseteq X$ and each section $s \in \sF(U)$, we obtain a map $\overline{s}: U \to \spe(\sF)$ by sending $P \mapsto s_P$. This map has the property that $\pi \circ \overline{s} = id_U$, in other words, it is a section of $\pi$ over $U$. We now make $\spe(\sF)$ into a topological space by giving it the strongest topology such that all the maps $\overline{s}: U \to \spe(\sF)$ for all $U$, and all $s \in \sF(U)$ are continuous. Now show that the sheaf $\sF^+$ associated to $\sF$ can be described as follows: for any open set $U \subseteq X, \, \sF^+(U)$ is the set of continuous sections of $\spe(\sF)$ over $U$. In particular the original presheaf $\sF$ was a sheaf if and only if $\sF(U)$ is equal to the set of all continuous sectiobs of $\spe(\sF)$ over $U$.
 \end{ex}
 
 \begin{sol}
-	%With the topology defined on $Spé(\sF)$, the sets $\{t_Q\}_{Q \in V}$ (where $V$ is an open set of $X$) are open, as given a map $\overline{s}: U \to Spé(\sF)$, $\overline{s}^{-1}(\{t_Q\}_{Q \in V}) = U \cap V$ if $s = t$
-	%Let $s$ be a continuous section of $\pi$, that is $\pi \circ s = id_U$. That implies that $s(P) \in \sF(P)$, so $s$ satisfies condition (1) of the definition of associated sheaf. 
+	Let $s \in \sF^{+}(U)$, that is, an application $s: U \to \bigcup_{P \in U} \sF_P \subseteq \spe(\sF)$ satisfying (1) and (2) of the definition 1.2. Let's check that it is continuous when regarded as an application from $U$ to $\spe(\sF)$. First by Property (1), $s(P) \in \sF_P$, which implies that $\pi \circ s = id_U$, so $s$ is a section. Now let $V$ be an open subset of $\spe(\sF)$. Then $s^{-1}(V) = \{P \in U \text{ such that } s(P) \in V\}$. But by property (2), for each $P \in U \exists W_P \subseteq U$ and $t^{W_P} \in \sF(W_P)$ such that $s(P) = (t^{W_P})_P$. Then, $s^{-1}(V) = \bigcup_{P \in U} \{Q \in W_P \text{ such that } (t^{W_P})_P \in V\}  = \bigcup_{P \in U} (\overline{t^{W_P}})^{-1}(V)$, where $\overline{t^{W_P}})^{-1}: W_P \to \spe(\sF)$ is the application that sends $P \mapsto (t^{W_P})_P$, and therefore is continuous by the definition of the topology in $\spe(\sF)$. So $(\overline{t^{W_P}})^{-1}(V)$ is an open set and therefore $s^{-1}(V)$ is open, which means that $s$ is continuous.
+
+	Before proving the reverse inclusion, let's observe that with the topology defined on $\spe(\sF)$, the sets $\{t_Q\}_{Q \in V}$ (where $V$ is an open set of $X$) are open, as given a map $\overline{s}: U \to \spe(\sF)$, $\overline{s}^{-1}(\{t_Q\}_{Q \in V}) = \{P \in U \text{ such that } \overline{s}(P) = t_P \} = \{P \in V \cap U \text{ such that } s_P = t_P\}$. But we know that $s_P = t_P \iff \exists W_P \subseteq U \cap V$ neighbourhood of $P$ such that $s|_{W_P} = t|_{W_P}$. Then
+	\[
+		\overline{s}^{-1}(\{t_Q\}_{Q \in V}) = \bigcup_{P \in \overline{s}^{-1}(\{t_Q\}_{Q \in V})} W_P
+	\]
+	Which is open, so the sets $\{t_Q\}_{Q \in V}$ are open in $\spe(\sF)$.
+
+	Now let $s: U \to \spe(\sF)$ be a continuous section. $\pi \circ s = id_U$, which means that $s(P) \in \sF_P$ and therefore property (1) is satisfied. Let's observe that  So given any $P \in U$, we have $s(P) = t_P$ for a certain $t \in \sF(V)$, $V \subseteq U$ and therefore we have $s^{-1}(\{t_Q\}_{Q \in U})$ is an open set ($W_P$) such $s(Q) = t_Q \, \, \forall Q \in W_P$. Therefore $s$ satisfies property (2) and we have shown that each continuous section is an element of $\sF^+(U)$.
 \end{sol}
 
 \begin{ex}
@@ -464,10 +484,11 @@
 
 		\item For each open set $U$, let $\varphi(U): \locO(U) \to K$ mapping $f \mapsto \overline{(U,f)}$. This application is injective by remark 3.1.1 of Chapter I (if two regular functions are equal in an open set $V \subseteq U$ then they're equal in $U$). Then, by Exercise 1.4a) the induced morphism of sheaves $\varphi: \locO \to \mathcalboondox{K}$ is injective. Now let's define an application $\psi(U): K \to \sum_{P \in X} i_P(I_P)(U)$. We will index each coordinate of $\sum_{P \in X} i_P(I_P)(U)$ with the corresponding point $P$. Then, we define the coordinate of point $P$ to be 0 if $P \notin U$ or $\overline{f} \in K/\locO_P$ if $P \in U$. Then, it's clear that $\ker \psi(U) = \{f \in K \text{ such that } f \in \locO_P \forall P \in U\} = \locO_X(U)= \ima \varphi(U)$. Now we have to check that $\psi$ is surjective. Let $s \in \sum_{P \in X} i_P(I_P) (U)$. Then, the coordinates of all points must be zero except for a finite number of them, let $P_1, \dots, P_n$ be the indices of these coordinates. As points are closed sets in the Zariski topology, then $W_i = X \ \{P_1, \dots, P_{i-1}, P_{i+1}, \dots, P_n \}$ are open sets. Then, $s|_{W_i \cap U}$ is zero in all coordinates except in $P_i$. Now, as the application $K \to K/\locO_{P_i}$ is surjective $\exists f_i \in K$ such that $\psi(W_i \cap U)(f_i) = s|_{U \cap W_i}$. Now $W_i \cap U$ are an open cover of $U$ and therefore the application on the stalks is surjective and in consequence $\psi: \mathcalboondox{K} \to \sum_{P \in X} i_P(I_P)$ is surjective. Finally, we have proven that we have an exact sequence 
 		\[
-			0 \to \locO \to \mathcalboondox{K} \to \sum{P \in X}i_P(I_P) \to 0
+			0 \to \locO \to \mathcalboondox{K} \to \sum_{P \in X}i_P(I_P) \to 0
 		\]
 		And using now exercise 1.6 we have an isomorphism $\mathcalboondox{K}/\locO \cong \sum_{P \in X}i_P(I_P)$.
 
+		\item By Exercise 1.8 we only need to prove that $\Gamma(X, \mathcalboondox{K}) \to \Gamma(X, \mathcalboondox{K}/\locO)$ is surjective. $\Gamma(X, \mathcalboondox{K})$ are aplications $s: X \to \bigcup_{P \in X} K(X)$ such that $\forall P \exists U$ neighbourhood of $P$ such that $s(Q) = f$ $\forall Q \in U$. Similarly, $\Gamma(X, \mathcalboondox{K}/\locO)$ are aplications $s: X \to \bigcup_{P \in X} K(X)/\locO_P$ such that $\forall P \in X, \, \exists U$ neighbourhood of $P$ and $t \in K(X)/\locO(U)$ such that $s(Q) = t_Q$ $\forall Q \in U$. Then, the application $\Gamma(X, \mathcalboondox{K}) \to \Gamma(X, \mathcalboondox{K}/\locO)$ is surjective, because $\pi: K(X) \to K(X)/\locO(U)$ is surjective for every $U$, and then from an application $s: X \to \bigcup_{P \in X} K(X)/\locO_P$, we choose at each open set, a $f \in K(X)$ such that $\pi(f) = t$.
 	\end{enumerate}
 \end{sol}
 
