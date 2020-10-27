@@ -1,0 +1,125 @@
+\section{Schemes}
+
+\begin{ex}
+	Let $A$ be a ring, let $X = \Spec A$, let $f \in A$ and let $D(f) \subseteq X$ be the open complement of $V((f))$. Show that the locally ringed space $(D(f), \locO_X|_{D(f)})$ is isomorphic to $\Spec A_f$.
+\end{ex}
+
+\begin{sol}
+	We have to build an isomorphism of locally ringed spaces between $\Spec(A_f)$ and $(D(f), \locO_X|_{D(f)})$. Let $S = \{f^n\}_{n \geq 0}$, so $A_f = S^{-1}A$. Then, we know that there is a bijective correspondence between prime ideals of $A_f$ and prime ideals of $A$ that don't cut $S$, which in this case is equivalent to ideals of $A$ that don't contain $f$ (as $f^n \in \ip \iff f \in \ip$) (Atiyah-MacDonald, Proposition 3.11).
+
+	We have a morphism of rings $\varphi: A \to A_{f}$ that maps $a \mapsto a/1$. It induces an application $f: \Spec (A_f) \to D(f)$, $f(\ip) =  \varphi^{-1}(\ip)$ which is bijective and whose inverse is $f^{-1}: D(f) \to \Spec(A_f)$, and $f^{-1}(\ip) = S^{-1}\ip$. $f$ is continuous (as it was seen at Proposition 2.3). As every ideal in $A_f$ is of the form $S^{-1}\ia$ for a certain $\ia$ ideal of $A$ (also a result in Proposition 3.11 of Atiyah-MacDonald), then the closed sets of $\Spec(A_f)$ are of the form $V(S^{-1}\ia) = \{S^{-1}\ip, \text{ with } \ip \text{ prime ideals of A such that} f \notin \ip, \, \ip \supseteq \ia\}$. Then $(f^{-1})^{-1}(V(S^{-1}\ia)) = V(\ia) \cap D(f)$, which is a closed subset of $D(f)$. In conclusion, $f^{-1}$ is also continuous and so $f$ is an homeomorphism.
+
+	Now we need to build an isomorphism of sheaves $f^{\#}: \locO_X|_{D(f)} \to f_* \locO_{Spec(A)}$. Let $f^{\#}(V): \locO_X|_{D(f)}(V) \to f_* \locO_{Spec(A)}(V)$ map the section $\locO_X|_{D(f)}(V) \ni s : V \to \bigcup_{\ip \in V} A_\ip$ to the section $s': \locO_{\Spec{A_f}}(f^{-1}(V))$ that maps a prime ideal $S^{-1}\ip$ to $s'(S^{-1}\ip) = \frac{a/1}{g/1} \in (S^{-1}A)_{S^{-1}\ip}$ if $s(\ip) = a/g \in A_{\ip}$. To check that this is an isomorphism it's enough to check that the induced application on stalks is an isomorphism (By Exercise 1.2). But we already know by Proposition 2.2 that the stalk at point $\ip$ of $\locO_{\Spec(A)}$ is $A_{\ip}$ and the stalk at point $S^{-1}\ip$ of $\locO_{\Spec(A_f)}$ is $(S^{-1}A)_{S^{-1}\ip}$. 
+
+	Then, it is enough to check that $\phi: A_{\ip} \to (S^{-1}A)_{S^{-1}\ip}$ such that $\phi(\frac{a}{g}) = \frac{a/1}{g/1}$ is an isomorphism of rings.
+	\begin{itemize}
+		\item \textbf{Surjectivity:} Let $\frac{a/f^n}{g/f^m} \in (S^{-1}A)_{S^{-1}\ip}$. Then if $n \geq m$ we have that 
+		\[
+			\phi \left (\frac{a}{gf^{n-m}} \right ) = \frac{a/1}{gf^(n-m)/1} = \frac{af^n/f^n}{gf^n/f^m} = \frac{a/f^n}{g/f^m} 
+		\]
+		because $(af^n/f^n) (g/f^m) - (a/f^n) (gf^n/f^m) = 0$.
+
+		Similarly, if $m \geq n$ and then 
+		\[
+			\phi \left (\frac{a f^{m-n}}{g} \right ) = \frac{af^{m-n}/1}{g/1} = \frac{af^m/f^n}{gf^m/f^m} = \frac{a/f^n}{g/f^m} 
+		\]
+		because $(af^m/f^n) (g/f^m) - (a/f^n) (gf^m/f^m) = 0$.
+
+		\item \textbf{Injectivity:} $\frac{a/1}{g/1} = 0 \iff \exists h/f^k \in S^{-1}A$ such that $(h/f^k)(a/1) = 0 \iff ha = 0 \iff \frac{a}{g} = 0$ 
+	\end{itemize}
+
+	So we have only left to check that we have indeed a local homeomorphism. Again, it will be enough to check that $\phi^{-1}(V)(S^{-1}\ip (S^{-1}A)_{S^{-1}\ip}) = \ip A_{\ip}$. But this is clear as $\frac{a/1}{g/1} \in S^{-1}(\ip)(S^{-1}(A))_{S^{-1}\ip} \iff a/1 \in S^{-1}\ip \iff a \in \ip \iff a/g \in \ip A_{\ip}$. With all these results we have finally that $(D(f), \locO_X|_{D(f)}) \cong \Spec(A_f)$
+\end{sol}
+
+\begin{ex}
+	Let $(X, \locO_X)$ be a scheme, and let $U \subseteq X$ be any open subset. Show that $(U, \locO_X|_U)$ is a scheme. We call this the induced scheme structure on the open set $U$, and we refer to $(U, \locO_X|_U)$ as an open subscheme of $X$.
+\end{ex}
+
+\begin{sol}
+	\textbf{Observation:} Let's observe that if we have an isomorphism of ringed spaces, the restriction to open sets is still an isomorphism. That is, if $(X, \locO_X) \cong (Y, \locO_Y)$ via the isomorphism of locally ringed spaces $(f, f^{\#})$, then given $U$ any open set of $X$, $(U, \locO_X|_U) \cong (U, \locO_Y|_{f(U)})$. It is clear that the restriction of the homeomorphism $f$ to $U$, $f|_U: U \to f(U)$ is still an homeomorphism. In addition, the stalks at $P \in U$ are still the same, and so are the induced morphisms on stalks $f^{\#}_P$, so they're isomorphisms and local and therefore the morphism of sheaves $f^{\#}|_U$ is an is a local isomorphism, and so we have indeed that $(U, \locO_X|_U) \cong (U, \locO_Y|_{f(U)})$.
+
+	Let $P \in U$. As $(X, \locO_X)$ is a scheme, then $\exists V$ an open neighbourhood of $P$ such that $(V,\locO_X|_V) \cong (\Spec (A), \locO_{\Spec(A)})$ for a certain ring $A$. Let $(f, f^{\#})$ denote this isomorphism of locally ringed spaces. As $U \cap V$ is an open set of $V$, then $f(U \cap V)$ is an open set of $\Spec(A)$, so $f(U \cap V) = \bigcup_{i \in I} D(f_i)$, so in particular $f(P) \in D(f_i)$ for a certain $i$. Then, $P \in f^{-1}(D(f)) \subseteq V \cap U \subset U$, so taking into account the observation we have that $(f^{-1}(D(f)), \locO_X|_{f^{-1}(D(f))}) \cong (D(f), \locO_{\Spec(A)}|_{D(f)})$. Finally, using Exercise 2.1 we have the isomorphism $(D(f), \locO_{\Spec(A)}|_{D(f)}) \cong \Spec(A_f)$. So in conclusion for each $P \in U$ there is an open neighbourhood of $P$ which is isomorphic as a locally ringed space to the spectrum of a ring, that is, $(U, \locO_X|_U)$ is a scheme.
+\end{sol}
+
+\begin{ex}
+	Reduced Schemes. A scheme $(X, \locO_X)$ is reduced if for every open set $U \subseteq X$ the ring $\locO_X(U)$ has no niloptent elements.
+	\begin{enumerate}[label=\alph*)]
+		\item Show that $(X, \locO_X)$ is reduced if and only if for every $P \in X$ the local ring $\locO_{X,P}$ has no nilpotent elements.
+		\item Let $(X, \locO_X)$ be a scheme. Let $(\locO_X)_red$ be the sheaf associated to the presheaf $U \mapsto \locO_X(U)_{red}$ where for any ring $A$, we denote $A_{red}$ the quotient of $A$ by its ideal of nilpotent elements. Show that $(X, (\locO_X)_{red})$ is a scheme. We call it the reduced scheme associated to $X$ and we denote it by $X_{red}$. Show that there is a morphism of schemes $X_{red} \to X$ which is an homeomorphism on the underlying topological spaces. 
+		\item Let $f: X \to Y$ be a morphism of schemes, and assume that $X$ is reduced. Show that there is a unique morphism $g: X \to Y_{red}$ such that $f$ is obtained by composing $g$ with the natural map $Y_{red} \to Y$.
+	\end{enumerate}
+\end{ex}
+
+\begin{sol}
+	\begin{enumerate}[label=\alph*)]
+		\item \boxed{\Rightarrow} Suppose that $0 \neq \overline{(U,f)} \in \locO_{X,P}$ is a nilpotent element. This implies that $\exists n$ such that $\overline({U, f^n}) = \overline{(U,f)}^n = 0$, that is, $\exists W \subseteq U$ such that $f^n|_{W} = 0$ But restriction morphisms are ring morphisms so $(f|_{W})^n = 0$. Moreover, $f|_W$ is not zero, because that would imply that $\overline{(U,f)} = 0$. So in conclusion $f|_W \in \locO_X(W)$ is nilpotent which is a contradiction.
+
+		\boxed{\Leftarrow} Now suppose that $\locO_X(U)$ has niloptent elements for a certain $U$. That means that $\exists f \neq 0 \in \locO_X(U), \, \exists n \geq 1$ such that $f^n = 0$. Now $\exists P \in U$ such that $\overline{(U,f)} \in \locO_{X,P}$ is not zero, as otherwise we would have an open covering of $U$, $\{W_Q\}_{Q \in U}$ such that $f|_{W_Q} = 0$, which would imply $f = 0$. Then, we have $0 \neq \overline{(U,f)}$, but $0 = \overline{(U, f^n)} = \overline{(U,f)}^n$, so $\locO_{X,P}$ has nilpotent elements, which is a contradiction.
+
+		\item First let's make some observations that will be useful later. 
+
+		\textbf{Obs 1:} Given a morphism of rings $\varphi: A \to B$, it induces a morphism between the reduced rings $\varphi_{red}:A_{red} \to B_{red}$, defined by $\varphi_{red}(\overline{a}) = \overline{\varphi(a)}$. The application is well defined, as the image of a nilpotent element is also nilpotent (let $f \neq 0, n \geq 0$ such that $f^n = 0$; then $(\varphi(f))^n = \varphi(f^n) = 0$). Moreover if $\varphi$ is injective $\varphi_{red}$ is also injective: Indeed, $\varphi_{red}(\overline{f}) = 0 \imp \overline{\varphi(f)} = 0 \imp \exists n$ such that $\varphi(f^n) = (\varphi(f))^n = 0$, and, by injectivity of $\varphi$, $f^n = 0 \imp \overline{f} = 0$. Finally, if $\varphi$ is surjective, $\varphi_{red}$ is also surjective: Given any $\overline{b} \in B_{red}$, $\exists a \in A$ such that $\varphi(a) = b$ so $\varphi_{red}(\overline{a}) = \overline{b}$.
+
+		\textbf{Obs 2:} We will prove that $((\locO_{X})_{red})_P = (\locO_{X,P})_{red}$. Indeed, both sets are pairs of elements $(U,f)$ under a certain equivalence relation. Two pairs $(U,f)$ and $(V,g)$ are equal on $((\locO_{X})_{red})_P$ if and only if $\exists W \subseteq U \cap V$ such that $\overline{f}|_W = \overline{g}|_W \iff \overline{f|_W} = \overline{g|_W} \iff f|_W = g|_W + r$ with $r$ a nilpotent element of $\locO_X(W)$. Replacing $W$ by a smaller neighbourhood if necessary, this happens if and only if the element $(W,r) \in \locO_{X,P}$ is nilpotent, so if and only if the elements $(U,f)$ and $(V,g)$ are related in $(\locO_{X,P})_{red}$.
+
+		\textbf{Obs 3:} Let's prove that $(\Spec(A), (\locO_{\Spec(A)})_{red}) \cong (\Spec(A_{red}), \locO_{\Spec(A_{red})})$. First note that the natural application $A \to A_{red}$ induces an application $f: \Spec(A_{red}) \to \Spec(A)$, which is an homeomorphism (Atiyah-Macdonald, Exercise 1.21 iv.). Now for each open set $U$, $(\locO_{\Spec(A)}(U))_{red}$ is the ring consisting on the applications $s: U \to \bigcup_{\ip \in U} A_{\ip}$ such that $\exists U' \subseteq U$ and $a,f \in A$, $f \notin \iq, \, \, \forall \iq \in U'$ such that $s(\iq) = a/f \in \iq$, for every $\iq \in U'$, module the equivalence relation that two applications are equal if their difference is a nilpotent application (the image of each $\ip$ is nilpotent in $A_{\ip}$). Then $(\locO_{\Spec(A)})_{red}(U)$ is the ring of applications $\phi: U \to \bigcup_{P \in U} ((\locO_{\Spec(A)})_{red})_P$ such that $\forall P \in U$ exists $U' \subseteq U$ neighbourhood of $P$ and $s \in \locO_{\Spec(A)}(U')_{red}$ such that $\forall \iq \in U' \phi(\iq) = s_{\iq}$. Now by Observation 2 we can identify the stalk $((\locO_{\Spec(A)})_{red})_P$ with $(A_{\ip})_{red}$. Therefore, this induces a morphism of sheaves $f^{\#}: (\locO_{\Spec(A)})_{red} \to \locO_{\Spec(A_{red})}$ by the natural local isomorphism $(A_{\ip})_{red} \cong (A_{red})_{\overline{\ip}}$. As these are the stalks and they're isomorphic, then $(f,f^{\#})$ is in fact an isomorphism of locally ringed spaces, so in conclusion 
+		\[
+			(\Spec(A), (\locO_{\Spec(A)})_{red}) \cong (\Spec(A_{red}), \locO_{\Spec(A_{red})})
+		\]
+
+		Now let's proceed to prove that $(X,(\locO_X)_{red})$ is a scheme. Ldt $P \in X$. As $(X, \locO_X)$ is a scheme, then $\exists V$ a neighbourhood of $P$ such that $(V, \locO_X|_{V}) \cong (\Spec(A), \locO_{\Spec(A)})$, so we have an isomorphism of locally ringed spaces $f: \Spec(A) \to V$, $f^{\#}: \locO_X|_V \to f_* \locO_{\Spec(A)}$. As a morphism of sheaves, $f^{\#}$ induces a morphism of rings on every open set: $f^{\#}(W): \locO_X|_V (W) \to f_* \locO_{Spec(A)}(W)$. By Obs 1, we can induce morphisms $f^{\#}(W)_{red}: \locO_X|_V (W)_{red} \to f_* \locO_{\Spec(A)}(W)_{red}$, which are injective by Observation 1. In turn, this induces a morphism on the associated sheaves: $f^{\#}_{red}: (\locO_X|_V)_{red} \to (f_* \locO_{Spec(A)})_{red}$, which is injective by Exercise 1.4a. Let's check that it is also surjective. Indeed, given $\overline{x} \in f_* \locO_{\Spec(A)}(W)$ we know that $\exists \{W_i\}$ open cover of $W$, and $x_i \in \locO_X|_V (W)$ such that $f^{\#}(W_i)(x_i) = x|_{W_i}$. Then, again using observation 1, $f^{\#}_{red}(W_i)(\overline{x_i}) = \overline{x|_{W_i}} = \overline{x}|_{W_i}$, and so $f^{\#}_{red}$ is surjective. Moreover, using observation 2, the induced applications on stalks are in fact the reductions of the applications on stalks, that is $(f^{\#}_{red})_P = (f^{\#}_P)_{red}$ so they're local morphisms because $f^{\#}_P$ are local morphisms and the reduction preserves the correspondence between ideals. Finally let's observe that $(f_* \locO_{\Spec(A)})_{red} = f_*(\locO_{\Spec(A)})_{red}$ and $(\locO_X|_V)_{red} = (\locO_X)_{red}|_{V}$, (it's just a matter of checking that the corresponding rings on any open set are equal). So we have proven that we have a morphism of sheaves $(V,(\locO_X)_{red}|_V) \cong (\Spec(A), (\locO_{\Spec(A)})_{red})$ and using observation 3 and composing morphisms, we have finally 
+		\[
+			(V,(\locO_X)_{red}|_V) \cong (\Spec(A_{red}), \locO_{\Spec(A_{red})})
+		\]
+
+		Indeed, we have proven that every point $P$ has an open neighbourhood that is isomorphic to the spectra of a certain ring, i.e. $(X, (\locO_X)_{red})$ is a scheme.
+
+		Now let's build a mosphim of schemes between $X_{red}$ and $X$. That is, let $f: X \to X$ be the identity application, which is an homeomorphism. Now let $f^{\#}(U): \locO_X(U) \to (\locO_X)_{red}(U)$ be the application that maps $x \in \locO_X(U)$ to the constant application $s: U \to ((\locO_X)_{red})_P$, $s(P) = \overline{x}_P$, where $\overline{x}$ is the image of $x$ in $(\locO_X(U))_{red}$. This induces a morphism of sheaves $f^{\#}: \locO_X \to (\locO_X)_{red}$, with induced applications on stalks $f^{\#}_P: (\locO_X)_P \to ((\locO_X)_{red})_P$. $f^{\#}_P$ maps an element to its reduction modulo the nilpotent element of the stalk (we are using the definition of the morphism $f^{\#}$ and observation 2 to identify $((\locO_X)_{red})_P$ and $(\locO_{X,P})_{red}$), and therefore its a local morphism of rings. Then $(f,f^{\#})$ is a morphism of locally ringed spaces, with $f$ homeomorphism, as desired.
+
+		\item 
+	\end{enumerate}
+\end{sol}
+
+\begin{ex}
+	Let $A$ be a ring and let $(X, \locO_X)$ be a scheme. Given a morphism $F: X \to \Spec(A)$, we have an associated map on sheaves $f^{\#}: \locO_{\Spec(A)} \to f_* \locO_X$. Taking global sections we obtain a homomorphism $A \to \Gamma(X,\locO_X)$. Thus there is a natural map
+	\[
+		\alpha: \Hom_{\mathfrak{Sch}}(X, \Spec(A)) \to \Hom_{\mathfrak{Rings}}(A,\Gamma(X, \locO_X))
+	\]
+	Show that $\alpha$ is bijective (cf. (I, 3.5) for an analogous statement about varieties).
+\end{ex}
+
+\begin{sol}
+	We will define an map $\beta: \Hom_{\mathfrak{Rings}}(A,\Gamma(X, \locO_X)) \to \Hom_{\mathfrak{Sch}}(X, \Spec(A))$. Given $\varphi: A \to \Gamma(X, \locO_X)$ morphism of rings, composing with the maps $\pi_P: \Gamma(X,\locO_X) \to \locO_{X,P}$, $x \mapsto \overline{(X,x)}$ we obtain morphisms of rings $\varphi_P: A \to \locO_{X,P}$ for each $P \in X$.
+
+	As $(X, \locO_X)$ is a scheme, then it is in particular a locally ringed space, so $\locO_{X,P}$ is a local ring for all $P$. Let $\im_P$ be the maximal ideal of $\locO_{X,P}$. Then, we can define an application $f: X \to \Spec(A)$ as $f(P) = \varphi_P^{-1}(\im_P)$. The application is clearly well defined, as the antiimage of a prime ideal is prime. Now we will check that it is a continuous application. It is enough to prove that the antiimage of a basic open subset is open. So let $h \in A, D(h)$ the set of prime ideals of $A$ that don't contain $h$. Then, $f^{-1}(D(h)) = \{P \in X \text{ such that } h \notin \varphi_P^{-1}(\im_P)\}$. But $h \notin \varphi_P^{-1}(\im_P) \iff \varphi_P(h) \notin \im_P \iff \overline{(X,\varphi(h))}$ is a unit in $\locO_{X,P}$ $\iff \exists U_P$ neighbourhood of $P$ and $k \in \Gamma(U_P, \locO_X)$ such that $\varphi(h)|_{U_P} k = 1$. Then, $\varphi(h)_Q \in \locO_{X,Q}$ is a unit $\forall Q \in U_P \imp h \notin \varphi_Q(\im_Q) \, \, \forall Q \in U_P$. That means that $f^{-1}(D(h)) = \bigcup_{P \in f^{-1}(D(h))} U_P$ is an open set, and therefore $f$ is continuous.
+
+	Note that the applications $\varphi_P$ can induce naturally applications $\varphi'_P: A_{\varphi^{-1}_P(\im_P)} \to \locO_{X,P}$ mapping $\frac{a_1}{a_2} \mapsto \frac{\varphi_P(a_1)}{\varphi_P(a_2)}$. These are well defined local ring morphisms. Now let's define a morphism of sheaves $f^{\#}$ between $\locO_{\Spec(A)}$ and $f_*\locO_X$ as follows: Given $s \in \locO_{\Spec(A)}(U)$, $s: U \to \bigcup_{\ip \in U} A_{\ip}$, the composition $\varphi_P' \circ s \circ f: f^{-1}(U) \to \bigcup_{P \in f^{-1}(U)} \locO_{X,P}$ is an element of $\Gamma(f^{-1}(U),\locO_X)$. Moreover, the induced morphisms on stalks are just the applications $\varphi_P'$, which we already know that are local morphisms. In conclusion, we have defined a morphism of schemes 
+	\[
+		\beta(\varphi) = (f, f^{\#}): (X,\locO_X) \to (\Spec(A), \locO_{\Spec(A)})
+	\]
+
+	Now let $(f, f^{\#}):= \beta(\varphi)$. Taking global sections of $f^{\#}$ we obtain a map $\psi: \Gamma(\Spec(A), \locO_{\Spec(A)}) \to \Gamma(X, \locO_X)$. As we saw on Proposition 2.2, $\Gamma(\Spec(A), \locO_{\Spec(A)})$ is isomorphic to $A$ via the map $A \ni a \mapsto s: \Spec(A) \to \bigcup_{\ip \in \Spec{A}} A_{\ip}, s(\ip) = \frac{a}{1}$. So given an element of $A$, $f^{\#}(\Spec(A))(a)$ is the application $s: X \to \bigcup_{P \in X} \locO_{X,P}$ that maps each $P$ to $\overline(X, \varphi(a)) \in \locO_{X,P}$, which can be identified with the element $\varphi(a) \in \Gamma(X, \locO_X)$. This proves that $\alpha(\beta(\varphi)) = \varphi$, so the application $\alpha$ is surjective.
+
+	Reciprocally, let $\varphi:= \alpha((f, f^{\#}))$ a morphism of rings between $A$ and $\Gamma(X, \locO_X)$, that is, $\alpha = f^{\#}(\Spec(A))$. The morphism of schemes $f^{\#}$ induces morphisms on stalks: $f^{\#}_P: (\locO_{\Spec(A)})_{f(p)} \to \locO_{X,P}$ given by $\overline{(U,x)} \mapsto \overline{(f^{-1}(U), f^{\#}(U)(x))}$. Composing with the morphism $i_P: A \mapsto (\locO_{\Spec(A)})_{f(P)}$, $i(a) = \overline{(\Spec(A), a)}$ we obtain a morphism $f^{\#}_P \circ i: A \to \locO_{X,P}$ mapping $a \mapsto \overline{(X, \varphi(a))}$. On the other hand, we have already seen that there are morphisms $A \to \locO_{X,P}$ induced by $\varphi$, that we have named $\varphi_P = \pi_P \circ \varphi$, that are equal to $f^{\#}_P \circ i$. Therefore, we have the following commutative diagram
+	\begin{tikzcd}
+		A \arrow[r, "i"] \arrow[d, "\varphi"]
+		& A_{f(P)} \arrow[d, "f^{\#}_P"] \\
+		\Gamma(X, \locO_X) \arrow[r, "\pi_P"]
+		& \locO_{X,P}
+	\end{tikzcd}
+
+	In particular, the antiimage of the maximal ideal $\im_P$ by the two paths must be equal, so $f(p) = (f^{\#}_P \circ i)^{-1}(\im_P) = (\pi_P \circ \varphi)^{-1} = \varphi_P^{-1}(\im_P)$. This means that the application between topological spaces $\beta(\varphi)$ is the same as the original application $f$. Moreover, it is also a consequence of the commutative diagram that the morphisms induced by $\beta$ on stalks are the same as the originals, that is, $\beta(\varphi)^{\#}_P = f^{\#}_P$. Then, given an open set $U \subseteq \Spec(A)$, $x \in \Gamma(U, \locO_{\Spec(A)}$ we have that $\beta(\varphi)^{\#}(U)(x)_P = f^{\#}(U)(x)_P$ for every $P \in U$. Then, $\beta(\varphi)^{\#}(U)(x)$ and $f^{\#}(U)(x)$ agree when restricted to an open neighbourhood $W_P$ of $P$. These open neighbourhoods $\{W_P\}$ form an open cover of $U$, and by Property 3 of sheaves we have the equality in $U$. In conclusion, we have proven that $\beta(\alpha(f,f^{\#})) = (f,f^{\#})$, so $\alpha$ is injective. This completes the proof, and so we have a bijective correspondence 
+	\[
+		\alpha: \Hom_{\mathfrak{Sch}}(X, \Spec(A)) \to \Hom_{\mathfrak{Rings}}(A,\Gamma(X, \locO_X))
+	\]
+\end{sol}
+
+\begin{ex}
+	Describe $\Spec(\Z)$ and show that it is a final object for the category of schemes, i.e., each scheme $X$ admits a unique morphism to $\Spec(\Z)$.
+\end{ex}
+
+\begin{sol}
+	The prime ideals of $Z$ are $\ip = (p)$ with $p$ a prime integer, and $(0)$. All the primes of the first type are maximal ideals, so they're closed points in the ring spectrum. Moreover, every ideal contains the zero ideal, so $(0)$ is a generic point in the ring spectrum, such that its closure is the whole space.
+
+	Given any commutative ring with unity $A$, there exists a unique morphism of rings $\varphi: \Z \to A$, defined by $\varphi(n) = n 1_{A}$. In particular, given a scheme $(X, \locO_X)$, we take $A = \Gamma(X,\locO_X)$, and it exists a unique ring morphism $\Z \to \Gamma(X, \locO_X)$. So, by the bijective correspondence between ring morphisms $B \to \Gamma(X, \locO_X)$ and morphisms of schemes $X \to \Spec(B)$ proven in Exercise 2.4, there exists a unique morphism of schemes $X \to \Spec(\Z)$, so $\Spec(\Z)$ is a final object in the category of schemes.
+\end{sol}
