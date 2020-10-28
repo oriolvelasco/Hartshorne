@@ -123,3 +123,31 @@
 
 	Given any commutative ring with unity $A$, there exists a unique morphism of rings $\varphi: \Z \to A$, defined by $\varphi(n) = n 1_{A}$. In particular, given a scheme $(X, \locO_X)$, we take $A = \Gamma(X,\locO_X)$, and it exists a unique ring morphism $\Z \to \Gamma(X, \locO_X)$. So, by the bijective correspondence between ring morphisms $B \to \Gamma(X, \locO_X)$ and morphisms of schemes $X \to \Spec(B)$ proven in Exercise 2.4, there exists a unique morphism of schemes $X \to \Spec(\Z)$, so $\Spec(\Z)$ is a final object in the category of schemes.
 \end{sol}
+
+\begin{ex}
+	Describe the spectrum of the zero ring, and show that it is an initial object for the category of schemes. 
+\end{ex}
+
+\begin{sol}
+	The zero ring $R = 0$, has only one element, so the only ideal of $R$ is the whole ring and therefore it has no prime ideals. Therefore, $\Spec(R) = \varnothing$, the spectrum of the zero ring is the empty set. 
+
+	Now, given any scheme $(X,\locO_X)$ there is a unique application $\varnothing: \Spec(R) \to X$, which is the empty function, and it is continuous (the antiimage of every set is the empty set which is open). Moreover, the only open set in $\Spec(R)$ is the empty set $U = \varnothing$ so by definition of sheaf $\locO_{\Spec(R)}(U) = 0$ and so for each $U \subseteq X$ we have a unique application $\locO_X(U) \to \locO_{\Spec(R)}(f^{-1}(U)) = 0$ which is the zero application (maps every element to zero). In conclusion, we have proven that there is a unique morphism of schemes $\Spec(R) \to X$, so $\Spec(R)$ is an initial object for the category of schemes.
+\end{sol}
+
+\begin{ex}
+	Let $X$ be a scheme. For any $x \in X$, let $\locO_X$ be the local ring at $x$ and $\im_x$ its maximal ideal. We define the residual field of $x$ on $X$ to be the field $k(x) = \locO_X/\im_x$. Now let $K$ be any field. Show that to give a morphism of $\Spec K$ to $X$ is it equivalent to give a point $x \in X$ and an inclusion map $k(x) \to K$.
+\end{ex}
+
+\begin{sol}
+	Let $P \in \Spec K$ be the only point of this topological space. Given a morphism of schemes, $(f,f^{\#}): (\Spec (K), \locO_{\Spec(K)}) \to (X, \locO_X)$, $f$ is completely determined by a point $x \in X$, the image of the only point $P \in \Spec(K)$. In addition, $f^{\#}$ induces a morphism on the stalks $f^{\#}_P: \locO_{X,x} \to K$. It is a local morphism because $(f,f^{\#})$ is a morphism of locally ringed spaces, and so $\ker(f^{\#}_P) = (f^{\#}_P)^{-1}(0) = \im_x$ and therefore we can induce an injective morphism $k(x) = \locO_{X,x}/\im_x \to k$. Reciprocally, given an injection $k(x) \to K$ we can induce a unique local morphism $\locO_{X,x} \to K$ sending an element to its class in $k(x)$ and then applying $\varphi$. We will see now that any morphism $f^{\#}$ on the structure sheafs it totally determined by the induced application on the stalk at $P$. 
+
+	%Reciprocally, given $x \in X$ and $\varphi: k(x) \to k$ injective morphism, this defines a unique morphism of schemes. The application between topological spaces $g: \Spec(K) \to X$ is defined by $g(P) = x$ and it is clearly continuous as $g^{-1}(U) = \varnothing$ if $x \notin U$ or $P$ if $x \in U$, which are both open sets. Moreover, $\varphi$ induces an application $\varphi': \locO_{X,x} \to K$ sending an element to its class in $k(x)$ and the applying $\varphi$. Now let's define a morphism between the structure sheaves. Given an open set $U \subseteq X$, if $x \notin U$ then $g^{-1}(U) = \varnothing$, so the only possible application $\locO_X(U) \to \locO_{\Spec(K)}(f^{-1}(U))$ is the zero application. On the other side, if $x \in U$, we can define an $g^{\#}(U)$ that takes an application $s: U \to \bigcup_{Q \in U}\locO_{X,Q}$ and sends it to $\varphi'(s(x)) \in K = \locO_{\Spec(K)}(f^{-1}(U))$. 
+
+	Indeed, given an open set $U \subseteq X$, if $x \notin U$ then $f^{-1}(U) = \varnothing$, so the only possible application $\locO_X(U) \to \locO_{\Spec(K)}(f^{-1}(U))$ is the zero application. Now let's observe that if $x \in U,V$ and $V \subseteq U$, then the restriction morphisms from $f^{-1}(U)$ to $f^{-1}(V)$ is the identity, and therefore $f^{\#}(U)(s) = f^{\#}(U)(s)|_{f^{-1}(V)} = f^{\#}(V)(s|_V)$. Than means that two elements $s,t \in \locO_X(U)$ have the same image by $f^{\#}(U)$ if and only if they're equal in a neighbourhood of $x$. In conclusion, the image of an element $s$ by $f^{\#}(U)$ is equal to the image of its stalk at $x$ by the application $f^{\#}_P$. 
+
+	In conclusion, a morphism of schemes $(f,f^{\#}): (\Spec (K), \locO_{\Spec(K)}) \to (X, \locO_X)$ is completely determined by a point $x \in X$ and an injection $k(x) \to K$.
+\end{sol}
+
+\begin{ex}
+	Let $X$ be a scheme. For any point $x \in X$ we define the Zariski tangent space $T_X$ to $X$ at $x$ to be the dual space of the $k(x)$-vector space $\im_x/\im_x^2$. Now assume that $X$ is a scheme over a field $k$, and let $k[\epsilon]/\epsilon^2$ be the ring of dual numbers over $k$. Show that to give a $k$-morphism of $\Spec k[\epsilon]/\epsilon^2$ to $X$ is equivalent to giving a point $x \in X$ rational over k (i.e., such that $k(x) = k$), and an element of $T_x$.
+\end{ex}
