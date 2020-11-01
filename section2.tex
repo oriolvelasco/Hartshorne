@@ -151,3 +151,114 @@
 \begin{ex}
 	Let $X$ be a scheme. For any point $x \in X$ we define the Zariski tangent space $T_X$ to $X$ at $x$ to be the dual space of the $k(x)$-vector space $\im_x/\im_x^2$. Now assume that $X$ is a scheme over a field $k$, and let $k[\epsilon]/\epsilon^2$ be the ring of dual numbers over $k$. Show that to give a $k$-morphism of $\Spec k[\epsilon]/\epsilon^2$ to $X$ is equivalent to giving a point $x \in X$ rational over k (i.e., such that $k(x) = k$), and an element of $T_x$.
 \end{ex}
+
+\begin{ex}
+	If $X$ is a topological space, and $Z$ an irreducible closed subset of $X$, a generic point for $Z$ is a point $\ $ such that $Z = \overline{\{\zeta\}}$. If $X$ is a scheme, show that every (nonempty) closed subset has a unique generic point.
+\end{ex}
+
+\begin{sol}
+	Foreach $P \in Z$, let's consider $V_P$ the open neighbourhood of $P$ such that $(V_P, \locO_X|_{V_P})$ is isomorphic to the spectrum of a given ring. Let's fix $P \in Z$ and let $A$ such that $(V_P, \locO_X|_{V_P}) \cong (\Spec(A), \locO_{\Spec(A)})$. Let $f$ be the homeomorphism $f: V_P \to \Spec(A)$.
+
+	Let's observe that $Z \cap V_P$ is irreducible (as an open set of $Z \cap V_P$ is of the form $U \cap Z \cap V_P$ and then $(U_1 \cap Z \cap V_P) \cap (U_2 \cap Z \cap V_P) = (Z \cap V_P) \cap (Z \cap U_1) \cap (Z \cap U_2)$ which is non empty because it's the intersection of nonempty open sets of $Z$, which is irreducible.
+
+	As $f$ is an homeomorphism, then $f(Z\cap V_P)$ is irreducible and closed (as a subset of $\Spec(A)$). As it is closed, $\exists \ia$ ideal of $A$ such that $f(Z \cap V_P) = V(\ia) = V(r(\ia))$. Now let $fg \in r(\ia) \imp fg \in \iq \, \, \forall \iq \in V(\ia) \imp D(fg) \cap V(\ia) = \varnothing$. As $D(fg) = D(f) \cap D(g)$ (Atiyah-MacDonald, exercise 1.17), then $(D(f) \cap V(\ia)) \cap (D(g) \cap V(\ia)) = \varnothing$. By irreducibility of $V(\ia)$, either $D(f) \cap V(\ia)$ or $D(g) \cap V(\ia)$ must be empty, so either $f$ or $g$ belong to $\iq, \, \, \forall \iq \in V(\ia)$. In conclusion, $r(\ia)$ is a prime ideal, that we will name $\ip$, and $f(Z \cap V_P) = V(\ip) = \overline{\{\ip\}}$, and $\ip$ is the only point of $\Spec(A)$ with this property. Then, $f^{-1}(\ip) = Q_P \in V_P \cap Z$, and as the closure of image is the image of the closure under an homeomorphism, then $\overline{\{Q_P\}} = Z \cap V_P$, where the closure here is the closure in $V_P$. Then, the closure of $Q_P$ in $Z$ is $\overline{\{Q_P\}} = Z \cap \overline{V_P}$.
+
+	Now note that $Z \setminus (Z \cap \overline{V_P})$ and $Z \cap V_P$ are open sets of $Z$, and their intersection is empty. As $Z$ is irreducible, one of them must be empty. $Z \cap V_P$ is not empty, as $P$ belongs to this subset, so we must have $Z \setminus (Z \cap \overline{V_P}) = \varnothing \imp Z \cap \overline{V_P} = Z$. So, in conclusion, $\overline{\{Q_P\}} = Z$ and we have proved the existence of a generic point of $Z$. Now let's prove the uniqueness. Note that the point $Q_P$ is unique with this property in $V_P \cap Z$ (as $\ip$ was unique, as we already observed), but we could have a different point $Q_P$ for each open set $V_P$. However, as $\overline{\{Q_P\}} = Z, \, \, \forall P' \in Z$ and $\forall U$ open neighbourhood of $P'$, $Q \in U$. In particular, taking $U = V_{P'}$ we have that $Q_P \in V_{P'}$, and therefore $Q_P = Q_{P'}$ (via the composition of homeomorphisms from $V_P$ and $V_{P'}$ to the corresponding ring spectrums) and so the generic point is unique, $Q_P = \zeta \, \, \forall P$.
+\end{sol}
+
+\begin{ex}
+	Describe $\Spec(\R[x])$. How does it compare to the set $\R$? To $\C?$
+\end{ex}
+
+\begin{sol}
+	$\R$ is a field, and so $\R[x]$ is a principal ideal domain, so $\Spec(\R[x]) = (0) \cup \mathrm{Max}(\R[x])$. Then, the prime ideals of $\R[x]$ are the zero ideal and ideals of the form $(f)$, with $f$ an irreducible polynomial (which are all maximal ideals). Then $\Spec(\R[x])$ has a generic point $(0)$ and a closed point for each irreducible polynomial. We know that irreducible polynomials in $\R[x]$ can be of two types: $f = x-a$, with $a \in \R$, or $f = (x-(a+bi))(x-(a-bi))$, $a,b \in \R, b \neq 0$. Therefore, in $\Spec(\R[x])$ we have a closed point for each $a \in \R$ and a closed point for each pair of complex conjugates. Then, $\Spec(\R[x])$ can be identified with the closed upper half plane plus a generic point $(0)$.
+\end{sol}
+
+\begin{ex}
+	Let $k = \mathbb{F}_p$ be the finite field with $p$ elements. Describe $\Spec k[x]$. What are the residue fields of its points? How many points are there with a given residue field?
+\end{ex}
+
+\begin{sol}
+	As $k$ is a field, following the same reasoning of last exercise, the spectrum of $k[x]$ will consist of a closed point for each irreducible polynomial in $k[x]$ plus a generic point corresponding to the ideal $(0)$. There are irreducible polynomials in $k[x]$ of arbitrary degree $n$: Indeed, we can consider an extension of degree n of $\mathbb{F}_p$, $\mathbb{F}_{p^n}$. As the multiplicative group of $\mathbb{F}_{p^n}$ is finite, it is cyclic, so $\mathbb{F}_{p^n} = \{0, \alpha, \dots, \alpha^{p^{n-1}(p-1)} \}$, and then $\mathbb{F}_{p^n} = \mathbb{F}_p(\alpha)$. As $[\mathbb{F}_{p^n} : \mathbb{F}_p] = n$, then $\text{Irr}(\alpha, \mathbb{F}_p, x)$ has degree $n$.
+
+	Then, given $f(x) \in k[x]$ irreducible of degree $n$, the residue field at the point corresponding to $(f)$ is $k[x]_{(f)} / (f)k[x]_{(f)}$. As localization and quotient commute, this field is the same as $(k[x]/(f))_{(f)}$, but $k[x]/(f)$ is already a field, $\mathbb{F}_{p^n}$ so every element is already invertible, and when we localize we are not adding any elements. In conclusion, the residue field at the point corresponding to the ideal $(f)$ is $\mathbb{F}_{p^n}$, where $n$ is the degree of the polynomial. The residue field at the generic point $(0)$ is the field of fractions of the ring $\mathbb{F}_p$, that is, $\mathbb{F}_p(x)$. 
+
+	Then, the number of points with a given residue field is exacly the same as the number of irreducible polynomials of $k[x]$ with a given degree $n$. This number is given by the expression $\frac{1}{n} \sum_{d \mid n} \mu(n/d) p^d$, where $\mu$ is the Möbius function: $\mu(n) = 0$ if $p^2 | n$ for a certain prime $p$, and $\mu(n) = (-1)^k$ otherwise, where $k$ is the number of different prime factors of $n$.
+\end{sol}
+
+\begin{ex}
+	Glueing Lemma. Generalize the glueing procedure described in the text (2.3.5) as follows. Let $\{X_i\}$ be a family of schemes (possible infinite). For each $i \neq j$, suppose given an open subset $U_{ij} \subseteq X_i$, and let it have the induced scheme structure (Ex. 2.2). Suppose also given for each $i \neq j$ an isomorphism of schemes $\varphi_{ij}: U_{ij} \to U_{ji}$ such that (1) for each $i,j$ $\varphi_{ij} = \varphi_{ji}^{-1}$ and $(2)$ for each $i,j,k$, $\varphi_{ij}(U_{ij} \cap U_{ik}) = U_{ji} \cap U_{jk}$ and $\varphi_{ik} = \varphi_{jk} \circ \varphi_{ij}$ on $U_{ij} \cap U_{ik}$. Then show that there is a scheme $X$, together with morphisms $\psi_i: X_i \to X$ for each i, such that (1) $\psi_i$ is an isomorphism of $X_i$ onto an open subscheme of $X$, (2) the $\psi_i(X_i)$ cover $X$, (3) $\psi_i(U_{ij}) = \psi_i(X_i) \cap \psi_j(X_j)$ and (4) $\psi_i = \psi_j \circ \varphi_{ij}$ on $U_{ij}$. We say that $X$ is obtained by glueing the schemes $X_i$ along the isomorphisms $\varphi_{ij}$. An interesting special case is when the family $X_i$ is arbitrary, but the $U_{ij}$ and $\varphi_{ij}$ are all empty. Then the scheme $X$ is called the disjoint union of the $X_i$ and its denoted $\bigsqcup X_i$.
+\end{ex}
+
+\begin{sol}
+	We will proceed as in 2.3.5. Let's consider $X$ the topological space $\bigsqcup X_i$ modulo the equivalence relation $\varphi_{ij}(x) ~ x$, $\forall x \in U_{ij}, \, \, \forall i,j$. We have maps $\psi_i$ which send each element $x \in X_i$ to its equivalence class in $X$. Then, we define a topology on $X$ as follows: A set $V \subseteq X$ is open if and only if $\psi_i^{-1}(V)$ is open for each $i$. Its clear that this topology makes the applications $\psi_i$ continuous.
+
+	%The finest topology that makes the canonical projection map $\pi: \bigsqcup X_i \to X$, $x \mapsto \overline{x}$ continuous. Its clear that the inclusion maps $X_i \to \bigsqcup X_i$ are continuous, and therefore  (the composition of the inclusion and $\pi$), and they're continuous for being the composition of continuous applications. 
+
+	Again following the developement of 2.3.5 we can define a sheaf of rings on $X$ as 
+	\[
+		\locO_X(V) = \{(s_i) \in \prod_i \locO_{X_i}(\psi_i^{-1}(V)) \text{ such that } \varphi_{ij}(s_i|_{\psi_i^{-1}(V) \cap U_{ij}}) = s_j|_{\psi_j^{-1}(V) \cap U_{ji}} \}
+	\]
+ 
+	Now, to avoid checking step by step that it is indeed a sheaf of rings, we will make use of Exercise 1.22. Note that $\psi_i(X_i)$ are open sets of $X$, as $\psi_j(\psi_i(X_i)) = X_i$ if $i = j$, and $U_{ji}$ if $j \neq i$. Then, we can define on $\psi_i(X_i)$ a sheaf by direct image, $(\psi_i)_* \locO_{X_i}$. Moreover, $\psi_i(X_i) \cap \psi_j(X_j)$ are the elements of $X$ that admit representatives both in $X_i$ and $X_j$, so $\psi_i(X_i) \cap \psi_j(X_j) = \psi_i(U_{ij}) = \psi_j(U_{ji})$. Therefore, we have isomorphisms of sheaves 
+	\[
+		\phi_{ij} := {\varphi_{ij}^{\#}}_* : (\psi_j)_* \locO_{X_j}|_{\psi_i(X_i) \cap \psi_j(X_j)} \to (\psi_i)_* \locO_{X_j}|_{\psi_i(X_i) \cap \psi_j(X_j)}
+	\]
+
+	And those morphisms satisfy $\phi_{ik} = \phi_{jk} \circ \phi_{ij}$ on $\psi_i(X_i) \cap \psi_j(X_j) \cap \psi_k(X_k)$. Then, we are under the situation of Exercise 1.22, and the sheaf we have defined on $X$ is the same as the sheaf defined by glueing the sheafs $(\psi_i)_* \locO_{X_i}$ defined in the open cover $\psi_i(X_i)$. So we already know that $\locO_X$ is a sheaf. 
+
+	In addition, let's observe that $(\psi_i)_* \locO_{X_i}$ and $\locO_{X_i}$ are isomorphic sheaves, as $\psi_i$ is injective (the equivalence relation that defines $X$ only identifies points from different $X_i$, so each element of $X$ has at most one representative in $X_i$), so $\psi_i$ is an homeomorphism when we restrict the image to $\psi(X_i)$ instaed of $X$.
+
+	Moreover, it is clear that for each point $P \in X$, $P = \psi_i(Q)$ for a certain $i$ and $Q \in X_i$. Then, the ring $\locO_{X,P}$ is isomorphic to the local ring $\locO_{X_i, Q}$ and so it is local. Moreover, every point has an open set isomorphic to the spectrum of a ring (as the image of an open set of $X_i$ by $\psi_i$ is an open set of $X$). This proves that $(X, \locO_X)$ is a scheme.
+
+	\vspace{3mm}
+
+	Now let's consider the morphisms of shemes $(\psi_i, \psi_i^{\#}): (X, \locO_X) \to (X_i, \locO_{X_i})$, where $\psi_i^{\#}$ is the projection on the $i-th$ coordinate. We have already commented that $(X_i, \locO_{X_i})$ and $(\psi(X_i), (\psi_i)_*\locO_{X_i})$ are isomorphic schemes. We also know that $\locO_{X}|_{\psi_i(X_i)} \to (\psi_i)_*\locO_{X_i}$ is an isomorphism of sheaves by Exercise 1.22. Then the composition, which is $\psi_i^{\#}|_{\psi(X_i)}$ is an isomorphism of sheaves, and so we have that $(\psi_i, \psi_i^{\#})$ is an isomorphism of schemes from $X_i$ to an open subscheme of $X$, corresponding to $\psi_i(X_i)$. This proves property (1). We have already proven properties (2) and (3) earlier. With respect to (4), it follows from the fact that $\phi_{ik} = \phi_{jk} \circ \phi_{ij}$, which is proved in 1.22, toghether with the definition of the sheaf morphisms $\phi_{ij}$. 
+\end{sol}
+
+\begin{ex}
+	A topological space is quasi-compact if every open cover has a finite subcover. 
+	\begin{enumerate}[label=\alph*)]
+		\item Show that a topological space is noetherian if and only if every open subset is quasi-compact.
+		\item If $X$ is an affine scheme, show that $\mathrm{sp}(X)$ is quasi-compact, but not in general noetherian. We say that a scheme $X$ is quasi-compact if $\mathrm{sp}(X)$ is.
+		\item If $A$ is a noetherian ring, show that $\mathrm{sp}(\Spec(A))$ is a noetherian topological space.
+		\item Give an example to show that $\mathrm{sp}(\Spec(A))$ can be noetherian even when $A$ is not.
+	\end{enumerate}
+\end{ex}
+
+\begin{sol}
+	\begin{enumerate}[label=\alph*)]
+		\item $\boxed{\Rightarrow}$ Let $X$ be a noetherian topological space. Every open subset $U$ of $X$ is noetherian, as open sets of $U$ are also open sets of $X$, so every ascending chain of open sets of $U$ must stabilize, and so $U$ is indeed noetherian. Then, it is enough to prove that a noetherian topological space is quasi-compact. Now let $\{U_{\alpha}\}$ be an open cover of $X$. Now let's build an ascending open chain: We pick an open set $U_1 \in \{U_{\alpha}\}$. If $U_1 \neq X$, there mus exist another open set $U_2 \in \{U_{\alpha}\}$ such that $U_2 \not\subseteq U_1$. Then $U_1 \subset U_1 \cup U_2$. Again, if $U_1 \cup U_2 \neq X$, $\exists U_3 \not\subseteq U_1 \cap U_2$. Repeating this steps inductively we build an ascending chain
+		\[
+			U_1 \subset U_1 \cup U_2 \subset \dots \subset \bigcup_{i = 1}^n U_i \subset \dots
+		\]
+
+		As $X$ is noetherian, the chain must stabilize at some point $m$ and so we must have $\bigcup_{i = 1}^m U_i = X$, so $X$ is quasi-compact.
+
+		$\boxed{\Leftarrow}$ Consider a chain of open sets of $X$, $U_1 \subseteq U_2 \subseteq \dots \subseteq U_n \subseteq \dots$. Then $U = \bigcup_{i = 1}^\infty U_i$ is an open set, and $\{U_i\}_{i = 1}^{\infty}$ is an open cover of $U$. $U$ is quasi-compact as it is an open subset, so $\exists U_{i_1}, \dots U_{i_m}$ that cover $U$. Therefore, the chain stabilizes at point $i_m$, and therefore $X$ is noetherian.
+
+		\item If $X$ is an affine scheme, then $X = \Spec(A)$ for a certain ring $A$. As the sets $D(f)$ form a base of the topology, every open covering of $X$ can be regarded as a basic open covering. So let $X = \bigcup_{i \in I} D(f_i) = \bigcup_{i \in I} X \setminus V(f_i) = X \setminus \bigcap_{i \in I} V(f_i)$. This happens if and only if $V(\bigcup_{i \in I}f_i = \bigcap_{i \in I} V(f_i) = \varnothing \iff$ the ideal generated by the elements $f_i$ is the whole ring $A$. That means that $\exists J$ a finite subset of $I$ such that $1 = \sum{i \in J}g_i f_i$. Then, following the implications in the opposite direction, we have $\bigcap_{i \in J} V(f_i) = \varnothing \imp X \setminus \bigcap_{i \in J}V(f_i) = \bigcup_{i \in J} X \setminus V(f_i) = \bigcup_{i \in J} D(f_i) = X$. So the set $\{D(f_i)\}_{i \in J}$ is a finite open subcovering of $\{D(f_i)\}_{i \in I}$. That shows that $\mathrm{sp}(X)$ is quasi-compact.
+
+		Now consider the ring $A = k[x_1, \dots, x_n \dots]$, that is a ring of polynomials with infinite indeterminates over a field $k$. The ideals $(x_1) \subset (x_1, x_2) \subset \dots \subset (x_1, x_2, \dots, x_n) \subset \dots$ are all prime and form an ascending chain that doesn't stabilize. Then, $V(x_1) \supset V(x_1, x_2) \supset \dots \supset V(x_1, x_2, \dots, x_n) \supset \dots$ is a descending chain of closed sets of $\text{sp}(X)$ which doesn't stabilize, and so the topological space is not noetherian.
+
+		\item Let $V(\ia_1) \supseteq V(\ia_2) \supseteq \dots$ be a descending chain of closed sets in $\mathrm{sp}(\Spec(A))$. That means that we have a corresponding chain on ideals $r(\ia_1) \subseteq r(\ia_2) \subseteq \dots$. As the ring is noetherian, this chain must stabilize. Then, taking into account that $V(\ia) = V(r(\ia))$, the initial descending chain of closed sets also stabilizes, so the topological space $\Spec(A)$ $\mathrm{sp}(\Spec(A))$ is noetherian.
+
+		\item Let's consider the ring $A = k[x_1, \dots, x_n \dots] / (x_1, x_2^2, \dots, x_n^n \dots)$. These ring has only one prime ideal, $(x_1, x_2, \dots, x_n, \dots)$, so $\mathrm{sp}(\Spec(A))$ has only one point, and therefore every descending chain of closed sets must stabilize and $\mathrm{sp}(\Spec(A))$ is noetherian. However, the chain of ideals of $A$ $(x_1) \subset (x_1, x_2) \subset \dots$ doesn't stabilize, and so $A$ is not a noetherian ring.
+	\end{enumerate}
+
+\end{sol}
+
+\begin{ex}
+	\begin{enumerate}[label=\alph*)]
+		\item Let $S$ be a graded ring. Show that $\Proj(S) = \varnothing$ if and only if every element of $S_{+}$ is nilpotent.
+		\item Let $\varphi: S \to T$ be a morphism of graded rings (preserving degrees). Let $U = \{\ip \in \Proj(T) | \ip \not\supseteq \varphi(S_+)\}$. Show that $U$ is an open subset of $\Proj(T)$, and show that $\varphi$ determines a natural morphism $f: U \to \Proj(S)$.
+		\item The morphism $f$ can be an isomorphism even when $\varphi$ is not. For example, suppose that $\varphi_d: S_d \to T_d$ is an isomorphism for all $d \geq d_0$, where $d_0$ is an integer. Then show that $U = \Proj(T)$ and the morphism $f: \Proj(T) \to \Proj(S)$ is an isomorphism.
+		\item Let $V$ be a projective variety with homogeneous coordinate ring $S$. Show that $t(V) \cong \Proj(S)$. 
+	\end{enumerate}
+\end{ex}
+
+\begin{sol}
+	\begin{enumerate}[label=\alph*)]
+		\item Suppose that every element of $S_+$ is nilpotent, and let $\ip$ be an homogeneous prime ideal. Given $x \in S_+$, $x^n = 0 \in \ip$ for a certain integer $n$, so we must have $x \in \ip$. This means that $\ip \supseteq S_+$ and therefore $\Proj(S) = \varnothing$, as it is the set of homogeneous prime ideals that don't contain $S_+$. Reciprocally, suppose that $\Proj(S) = \varnothing$. This means that every homogeneous prime ideal of $S$ contains $S_+$. 
+	\end{enumerate}
+\end{sol}
