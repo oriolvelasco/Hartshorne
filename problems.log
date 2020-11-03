@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.5.7)  3 NOV 2020 14:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.5.7)  3 NOV 2020 21:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -687,7 +687,21 @@ cmm/m/it/12   \OT1/cmr/m/n/12 : ^^@([](\OML/cmm/m/it/12 A\OT1/cmr/m/n/12 )\OML/
 cmm/m/it/12 ; \OMS/cmsy/m/n/12 O[]\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 !
  []
 
-[21] [22] [23] [24] [25] [26] [27] [28] [29]) [30] (./problems.aux) ) 
+[21] [22] [23] [24] [25] [26] [27] [28] [29] [30]
+Overfull \hbox (5.52875pt too wide) in paragraph at lines 364--365
+\OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 V\OT1/cmr/m/n/12 )(\OML/c
+mm/m/it/12 t\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ) \OML/cmm/m/it/12 f[]\OT1/cmr/m
+/n/12 (\OML/cmm/m/it/12 V\OT1/cmr/m/n/12 )(\OML/cmm/m/it/12 s\OT1/cmr/m/n/12 )\
+OMS/cmsy/m/n/12 j[] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML
+/cmm/m/it/12 V\OT1/cmr/m/n/12 )(\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 )\OMS/cmsy/m/
+n/12 j[] ) \OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 V \OMS/cmsy/m/
+n/12 \ \OML/cmm/m/it/12 U[]\OT1/cmr/m/n/12 )(\OML/cmm/m/it/12 s\OMS/cmsy/m/n/12
+ j[]\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 f[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 V
+ \OMS/cmsy/m/n/12 \ \OML/cmm/m/it/12 U[]\OT1/cmr/m/n/12 )(\OML/cmm/m/it/12 t\OM
+S/cmsy/m/n/12 j[]\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 )
+ []
+
+) [31] (./problems.aux) ) 
 Here is how much of TeX's memory you used:
  15375 strings out of 481239
  309807 string characters out of 5920378
@@ -696,28 +710,27 @@ Here is how much of TeX's memory you used:
  545843 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  67i,15n,86p,2901b,1000s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/shar
-e/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/euler/eufm10.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-su
-per/sfrm1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/boondox/zxxr
-w8a.pfb>
-Output written on problems.pdf (30 pages, 365311 bytes).
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts
+1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/s
+hare/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/boondox/zxxrw8a.pfb>
+Output written on problems.pdf (31 pages, 369815 bytes).
 PDF statistics:
- 173 PDF objects out of 1000 (max. 8388607)
- 122 compressed objects within 2 object streams
+ 177 PDF objects out of 1000 (max. 8388607)
+ 125 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

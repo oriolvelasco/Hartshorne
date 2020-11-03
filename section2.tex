@@ -347,3 +347,44 @@
 		%Caldria veure que si hi ha més d'una possible a,n, diferenxen només en potències de f i per tant, la imatge en A_f es la mateixa.
 	\end{enumerate}
 \end{sol}
+
+\begin{ex}
+	A Criterion for Affineness.
+	\begin{enumerate}[label=\alph*)]
+		\item Let $f: X \to Y$ be a morphism of schemes, and suppose that $Y$ can be covered by open subsets $U_i$, such that for each $i$, the induced map $f^{-1}(U_i) \to U_i$ is an isomorphism. Then $f$ is an isomorphism.
+
+		\item An scheme $X$ is affine if and only if there is a finite set of elements $f_1, \dots, f_r$ such that the open subsets $X_{f_i}$ are affine, and $f_1, \dots, f_r$ generate the unit ideal in $A$.
+	\end{enumerate}
+\end{ex}
+
+\begin{sol}
+	\begin{enumerate}[label=\alph*)]
+		\item Let $f_i: f^{-1}(U_i) \to U_i$ be the restriction of $f$ to $f^{-1}(U_i)$. $f$ is injective, as given $x,y$ such that $f(x) = f(y)$, then $f(x) \in U_i$ for a certain $i$, and then $x,y \in f^{-1}(U_i)$. As $f_i$ is injective, $x = y$, so $f$ is injective. $f$ is surjective because given $y \in Y$, $y \in U_i$ for a certain $i$, so $\exists x \in f^{-1}(U_i) \subseteq X$ such that $f(x) = f_i(x) = y$, because $f_i$ is surjective. Moreover, $(f^{-1})^{-1}(V) = f(\bigcup_i V\cap f^{-1}(U_i)) = \bigcup_i f(V\cap f^{-1}(U_i)) = \bigcup_i f_i(V\cap f^{-1}(U_i))$ which is open because $f_i$ is an homeomorphism. In conclusion, $f$ is an homeomorphism.
+
+		Now let's check that $f^{\#}: \locO_Y \to f_* \locO_X$ is an isomorphism of sheaves. We know that $f_i^{\#}$ are isomorphisms. Let $V$ be an open set of $Y$. Let $s,t \in \locO_Y(V)$ such that $f^{\#}(V)(s) = f^{\#}(V)(t) \imp f^{\#}(V)(s)|_{U_i \cap V} = f^{\#}(V)(t)|_{U_i \cap V} \imp f^{\#}(V \cap U_i)(s|_{U_i \cap V}) =  f^{\#}(V \cap U_i)(t|_{U_i \cap V}) \imp f_i^{\#}(V \cap U_i)(s|_{U_i \cap V}) =  f_i^{\#}(V \cap U_i)(t|_{U_i \cap V}) \imp s|_{U_i \cap V} = t|_{U_i \cap V}$ for each $i$. Then, as $\{U_i \cap V\}$ is an open covering of $V$, $s = t$. Moreover, as $f_i^{\#}$ are isomorphisms (and therefore surjective), the charecterization of Exercise 1.3(a) is satisfied and therefore $f^{\#}$ is surjective.
+
+		\item 
+	\end{enumerate}
+\end{sol}
+
+\begin{ex}
+	In this exercise, we compare some properties of a ring homeomorphism to the induced morphism of the spectra of the rings.
+	\begin{enumerate}[label=\alph*)]
+		\item Let $A$ be a ring, $X = \Spec(A)$, and $f \in A$. Show that $f$ is nilpotent if and only if $D(f)$ is empty.
+
+		\item Let $\varphi: A \to B$ be a homeomorphism of rings, and let $f: Y = \Spec(B) \to X = \Spec(A)$ be the induced morphism of affine schemes. Show that $\varphi$ is injective if an only if the map of sheaves $f^{\#}: \locO_X \to f_*\locO_Y$ is injective. Show furthermore in that case $f$ is dominant, i.e., $f(Y)$ is dense in $X$.
+
+		\item With the same notation, show that if $\varphi$ is surjective, the $f$ is an homeomorphism of $Y$ onto a closed subset of $X$, and $f^{\#}: \locO_X \to f_*\locO_Y$ is surjective.
+
+		\item Prove the converse of (c), namely, if $f: Y \to X$ is a homeomorphism onto a closed subset, and $f^{\#}: \locO_X \to f_*\locO_Y$ is surjective, then $\varphi$ is surjective.
+	\end{enumerate}
+\end{ex}
+
+\begin{ex}
+	Let A be a ring. Show that the following conditions are equivalent:
+	\begin{enumerate}[label=\roman*)]
+		\item $\Spec(A)$ is disconnected;
+		\item there exist nonzero elements $e_1, e_2 \in A$ such that $e_1e_2 = 0$, $e_1^2 = e_1$, $e_2^2 = e_2$, $e_1 + e_2 = 1$ (these elements are called orthogonal idempotents);
+		\item $A$ is isomorphic to a direct product $A_1 \times A_2$ of two nonzero rings.
+	\end{enumerate}
+\end{ex}
