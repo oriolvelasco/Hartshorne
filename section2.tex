@@ -295,8 +295,55 @@
 			To prove surjectivity we will prove surjectivity of the induced applications on stalks, that are $\varphi_{\ip}$. Indeed, given $\frac{a}{t} \in T_{(\ip)}$, $\exists y \notin \ip$ with $\mathrm{deg}(y) = d \geq d_0$. Then, $\frac{a}{t} = \frac{ay}{ty}$. As $\varphi_d$ is surjective $\forall d \geq d_0$ and $ay, ty \in T_d$, with $d \geq d_0$, then $\exists a', t' \in S_d$, $t' \notin f(\ip)$, such that $ay = \varphi(a')$ and $ty = \varphi(t')$. Then $\frac{a}{t} = \varphi_{\ip}(\frac{a'}{t'})$ and so $\varphi_{\ip}$ is surjective.
 		\end{itemize}
 
-		\item
+		\item By the projective version of the Nullstellensatz (Problem 2.4 of Chapter I), we have a bijective correspondence between irreducible closed subsets of $V$ and homogeneous prime ideals of $S$ that don't contain all $S_+$. It is given by $f: t(V) \to \Proj(S)$, $Y \mapsto I(Y)$. If $\ia$ is a radical ideal, $Y$ an irreducible closed set, then $I(Y) \supseteq \ia \iff Y = Z(I(Y)) \subseteq Z(\ia) \iff Y \in t(Z(\ia))$. Then, $f^{-1}(V(\ia)) = \{\text{irreducible closed sets such that } I(Y) \supseteq \ia \} = t(Z(\ia))$, which is a closed subset. This proves that $f$ is continuous. Moreover, $f^{-1}: \Proj(S) \to t(V)$, $\ip \mapsto Z(\ip)$ and we have that $Z(\ip) \subseteq t(Z(\ia))$, with $\ia$ radical $\iff Z(\ip) \subseteq Z(\ia) \iff \ip = I(Z(\ip)) \supseteq I(Z(\ia)) = \ia$. Then, $f^{-1}(t(Z(\ia))) = V(\ia)$, so $f^{-1}$ is also continuous and therefore $f$ is an homeomorphism.
 
-		
+		Now let's build an associated morphism of sheaves, $f^{\#}: \locO_{\Proj(S)} \to f_*(\alpha_* \locO_V)$, where $\alpha: V \to t(V)$ such that $P \mapsto \overline{\{P\}}$. Given $U$ an open set of $\Proj(S)$, we define $f^{\#}(U)$ mapping a section $s$ to a section $s' \in f_*\alpha_* \locO_V(U)$, defined as follows: For every $P \in \alpha^{-1}(f^{-1}(U))$, we define $s'(P)$ taking the image $s(f(\alpha(P))) \in S_{(f(\alpha(P)))}$, which is isomorphic to $\locO_{V,P}$ (Using theorem 3.4 of chapter I, which states that $\locO_{V,P} \cong \im_P$ and the fact that a regular function that vanishes at $P$ vanishes at the whole closure, so $\im_P = f(\alpha(P))$). Then we pass to the quotient ring $S_{(f(\alpha(P)))}/f(\alpha(P))$, which is isomorphic to $k$. This is an isomorphism of sheaves, as the induced morphisms on stalks are in fact the local isomorphisms between $\locO_{V,P}$ and $S_{(f(\alpha(P)))}$. In conclusion, $(f,f^{\#}): (t(V), \alpha_*(\locO_V)) \to (\Proj(S), \locO_{\Proj(S)})$ is an isomorphism of schemes, so $t(V) \cong \Proj(S)$.		
+	\end{enumerate}
+\end{sol}
+
+\begin{ex}
+	\begin{enumerate}[label=\alph*)]
+		\item Let $V$ be a variety over the algebraically closed field $k$. Show that a point $P \in t(V)$ is a closed point if and only if its residue field is $k$.
+
+		\item If $f: X \to Y$ is a mosphism of schemes over $k$, and if $P \in X$ is a point with residue field $k$, then $f(P) \in Y$ has also residue field $k$.
+
+		\item Now show that if $V,W$ are any two varieties over $k$, then the natural map
+		\[
+			\Hom_{\mathfrak{Var}}(V,W) \to \Hom_{\mathfrak{Sch/k}(t(V),t(W))}
+		\]
+
+		is bijective.
+	\end{enumerate}
+\end{ex}
+
+
+
+\begin{ex}
+	Let $X$ be a scheme, let $f \in \Gamma(X, \locO_X)$, and define $X_f$ to be the subset of points $x \in X$ such that the stalk $f_x$ of $f$ at $x$ is not contained in the maximal ideal $\im_x$ of the local ring $\locO_x$.
+	\begin{enumerate}[label=\alph*)]
+		\item If $U = \Spec(B)$ is an open affine subscheme of $X$, and if $\overline{f} \in B = \Gamma(U, \locO_X|_U)$ is the restriction of $f$, show that $U \cap X_f = D(\overline{f})$. Conclude that $X_f$ is an open subset of $X$.
+
+		\item Assume that $X$ is quasi-compact. Let $A = \Gamma(X, \locO_X)$, and let $a \in A$ be an element whose restriction to $X_f$ is $0$. Show that for some $n > 0, \, f^n a = 0$. [Hint: Use an open affine cover of $X$.]
+
+		\item Now assume that $X$ has a finite cover by open affines $U_i$ such that each intersection $U_i \cap U_j$ is quasi-compact. (This hypothesis is satisfied, for example, if $\mathrm{sp}(X)$ is noetherian.) Let $b \in \Gamma(X_f, \locO_{X_f})$. Show that for some $n > 0, \, f^n b$ is the restriction of an element of $A$.
+
+		\item With the hypothesis of (c), conclude that $\Gamma(X_f, \locO_{X_f}) \cong A_f$
+	\end{enumerate}
+\end{ex}
+
+\begin{sol}
+	\begin{enumerate}[label=\alph*)]
+		\item If $U = \Spec(B)$, then every point $x \in U$ can be identified with a prime ideal $\ip_x \in \Spec(B)$, and $\locO_{x} = B_{\ip_x}$. Then, $x \in D(\overline{f}) \iff \overline{f} \notin \ip_x \iff$ the image of $\overline{f}$ is a unit in $B_{\ip_x} = \locO_{x} \iff (X,f) = (U, \overline{f}) \notin \im_x \iff x \in X_f$. Then, $X_f \cap U = D(\overline{f})$.
+
+		As $X$ is a scheme, then it admits an open cover of affine subschemes $U_i = \Spec(B_i)$ and $\bigcup_{i \in I} U_i = X$. So $X_f = \bigcup_{i \in I} (U_i \cap X_f) = \bigcup_{i \in I} D(f_i)$, where $f_i = f|_{U_i}$. So $X_f$ is a union of open sets and therefore open.
+
+		\item Let $\{U_i\}$ be an open affine cover of $X$, that we can take finite as $X$ is quasi-compact. That is, $X = \bigcup_{i = 1}^n U_i$ and $X_f = \bigcup_{i = 1}^n(U_i \cap X_f)$. Let $f_i = f|_{U_i}$ and by (a), $U_i \cap X_f = D(f_i)$. Then, $a|_{X_f} = 0 \imp a|_{D(f_i)} = 0$. From exercise 2.1 we know that $\Gamma(D(f_i), \locO_X|_{D(f_i)}) \cong (B_i)_{f_i}$, where $B_i = \Gamma(U_i, \locO_X|_{U_i})$. Then, $a|_{D(f_i)} = 0 \imp \frac{a|_{U_i}}{1} = 0$ in $(B_i)_{f_i}$. But this happens if and only if $\exists n_i$ such that $a|_{U_i}f_i^{n_i} = 0$. Now let $n = \mathrm{max}_i(n_i)$ and we have that $(af^n)|_{U_i} = a|_{U_i}f_i^{n} = 0$, which means that $af^n = 0$.
+
+		\item Let $b \in \Gamma(X_f, \locO_{X_f})$. For each $U_i$, $b|_{D(f_i)}$ can be identified with an element of $(B_i)_{f_i}$ (we are still using the notation defined in (b)). Suppose that this element is $\frac{b_i}{f^{n_i}}$, for a certain $b_i \in B_i, n_i \geq 0$. Then let $m_i = \mathrm{max}(n_i)$ and we have that $(bf^{m_1})|_{D(f_i)}$ has image in $(B_i)_{f_i}$ equal to $\frac{b_i (f_i)^{n-n_i}}{1}$, which is equal to the restriction of $c_i := b_i (f_i)^{n-n_i} \in B_i$ to $D(f_i)$. So we have found elements $c_i \in B_i$ such that their restriction to $D(f_i)$ is $(f_i)^{m_1}b|_{D(f_i)}$.
+
+		Now $U_i \cap U_j$ is quasi compact. The element $c_i|_{U_i \cap U_j} - c_j|_{U_i \cap U_j}$ satisfies that its restriction to $(U_i \cap U_j)_{f|_{U_i \cap U_j}}$ is zero, as $c_i|_{X_f \cap U_i \cap U_j} = (bf^n)|_{U_i \cap U_j \cap X_f} = c_j|_{X_f \cap U_i \cap U_j}$. So, using the result obtained in (b), $\exists m_2$ such that $f^{m_2}|_{U_i \cap U_j}(c_i|_{U_i \cap U_j} - c_j|_{U_i \cap U_j}) = 0$. Then, $f_i^{m_2}c_i$ are elements of $B_i$ satisfying that their restrictions to $U_i \cap U_j$ agree. As $U_i$ is an open cover, $\exists! a \in A$ such that $a|_{U_i} = f_i^{m_2}c_i$. As $a|_{U_i \cap X_f} = f_i^{m_1 + m_2}|_{U_i \cap X_f}b|_{U_i \cap X_f} = (f|_{X_i}^{m_1+m_2}b)|_{U_i \cap X_f}$, and $X_f \cap U_i$ is an open cover of $X_f$, then $f^{n}b|_{X_f} = a|_{X_f}$, where we have defined $n: = m_1 + m_2$. 
+
+		\item With the result obtained in (c), we can define an application $\varphi: \Gamma(X_f, \locO_{X_f}) \to A_f$ such that $b \mapsto \frac{a}{f^n}$, where $a$ and $n$ are such that $f^nb = a|_{X_f}$. From the construction of (c) we can deduce that $\varphi$ is a ring morphism and it is injective (by the uniqueness of the element $a$ given a certain $n$ satisfying the property). Moreover, it is surjective because given any $a/f^n \in A_f$, the element $b = (f^n)^{-1}a|_{X_f}$ belongs to $\Gamma(X_f, \locO_{X_f})$, as $f$ is invertible in this ring (because it is invertible when restricted to the open cover $X_f \cap U_i$), and $b \mapsto \frac{a}{f^n}$.
+		%Caldria veure que si hi ha més d'una possible a,n, diferenxen només en potències de f i per tant, la imatge en A_f es la mateixa.
 	\end{enumerate}
 \end{sol}
