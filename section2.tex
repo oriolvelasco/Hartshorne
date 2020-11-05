@@ -363,7 +363,9 @@
 
 		Now let's check that $f^{\#}: \locO_Y \to f_* \locO_X$ is an isomorphism of sheaves. We know that $f_i^{\#}$ are isomorphisms. Let $V$ be an open set of $Y$. Let $s,t \in \locO_Y(V)$ such that $f^{\#}(V)(s) = f^{\#}(V)(t) \imp f^{\#}(V)(s)|_{U_i \cap V} = f^{\#}(V)(t)|_{U_i \cap V} \imp f^{\#}(V \cap U_i)(s|_{U_i \cap V}) =  f^{\#}(V \cap U_i)(t|_{U_i \cap V}) \imp f_i^{\#}(V \cap U_i)(s|_{U_i \cap V}) =  f_i^{\#}(V \cap U_i)(t|_{U_i \cap V}) \imp s|_{U_i \cap V} = t|_{U_i \cap V}$ for each $i$. Then, as $\{U_i \cap V\}$ is an open covering of $V$, $s = t$. Moreover, as $f_i^{\#}$ are isomorphisms (and therefore surjective), the charecterization of Exercise 1.3(a) is satisfied and therefore $f^{\#}$ is surjective.
 
-		\item 
+		\item First let's observe that, if $(f_1, \dots, f_r) = (1)$, then we have $\bigcup_{i = 1}^r X_{f_i} = X$. Indeed, suppose that $\exists \ip_x$ such that $\ip_x \notin X_{f_i} \, \, \forall i \imp (f_i)_{x} = 0 \, \, \forall i$. But as $(f_1, \dots, f_r) = 1$ then $\exists a_1, \dots a_r$ such that $\sum_{i} a_i f_i = 1 \imp 1 = 1_x = (\sum_{i = 1}^r a_i f_i)_x = \sum_{i = 1}^r (a_i)_x(f_i)_x = 0$, which is a contradiction. As $X_{f_i}$ is an affine open subset, then $X_{f_i} \cap X_{f_j} = D(\overline{f_j})$, where $\overline{f_j} = f_j|_{X_{f_i}}$. By problem 2.16 (a), then $X_{f_i} \cong \Spec(B_i)$ and so $X_{f_i} \cap X_{f_j} \cong \Spec(B_i)_{\overline{f_j}}$, by problem 2.1.
+
+		In particular, $X_{f_i} \cap X_{f_j}$ is affine and therefore it is quasi-compact by problem 2.13(b). Then, we are under the hypothesis of 2.16(c)(d), when the open affine cover here is the $X_{f_i}$. Then, as $\Gamma(X_{f_i}, \locO_X|_{X_{f_i}}) \cong A_{f_i}$ by 2.16(d), and $X_{f_i}$ is affine, then $X_{f_i} \cong \Spec(A_{f_i})$. Now let's observe that $D(f_i)$ are open sets of $\Spec(A)$, which form a cover of $\Spec(A)$. Indeed, suppose that $\bigcup_{i} D(f_i) \neq X \imp \exists \ip$ such that $\ip \notin D(f_i) \, \, \forall i$. Then, $\ip \in X \setminus \bigcup_{i} D(f_i) = \bigcap_i (X \setminus D(f_i)) = \bigcap_i V(f_i) = V(\bigcup f_i) = V((f_1, \dots, f_r)) = V(1) = \varnothing$. Now, as $A = \Gamma(X, \locO_X)$, the identity morphism of rings $Id: A \to \Gamma(X, \locO_X)$ induces a morphism of schemes $f: X \to \Spec(A)$, by problem 2.4, which is given by $P \mapsto Id^{-1}_P(\im_P) = \{a \in A \text{ such that } a_P \in \im_P\}$. Then, $f^{-1}(D(f_i)) = X_{f_i}$ because $f \notin Id^{-1}(\im_P) \iff f_P \notin \im_P$. The restriction of $f$ to $X_{f_i}$ (let's name it $f_i$), $f_i: X_{f_i} \to D(f_i)$ is an isomorphism for each $i$, because $X_{f_i} \cong \Spec(A_{f_i}) \cong D(f_i)$ and the composition $D(f_i) \to \Spec(A_{f_i}) \to X_{f_i} \to D(f_i)$ is the identity, and the applications on stalks are also the identity. Then, using (a), $f$ is also an isomorphism of schemes, and so $X \cong \Spec(A) \imp X$ is affine.
 	\end{enumerate}
 \end{sol}
 
@@ -380,6 +382,30 @@
 	\end{enumerate}
 \end{ex}
 
+\begin{sol}
+	\begin{enumerate}[label=\alph*)]
+		\item $D(f) = \varnothing \imp \, \, \forall \ip \in A, f \in \ip, (f) \subseteq \ip$. That implies $(f) \subseteq \bigcap_{\ip \text{ prime }} \ip$, and so $f$ is nilpotent.
+
+		Reciprocally, if $f$ is nilpotent, $f^n = 0 \in \ip$ for every prime ideal $\ip$, and therefore $f \in \ip, \, \, \forall \ip$, which means that $D(f) = \varnothing$.
+
+		\item The map of sheaves $f^{\#}$ is injective if and only if the induced applications on stalks are injective. But we already know (from the proof of Proposition 2.3) that the induced applications on stalks are $\varphi_{\ip}: A_{\varphi^{-1}(\ip)} \to B_{\ip}$. Then, it is enough to show that $\varphi$ is injective if and anly if $\varphi_{\ip}$ is injective for every prime ideal $\ip$.
+
+		$\boxed{\Leftarrow}$ Suppose that $\varphi(a) = 0$. Then, $\varphi_{\ip}(\frac{a}{1}) = \frac{\varphi(a)}{1} = 0$. That means $\frac{a}{1} = 0$ in $A_{\varphi^{-1}(\ip)}$ for every prime $\ip$, which means that $\exists s_i$ such that $s_i a = 0$, where $s_i \notin \ip_i$ and $i$ ranges over all prime ideals of $\ia$. Now note that $\bigcup_i D(s_i)$ covers all $\Spec(A)$: As $\Spec(A)$ is quasi-compact, we can extract a finite covering $s_1, \dots, s_n$ such that $\bigcup_{i = 1}^n D(s_i)$ covers $\Spec(A)$, which means that $(s_1, \dots, s_n) = (1)$ (indeed, $\varnothing = X\setminus \bigcup_{i = 1}^n D(s_i)) = \bigcap_{i = 1}^n (X\setminus D(f_i)) = \bigcap_{i = 1}^n V(s_i) = V((s_1, \dots, s_n))$). Therefore, $\exists a_i, i = 1, \dots, n$ such that $\sum_{i = 1}^n a_i s_i = 1$. Then, $a = (\sum_{i = 1}^n a_i s_i)a = 0$, as $s_i a = 0 \, \, \forall i$.
+
+		$\boxed{\Rightarrow}$ First, let's prove that $\mathrm{Ann}(\varphi(a))^c = \mathrm{Ann}(a)$. If $t \in \mathrm{Ann}(a)$, then $\varphi(t)\varphi(a) = \varphi(ta) = \varphi(0) = 0$ so $\varphi(t) \in \mathrm{Ann}(\varphi(a)) \imp t \in \mathrm{Ann}(\varphi(a))^c$. Reciprocally, $t \in \mathrm{Ann}(\varphi(a))^c \imp \varphi(t)\varphi(a) = 0 \imp \varphi(ta) = 0$, and, as $\varphi$ is injective, this implies $ta = 0 \imp t \in \mathrm{Ann}(a)$.
+
+		Similarly, let's prove now that $\mathrm{Ann}(\varphi(a)) = \mathrm{Ann}(a)^e$. Taking extensions of ideals on the equality we have just proved we have $\mathrm{Ann}(a)^e = \mathrm{Ann}(\varphi(a))^{ce} \subseteq \mathrm{Ann}(\varphi(a))$ (the last inclusion is true in general, Atiyah-Macdonald Proposition 1.17). Reciprocally, given $x \in \mathrm{Ann}(a)^e \imp x = \sum b_i \varphi(x_i)$, where $x_i \in \mathrm{Ann}(a)$. Then, $a\varphi(a) = \sum b_i \varphi(x_i a) = 0 \imp x \in \mathrm{Ann}(\varphi(a))$. These two equalities prove that $\mathrm{Ann}(a) = \mathrm{Ann}(a)^{ec}$.
+
+		We want to prove that $\varphi_{\ip}$ is injective. Suppose that we have $\varphi_{\ip}(\frac{a}{s}) = 0$, which means that $\exists t \notin \ip$ such that $t\varphi(a) = 0$. Now suppose that $\frac{a}{s} \neq 0$, that is, that $\nexists s \in A, s \notin \ip^c$ such that $s \in \mathrm{Ann}(a)$, which is equivalent to $\ip^c \supseteq \mathrm{Ann}(a) = \mathrm{Ann}(a)^{ec}$. Taking extensions on both sides we have $\mathrm{Ann}(ece) = \mathrm{Ann}(a)^e = \mathrm{Ann}(\varphi(a)) \subseteq \ip^{ce} \subseteq \ip$. But this is a contradiction with the existence of $t$, which comes from assuming $\frac{a}{s} \neq 0$. Then $\frac{a}{s} = 0$ and so $\varphi_{\ip}$ is injective.
+
+		Now let's check that $f(Y)$ is dense in $X$. As $\varphi$ is injective, the nilradical of $A$ is the contraction of the nilradical of $B$, because $\varphi(f)^n = 0 \imp \varphi(f^n) = 0 \imp f^n = 0$. Then, $X = V(r(0)) = V(r(0)^c) = V((\bigcap \ip)^c) = V(\bigcap(\ip^c))$. On the other side, $\overline{f(Y)} = \bigcap_{V(\ia) \supseteq f(Y)} V(\ia)$. Note that $V(\ia) \supseteq f(Y) \imp \ia \subseteq \ip^c \forall \ip$, so $\ia \subseteq \bigcap \ip^c \imp V(\ia) \supseteq V(\bigcap (\ip^c))$. Then, $V(\bigcap(\ip^c)) = \bigcap_{V(\ia) \supseteq f(Y)} V(\ia)$, which proves that $\overline{f(Y)} = X$.
+
+		\item If $B = \varphi(A)$, then the application $A / \ker\varphi \cong B$, so we have a bijective correspondence between ideals of $A$ that contain $\ker \varphi$ and ideals of $B$. Therefore $f: \Spec(B) \to V(\ker \varphi)$ is bijective. Now we will check that the inverse, $f^{-1}: V(\ker \varphi) \to \Spec(B)$ is continuous. Given $f \in B, \, (f^{-1})^{-1}(D(f)) = D(g) \cap V(\ker \varphi)$ for any arbitrary $g \in \varphi^{-1}(f)$, because, given $\ip \supseteq \ker \varphi$, $\varphi^{-1}(f) \ni x \in \ip \iff \varphi^{-1}(f) \subseteq \ip$, and as $\varphi$ is surjective, $f \in \ip \iff \exists x \in \varphi^{-1}(f)$ such that $x \in \varphi^{-1}(\ip)$. This proves that $f^{-1}$ is continuous so we have an homeomorphism from $Y$ to $V(\ker \varphi)$, which is a closed subset of $X$.
+
+		Moreover, the sheaf morphism $f^{\#}: \locO_X \to f_* \locO_Y$ is surjective, because the induced applications on stalks are $\varphi_{\ip}: A_{\varphi^{-1}(\ip)} \to B_{\ip}$, which are surjective because given $\frac{b}{t} \in B_{\ip}$, we can take $a, s \in A$ such that $s \notin \varphi^{-1}(\ip)$ such that $t = \varphi(s)$, $b = \varphi(t)$ because $\varphi$ is surjective. Then, $\varphi_{\ip}(\frac{a}{s}) = \frac{b}{t}$ and so $\varphi_{\ip}$ is surjective.
+		\end{enumerate}
+\end{sol}
+
 \begin{ex}
 	Let A be a ring. Show that the following conditions are equivalent:
 	\begin{enumerate}[label=\roman*)]
@@ -388,3 +414,14 @@
 		\item $A$ is isomorphic to a direct product $A_1 \times A_2$ of two nonzero rings.
 	\end{enumerate}
 \end{ex}
+
+\begin{sol}
+	$\boxed{(iii) \imp (ii)}$ Let $\phi: A_1 \times A_2 \to A$ be an isomorphism. Then consider $e_1: = \phi((1,0))$ and $e_2 := \phi((0,1))$. Then $e_1^2 = \phi((1,0))^2 = \phi((1,0)^2) = \phi((1,0)) = e_1$ and analogoulsy with $e_2$, so $e_i^2 = e_i$. $e_1 e_2 = \phi((1,0))\phi((0,1)) = \phi((1,0)(0,1)) = \phi(0) = 0$ and $e_1 + e_2 = \phi((1,0)) + \phi((0,1)) = \phi((1,0)+ (0,1)) = \phi(1) = 1$.
+
+	$\boxed{(ii) \imp (i)}$ $V(e_i)$ are closed sets. The ideal generated by $e_1, e_2$ is the whole ring, so $\varnothing = V((e_1,e_2)) = V(e_1 \cup e_2) = V(e_1) \cap V(e_2)$. Moreover $(e_1)(e_2) = (e_1e_2) = 0$, so $V(e_1) \cup V(e_2) = V((e_1)(e_2)) = V(0) = \Spec(A)$, and therefore $\Spec(A)$ is disconnected.
+
+	$\boxed{(i) \imp (iii)}$ First let's observe that it is enough to find two ideals $\ia_1, \ia_2$ such that $A$ is the direct sum of these ideals, i.e. $\ia_1 + \ia_2 = A, \, \ia_1 \cap \ia_2 = 0$ because $A_1 \times A_2 = A_1 \oplus A_2$ and the application $\psi: A \to A/\ia_1 \times A/\ia_2$, $x \mapsto (x_1, x_2)$, where $x_i$ is the class of $x$ in $A/\ia_i$ is bijective. Indeed, $\psi(a) = (0,0) \imp a \in \ia_1 \cap \ia_2 = 0$, so $\psi$ is injective. In addiction each $y_1 \in A/\ia_1$ has a representant $x_1 \in \ia_2$, and each $y_2 \in A/\ia_2$ has a representant $x_2 \in \ia_1$, so $\psi(x_1+x_2) = (y_1, y_2)$ and $\psi$ is bijective.
+
+	So now let's proceed to find these ideals. As $\Spec(A)$ is disconnected, $\exists \ia_1, \ia_2 \neq A$ such that $\Spec(A) = V(\ia_i) \cup V(\ia_2)$, which implies that $\ia_1 \ia_2$ is included in the nilradical of $A$; It also happens that $V(\ia_1) \cap V(\ia_2) = \varnothing$, which implies that $\ia_1 + \ia_2 = (1)$. These ideals are still not what we are looking for because their intersection is not necessarily $0$. But as the sum of the two ideals is the whole ring, $\exists a_i \in \ia_i$ such that $a_1 + a_2 = 1$. $a_1a_2 \in \ia_1 \ia_2$ and therefore it is a nilpotent element. Let $n$ such that $(a_1a_2)^n = 0$. Then $1 = 1^n = (a_1+a_2)^n = a_1^n + a_2^n + b$, where $b$ is a nilpotent element, because it is the sum of elements $a_1^k a_2^m$, with $m, k \geq 1$, which belong to $\ia_1 \ia_2$, and therefore are nilpotents. Now $a_1^n + a_2^n = 1-b$, and therefore it's a unit, as it is the sum of a unit and a nilpotent element (we are using here Exercise 1.1 of Atiyah-MacDonald). In consequence, we have $(a_1^n) + (a_2^n) = (1)$ and the intersection of these two ideals is equal to their product, as they're coprime (Proposition 1.10 of Atiyah-MacdDonald). So we have that $(a_1^n) \cap (a_2^n) = (a_1^n)(a_2^n) = ((a_1a_2)^n) = 0$. Therefore $A = (a_1^n) + (a_2^n)$ and so $A \cong A/(a_1^n) \times A/(a_2^n)$. These rings are both nonzero because $\ia_i \neq A$.
+
+\end{sol}
