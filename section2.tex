@@ -45,7 +45,7 @@
 	Reduced Schemes. A scheme $(X, \locO_X)$ is reduced if for every open set $U \subseteq X$ the ring $\locO_X(U)$ has no niloptent elements.
 	\begin{enumerate}[label=\alph*)]
 		\item Show that $(X, \locO_X)$ is reduced if and only if for every $P \in X$ the local ring $\locO_{X,P}$ has no nilpotent elements.
-		\item Let $(X, \locO_X)$ be a scheme. Let $(\locO_X)_red$ be the sheaf associated to the presheaf $U \mapsto \locO_X(U)_{red}$ where for any ring $A$, we denote $A_{red}$ the quotient of $A$ by its ideal of nilpotent elements. Show that $(X, (\locO_X)_{red})$ is a scheme. We call it the reduced scheme associated to $X$ and we denote it by $X_{red}$. Show that there is a morphism of schemes $X_{red} \to X$ which is an homeomorphism on the underlying topological spaces. 
+		\item Let $(X, \locO_X)$ be a scheme. Let $(\locO_X)_{red}$ be the sheaf associated to the presheaf $U \mapsto \locO_X(U)_{red}$ where for any ring $A$, we denote $A_{red}$ the quotient of $A$ by its ideal of nilpotent elements. Show that $(X, (\locO_X)_{red})$ is a scheme. We call it the reduced scheme associated to $X$ and we denote it by $X_{red}$. Show that there is a morphism of schemes $X_{red} \to X$ which is an homeomorphism on the underlying topological spaces. 
 		\item Let $f: X \to Y$ be a morphism of schemes, and assume that $X$ is reduced. Show that there is a unique morphism $g: X \to Y_{red}$ such that $f$ is obtained by composing $g$ with the natural map $Y_{red} \to Y$.
 	\end{enumerate}
 \end{ex}
@@ -76,7 +76,10 @@
 
 		Now let's build a mosphim of schemes between $X_{red}$ and $X$. That is, let $f: X \to X$ be the identity application, which is an homeomorphism. Now let $f^{\#}(U): \locO_X(U) \to (\locO_X)_{red}(U)$ be the application that maps $x \in \locO_X(U)$ to the constant application $s: U \to ((\locO_X)_{red})_P$, $s(P) = \overline{x}_P$, where $\overline{x}$ is the image of $x$ in $(\locO_X(U))_{red}$. This induces a morphism of sheaves $f^{\#}: \locO_X \to (\locO_X)_{red}$, with induced applications on stalks $f^{\#}_P: (\locO_X)_P \to ((\locO_X)_{red})_P$. $f^{\#}_P$ maps an element to its reduction modulo the nilpotent element of the stalk (we are using the definition of the morphism $f^{\#}$ and observation 2 to identify $((\locO_X)_{red})_P$ and $(\locO_{X,P})_{red}$), and therefore its a local morphism of rings. Then $(f,f^{\#})$ is a morphism of locally ringed spaces, with $f$ homeomorphism, as desired.
 
-		\item 
+		\item A morphism of sheaves $f^{\#}: \locO_Y \to f_* \locO_X$ induces (by Observation 1) for each open set $U \subseteq Y$, a morphism $\locO_Y(U)_{red} \to f_* \locO_X(U)_{red} = f_* \locO_X(U)$ where the last equality is because $X$ is reduced. This defines a morphism of presheaves between the presheaf  $U \mapsto \locO_Y(U)_{red}$ and the sheaf $f_* \locO_X$.
+		Then by Proposition 1.2 there exists a unique morphism of sheaves $g^{\#}: \locO_{Y_{red}} \to f_*\locO_X$ such that the composition with the sheaffification application $\theta$ is the morphism of presheaves that we have induced from $f^{\#}$. Now let $g = f: \mathrm{sp}(X) \to \mathrm{sp}(Y) = \mathrm{sp}(Y_{red})$, and then $(g, g^{\#})$ is a morphism of ringed spaces between $X$ and $Y_{red}$. To prove that it is a morphism of schemes we have to prove that the applications on stalks are local morphisms. But we know from observation 2 that $\locO_{Y_{red}, f(P)} = (\locO_{Y,f(P)})_{red}$. The applications on stalks $g^{\#}_P$ are in fact the applications induced on the reduced rings (Observation 1) by the applications $f^{\#}_P$. $(\locO_{Y,f(P)})_{red} \to (\locO_{X,P})_{red}$. Every prime ideal contains the nilpotent elements, and so the maximal ideals of the rings $\locO_{Y,f(P)}$ and $\locO_{X,P}$ contain the nilradicals. Then, by the correspondence between ideals of a ring and ideals of the reduced ring that contain the nilradical, the antiimage of the class of the maximal ideal of $\locO_{X,P}$ is the maximal ideal of $(\locO_{Y,f(P)})_{red}$, and so $g^{\#}_P$ are indeed local.
+
+		Moreover, $g$ satisfies that its composition with the natural application $\pi: Y_{red} \to Y$ is $f$. It is clear that this happens on the underlying topological spaces, because $g = f$ and the application $\mathrm{sp}(Y_red) \to \mathrm{sp}(Y)$ is the identity (moreover this shows that $g = f$ on the underlying topological spaces is the only possibility). To prove that the morphisms of sheaves are equal it will be enough to prove that the morphisms on stalks are equal. $g^{\#}_P \circ \pi^{\#}_P: \locO_{Y,f(P)} \to \locO_{Y_{red}, f(P)} = (\locO_{Y,f(P)})_{red} \to \locO_{X,P}$. Any morphism of rings has to send nilpotent elements to nilpotent elements, and, as $X$ is reduced, the image on any nimpotent element is zero. Thus, the application $f^{\#}_P$ is totally determined by the reduced application. This proves that $g^{\#}_P \circ \pi^{\#}_P = f^{\#}$ and that $g^{\#}_P$ is unique with this property.  
 	\end{enumerate}
 \end{sol}
 
@@ -315,6 +318,29 @@
 		is bijective.
 	\end{enumerate}
 \end{ex}
+
+\begin{sol}
+	\begin{enumerate}[label=\alph*)]
+		Note that the sheaf defined in $t(V)$ is $\alpha_*\locO_V$. An open set of $V$ is the complementary of a closed set, so they're of the form $U = \{P \in t(V) \text{ such that } Z_P \not\subseteq Y \}$, where $Y$ is a given closed set of $V$. That is equivalent to $U = \{P \in t(V) \text{ such that } Z_P \cap W \neq \varnothing \}$, where $W = V \setminus Y$ is an open set of $V$. Then, $\alpha^{-1}(U) = \{p \in V \text{ such that } \overline{\{p\}} \cap W \neq \varnothing \}$. Note that $\overline{\{p\}} \cap W \neq \varnothing \iff p \in W$. 
+
+		After these observations we can know that the stalk of $P \in t(V)$ is 
+		\[
+			\locO_{t(V),P} = \varinjlim_{P \in U} \locO_{t(V)}(U) = \varinjlim_{P \in U} \alpha_* \locO_{V}(U) = \varinjlim_{Z_P \cap W \neq \varnothing} \locO_{V}(W)
+		\]
+
+
+		A point $P \in t(V)$ corresponds to an irreducible closed set $Z_P \subseteq V$, and it is closed if and only if there exists a closed $Y \subseteq V$ such that $P = t(Y)$, that is, $Z_P$ is the only irreducible closed set contained in $Y$. If that happens, $t(Y) = t(Z_P)$ because $Z_P$ itself is closed. If $P$ is closed, $\nexists Z \subseteq Z_P$ such that $Z$ is an irreducible closed set. As $Z_P$ is closed, then $\overline{\{Q\}} \subseteq Z_P$ for every $Q \in Z_P$. But the closure of a point of $V$ is an irreducible closed set, so if $P$ is closed we must have $\overline{\{Q\}} = Z_P$ for every $Q \in Z_P$. Then, $\forall W$ such that $W \cap Z_P \neq \varnothing$ we have that $W \cap \overline{\{Q\}} = \varnothing$ so $Q \in W$. That means that $Z_P \cap W \neq \varnothing \iff Q \in W$ for a certain $Q \in Z_P$. Then, the stalk of $P$ in $t(V)$ becomes 
+		\[
+			\locO_{t(V),P} = \varinjlim_{Z_P \cap W \neq \varnothing} \locO_{V}(W) = \varinjlim_{Q \in W} \locO_{V}(W) = \locO_{V,Q}
+		\]
+
+		And as $V$ is a variety, all local rings $\locO_{V,Q}$ have residue field $k$, so $\locO_{t(V),P} / \im_P = \locO_{V,Q}/\im_Q = k$, and $P$ has residue field $k$.
+
+		An irreducible closed set $Z_P$ is a subvariety of $V$, and if $P$ is not closed it contains other subvarieties, which means that $Z_P$ is not a point. Then, the stalk of $P \in t(V)$ is $\varinjlim_{Z_P \cap W \neq \varnothing} \locO_{V}(W)$, which are pairs $(U,f)$, $Z_P \cap U \neq \varnothing$ and $f$ regular function of $U$, with the usual equivalence relation that two pairs are equal if the functions are equal on the intersection. A function is invertible on a point if and only if it is not zero at that point, so an element of $\locO_{t(V),P}$ is invertible if and only if $f(Q) \neq 0, \, \, \forall Q \in Z_P$. So the maximal ideal of the stalk is $\im_P =  \{(U,f) \in \locO_{t(V),P} \text{ such that } f(P) \neq 0 \, \, \forall P \in U \cap Z_P \}$. Then, the residue field is equal to the field of regular functions (as defined on Chapter I, 3.1). If $K(Z_P) = k \imp I(Z_P)$ is a maximal ideal, and by the weak nullstellensatz that means $Z_P$ is only one point, which is a contradiction.
+
+		\item A scheme over $k$ induces via the associated morphism of sheaves, local morphisms on stalks. The stalk of $\Spec(k)$ at the only point of the space is the field $k$ so we have morphisms of rings $k \to \locO_{X,P}$ for each $P$ in $X$, because $X$ is a scheme over $k$. Similarly, for each $Q \in Y$ we have a morphism $k \to \locO_{Y,Q}$. The projection into the residue field $\locO_{Y,Q}/\im_{f(P)} = k(f(P))$ is then a homomorphism of fields, and so it is injective and $k(f(P))$ contains a field isomorphic to $k$. On the other hand, the morphism $f: X \to Y$ induces local morphisms on stalks $\locO_{Y, f(P)} \to \locO_{X,P}$. As these are local morphisms, we have an induced application $k(f(P)) = \locO_{Y,f(P)}/\im_{f(P)} \to \locO_{X,P}/\im_P = k$ if $P$ is a point of residue field $k$. So we have an injective application $k(f(P)) \to k$ and so $k$ contains a field isomorphic to $k(f(P))$. In conclusion, $k(f(P)) \cong k$, so $f(P)$ also has residue field $k$.
+	\end{enumerate}
+\end{sol}
 
 
 
